@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->boolean('robots')->default(0);
+            $table->string('controller_url')->nullable();
+            $table->string('component_url')->nullable();
             $table->timestamps();
         });
     }
