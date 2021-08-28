@@ -1,7 +1,4 @@
 <template>
-    <inertia-head>
-        <meta head-key="description" name="description" :content="metaDesc">
-    </inertia-head>
     <div id="sidebar" :class="{ 'z-40': open}">
         <div id="sidebar-draw">
             <button
@@ -45,6 +42,9 @@
     <main>
         <slot />
     </main>
+    <div id="github-edit" v-if="gitController || gitComponent">
+        <i class="fa-fw fab fa-github"></i> Edit [ <a v-if="gitComponent" :href="gitComponent" target="_blank">Component</a> <template v-if="gitController && gitComponent"> | </template> <a v-if="gitController" :href="gitController" target="_blank">Controller</a> ]
+    </div>
 </template>
 
 <script>
@@ -53,7 +53,8 @@ import { Inertia } from '@inertiajs/inertia';
 export default {
     props: {
         metaTitle: String,
-        metaDesc: String,
+        gitController: String,
+        gitComponent: String,
     },
     data() {
         return {

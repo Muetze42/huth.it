@@ -36,6 +36,8 @@ class PageMeta
 
             Inertia::share('metaTitle', $page['title']);
             Inertia::share('currentRoute', $page['route']);
+            Inertia::share('gitController', $page['controller_url']);
+            Inertia::share('gitComponent', $page['component_url']);
         }
 
         view()->share('pageMeta', $page);

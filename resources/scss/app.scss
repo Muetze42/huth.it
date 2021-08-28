@@ -61,6 +61,9 @@ img.avatar {
 h1 {
     @apply text-center;
 }
+a {
+    @apply text-blue-400 hover:text-blue-300;
+}
 
 .group {
     @apply inline-flex rounded-l-md rounded-r-md;
@@ -73,6 +76,10 @@ h1 {
             @apply rounded-r-md;
         }
     }
+}
+
+#github-edit {
+    @apply fixed bottom-0 text-gray-300 right-0 bg-gray-700 px-1 text-sm rounded-tl-md bg-opacity-20;
 }
 
 @import "forms";

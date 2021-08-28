@@ -10,7 +10,7 @@
     }
 
     input[type=text], input[type=email], textarea {
-        @apply block w-full rounded-md border-gray-300 focus:ring focus:ring-purple-500 focus:ring-opacity-100 text-gray-900;
+        @apply block w-full rounded-md border-gray-300 focus:ring focus:ring-purple-500 focus:ring-opacity-100 text-gray-900 placeholder-opacity-25;
 
         &.invalid {
             @apply border-2 border-red-500 border-opacity-90;
