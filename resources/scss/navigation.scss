@@ -1,0 +1,42 @@
+.menu {
+    div {
+        @apply border-b border-gray-500;
+    }
+}
+#sidebar {
+    @apply fixed inset-0 flex;
+}
+#sidebar-draw {
+    @apply absolute flex top-0 h-full z-20 left-0 flex-row-reverse;
+}
+#sidebar-content {
+    @apply transition-all duration-700 overflow-hidden flex flex-col justify-between bg-gray-700;
+    @include bg-pattern;
+}
+#sidebar-fade {
+    @apply flex-1 bg-gray-800 bg-opacity-75 z-10;
+}
+#sidebar-button {
+    @apply px-2 mb-auto rounded-br text-white bg-gray-600 text-center focus:outline-none hover:bg-gray-500 duration-300 border-r border-b border-gray-500;
+    span {
+        @apply text-3xl md:text-2xl;
+    }
+}
+nav {
+    @apply p-4 w-48 flex flex-col justify-center;
+    ul {
+        li {
+            a {
+                @apply text-center p-2 rounded-md text-sm font-medium mb-2 block;
+
+                &[aria-current="page"] {
+                    @apply bg-purple-400 text-white;
+                }
+
+                &:not([aria-current="page"]) {
+                    @apply text-gray-300 bg-purple-600 hover:bg-purple-400;
+                }
+            }
+        }
+    }
+}
