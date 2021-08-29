@@ -35,8 +35,8 @@ export default {
     },
     methods: {
         count(id) {
-            axios.post('/api/link/'+id, {
-                api: true,
+            axios.post('/link/'+id, {
+                _token: this.$page.props.csrf_token,
             });
         }
     },
