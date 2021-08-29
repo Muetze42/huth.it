@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
