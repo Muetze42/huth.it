@@ -3,7 +3,6 @@
 @tailwind base;
 
 @import "navigation";
-@import "backgrounds/twinkling-stars-background";
 
 @keyframes gradient {
     0% {
@@ -33,6 +32,8 @@ main {
 
 img.avatar {
     @apply rounded-full border border-gray-400 mx-auto;
+    width: 6.25rem;
+    height: 6.25rem;
 }
 
 .card {
@@ -83,6 +84,7 @@ a {
 }
 
 @import "forms";
+@import "backgrounds/twinkling-stars-background";
 
 @tailwind components;
 
