@@ -17,11 +17,11 @@
     }
 }
 body {
-    @apply text-gray-100;
+    @apply text-gray-100 bg-gray-900;
 }
-div#app {
-    @include bg-pattern;
-}
+//div#app {
+//    @include bg-pattern;
+//}
 main {
     @apply h-screen flex justify-center flex-wrap content-center z-50 px-2;
 }
