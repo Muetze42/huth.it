@@ -22,9 +22,6 @@ createApp({
 })
     .mixin({
         props: {
-            language: Object,
-            locale: String,
-            _token: String,
             authed: Boolean,
         },
         methods: {

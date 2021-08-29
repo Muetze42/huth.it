@@ -22,6 +22,7 @@ Route::middleware([PageMeta::class, HandleInertiaRequests::class])->group(functi
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resource('/contact', ContactController::class, ['names' => 'contact'])->only(['index', 'store']);
 });
+Route::post('/link/{link}', [HomeController::class, 'count']);
 
 Route::get('auth/{provider}', [AuthController::class, 'redirect'])->name('auth');
 Route::get('auth/{provider}/callback', [AuthController::class, 'callback']);
