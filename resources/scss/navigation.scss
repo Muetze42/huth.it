@@ -15,6 +15,7 @@
 }
 #sidebar-fade {
     @apply flex-1 bg-gray-800 bg-opacity-75 z-10;
+    @include bg-pattern;
 }
 #sidebar-button {
     @apply px-2 mb-auto rounded-br text-white bg-gray-600 text-center focus:outline-none hover:bg-gray-500 duration-300 border-r border-b border-gray-500;
