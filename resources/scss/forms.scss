@@ -24,6 +24,9 @@
     p {
         @apply text-red-500 text-xs italic text-center;
     }
+    ul {
+        @apply bg-red-200 relative text-red-700 p-2 rounded-lg text-center font-bold;
+    }
 }
 
 .form-body {
