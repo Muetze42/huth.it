@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('trash:notification')
             ->everyFiveMinutes()
             ->between('18:00', '18:30');
-//         $schedule->command('queue:work --stop-when-empty --timeout=0')->everyMinute()->withoutOverlapping();
+         $schedule->command('queue:work --stop-when-empty --timeout=0')->everyMinute()->withoutOverlapping();
     }
 
     /**
