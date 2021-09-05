@@ -87,7 +87,6 @@ export default {
         email: String,
         email_confirmation: String,
         confirmation: Boolean,
-        errors: Object,
     },
     components: {
         Card

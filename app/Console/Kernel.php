@@ -35,7 +35,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('trash:notification')
             ->everyFiveMinutes()
             ->between('18:00', '18:30');
-//         $schedule->command('queue:work --stop-when-empty --timeout=0')->everyMinute()->withoutOverlapping();
+        $schedule->command('twitch:changelog')->dailyAt('19:00');
+        $schedule->command('repo:watch')->dailyAt('12:00');
+        $schedule->command('queue:work --stop-when-empty --timeout=0')->everyMinute()->withoutOverlapping();
     }
 
     /**

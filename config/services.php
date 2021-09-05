@@ -31,8 +31,9 @@ return [
     ],
 
     'telegram-bot-api' => [
-        'token'    => env('TELEGRAM_BOT_TOKEN'),
-        'receiver' => env('TELEGRAM_RECEIVER'),
+        'token'      => env('TELEGRAM_BOT_TOKEN'),
+        'receiver'   => env('TELEGRAM_RECEIVER'),
+        'home-group' => env('TELEGRAM_HOME_GROUP'),
     ],
 
     'github' => [

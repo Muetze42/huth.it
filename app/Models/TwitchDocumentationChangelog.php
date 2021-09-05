@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TrashMail extends Model
+class TwitchDocumentationChangelog extends Model
 {
     use HasFactory;
 
@@ -17,6 +17,16 @@ class TrashMail extends Model
      * @var string[]
      */
     protected $fillable = [
-        'provider',
+        'date',
+        'changes',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'date',
     ];
 }

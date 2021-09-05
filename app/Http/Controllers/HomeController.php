@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Link;
-use App\Models\Page;
 
 class HomeController extends Controller
 {

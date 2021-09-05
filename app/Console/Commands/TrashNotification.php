@@ -60,7 +60,7 @@ class TrashNotification extends Command
         }
 
         if ($content) {
-            Notification::send(-1001544317562, new HtmlText($content));
+            Notification::send(config('services.telegram-bot-api.home-group'), new HtmlText($content));
         }
 
         Date::where('date', $this->tomorrow)->update(['notified' => true]);
