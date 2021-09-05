@@ -13,15 +13,18 @@ class HtmlText extends Notification implements ShouldQueue
     use Queueable;
 
     public string $content;
+    public bool $disableWebPagePreview;
 
     /**
      * Create a new notification instance.
      *
      * @param string $content
+     * @param bool $disableWebPagePreview
      */
-    public function __construct(string $content)
+    public function __construct(string $content, bool $disableWebPagePreview = false)
     {
         $this->content = $content;
+        $this->disableWebPagePreview = $disableWebPagePreview;
     }
 
     /**
@@ -45,6 +48,9 @@ class HtmlText extends Notification implements ShouldQueue
         return TelegramMessage::create()
             ->to($notifiable)
             ->content($this->content)
-            ->options(['parse_mode' => 'html']);
+            ->options([
+                'parse_mode' => 'html',
+                'disable_web_page_preview' => $this->disableWebPagePreview,
+            ]);
     }
 }
