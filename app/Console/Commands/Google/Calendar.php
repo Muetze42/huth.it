@@ -59,13 +59,14 @@ class Calendar extends Command
         $service = new \Google\Service\Calendar($this->googleClient);
 
         $calendarId = config('services.google.calendar-id');
-        $optParams = array(
-            'maxResults' => 10,
-            'orderBy' => 'startTime',
+        $optParams = [
+            'maxResults'   => 10,
+            'orderBy'      => 'startTime',
             'singleEvents' => true,
-            'timeMin' => $min,
-            'timeMax' => $max,
-        );
+            'timeMin'      => $min,
+            'timeMax'      => $max,
+        ];
+
         $results = $service->events->listEvents($calendarId, $optParams);
         $events = $results->getItems();
 
@@ -77,6 +78,7 @@ class Calendar extends Command
             if ($startTime && $endTime) {
                 $from = UtcToLocal(Carbon::parse($startTime))->format('H:i');
                 $to = UtcToLocal(Carbon::parse($endTime))->format('H:i');
+
                 $items[] = $event->summary.' ('.$from.'-'.$to.')';
 
                 continue;
