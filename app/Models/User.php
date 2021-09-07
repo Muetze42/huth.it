@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use NormanHuth\Muetze\Traits\EncryptsAttributes;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, EncryptsAttributes;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +19,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'github_id',
+        'google_token',
         'email',
         'password',
+    ];
+
+    /**
+     * The attributes that are encrypted.
+     *
+     * @var array
+     */
+    protected array $encrypts = [
+        'google_token',
     ];
 
     /**
