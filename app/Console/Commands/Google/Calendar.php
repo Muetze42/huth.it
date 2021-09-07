@@ -93,7 +93,7 @@ class Calendar extends Command
             $content = '<strong>'.$content.'</strong>';
 
             foreach ($items as $item) {
-                $content.= "\n".$item;
+                $content.= "\n".e($item);
             }
 
             Notification::send(config('services.telegram-bot-api.home-group'), new HtmlText($content));
