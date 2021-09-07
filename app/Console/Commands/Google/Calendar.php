@@ -48,13 +48,14 @@ class Calendar extends Command
         $this->googleCalendarInit();
         $this->googleClient->setAccessToken($token);
 
-        if ($this->googleClient->isAccessTokenExpired()) {
-            $this->googleClient->getRefreshToken();
-            $token = $this->googleClient->fetchAccessTokenWithRefreshToken($this->googleClient->getRefreshToken());
-            $calUser->update([
-                'google_token' => $token['access_token'],
-            ]);
-        }
+        // Todo: deprecated?
+//        if ($this->googleClient->isAccessTokenExpired()) {
+//            $this->googleClient->getRefreshToken();
+//            $token = $this->googleClient->fetchAccessTokenWithRefreshToken($this->googleClient->getRefreshToken());
+//            $calUser->update([
+//                'google_token' => $token['access_token'],
+//            ]);
+//        }
 
         $service = new \Google\Service\Calendar($this->googleClient);
 
