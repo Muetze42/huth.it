@@ -24,6 +24,11 @@ Route::middleware([PageMeta::class, HandleInertiaRequests::class])->group(functi
 });
 Route::post('/link/{link}', [HomeController::class, 'count']);
 
+Route::middleware('auth')->group(function () {
+    Route::get('auth/google', [AuthController::class, 'googleRedirect'])->name('auth.google');
+    Route::get('auth/google/callback', [AuthController::class, 'googleCallback'])->name('auth.google.callback');
+});
+
 Route::get('auth/{provider}', [AuthController::class, 'redirect'])->name('auth');
 Route::get('auth/{provider}/callback', [AuthController::class, 'callback']);
 
