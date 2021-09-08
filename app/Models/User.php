@@ -36,7 +36,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's first name.
+     * Get Google Token decrypt and as array
      *
      * @param mixed $value
      * @return array
