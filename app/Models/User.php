@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use NormanHuth\Muetze\Traits\EncryptsAttributes;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, EncryptsAttributes;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -26,13 +25,30 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that are encrypted.
+     * Perform any actions required after the model boots.
      *
-     * @var array
+     * @return void
      */
-    protected array $encrypts = [
-        'google_token',
-    ];
+    protected static function booted()
+    {
+        static::saving(function ($user) {
+            $user->google_token = encrypt(json_encode($user->google_token));
+        });
+    }
+
+    /**
+     * Get the user's first name.
+     *
+     * @param mixed $value
+     * @return array
+     */
+    public function getGoogleTokenAttribute(mixed $value): array
+    {
+        if (is_string($value)) {
+            return json_decode(decrypt($value), true);
+        }
+        return $value;
+    }
 
     /**
      * The attributes that should be hidden for arrays.
