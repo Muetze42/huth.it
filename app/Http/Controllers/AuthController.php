@@ -78,7 +78,7 @@ class AuthController extends Controller
         $token = $this->googleClient->fetchAccessTokenWithAuthCode($code);
 
         Auth::user()->update([
-            'google_token' => $token['access_token'],
+            'google_token' => $token,
         ]);
 
         return redirect()->route('home');

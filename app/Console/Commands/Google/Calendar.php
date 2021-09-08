@@ -8,6 +8,7 @@ use App\Traits\GoogleCalendar;
 use Google\Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
 
 class Calendar extends Command
@@ -48,14 +49,17 @@ class Calendar extends Command
         $this->googleCalendarInit();
         $this->googleClient->setAccessToken($token);
 
-        // Todo: deprecated?
-//        if ($this->googleClient->isAccessTokenExpired()) {
-//            $this->googleClient->getRefreshToken();
-//            $token = $this->googleClient->fetchAccessTokenWithRefreshToken($this->googleClient->getRefreshToken());
-//            $calUser->update([
-//                'google_token' => $token['access_token'],
-//            ]);
-//        }
+        /*
+         * https://developers.google.com/calendar/api/quickstart/php
+         * https://stackoverflow.com/questions/62789668/undefined-index-expires-in-google-login-api
+         * */
+        if ($this->googleClient->isAccessTokenExpired()) {
+            $this->googleClient->getRefreshToken();
+            $this->googleClient->fetchAccessTokenWithRefreshToken($this->googleClient->getRefreshToken());
+            $calUser->update([
+                'google_token' => $this->googleClient->getAccessToken(),
+            ]);
+        }
 
         $service = new \Google\Service\Calendar($this->googleClient);
 
