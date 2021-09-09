@@ -26,8 +26,7 @@ Route::middleware([PageMeta::class, HandleInertiaRequests::class])->group(functi
 
     Route::name('password-generator.')->prefix('password-generator')->group(function () {
         Route::get('/', [PasswordGeneratorController::class, 'index'])->name('index');
-        Route::post('/wordpress', [PasswordGeneratorController::class, 'wordpress'])->name('wordpress');
-        Route::post('/drupal', [PasswordGeneratorController::class, 'drupal'])->name('drupal');
+        Route::post('/hash', [PasswordGeneratorController::class, 'hash'])->name('hash');
     });
 });
 Route::post('/link/{link}', [HomeController::class, 'count']);
