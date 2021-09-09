@@ -3,28 +3,6 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | make:bundle command
-    |--------------------------------------------------------------------------
-    |
-    | What should be generated without option?
-    |
-    */
-    'make-bundle' => [
-        'nova-ressource' => true,
-        'migration'      => true,
-        'policy'         => true,
-        'resource'       => false,
-        'controller'     => false,
-        'api-controller' => false,
-
-        'namespaces' => [
-            'controller'     => '',
-            'api-controller' => 'Api/',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Site Settings
     |--------------------------------------------------------------------------
     |
@@ -45,5 +23,31 @@ return [
     ],
     'error-report' => [
         'throttle' => 3600,
+    ],
+    'site-repo' => [
+        'url' => env('SITE_GIT_URL', 'https://github.com/Muetze42/huth.it'),
+        'branch' => env('SITE_GIT_BRANCH', 'main'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | make:bundle command
+    |--------------------------------------------------------------------------
+    |
+    | What should be generated without option?
+    |
+    */
+    'make-bundle' => [
+        'nova-ressource' => true,
+        'migration'      => true,
+        'policy'         => true,
+        'resource'       => false,
+        'controller'     => false,
+        'api-controller' => false,
+
+        'namespaces' => [
+            'controller'     => '',
+            'api-controller' => 'Api/',
+        ],
     ],
 ];
