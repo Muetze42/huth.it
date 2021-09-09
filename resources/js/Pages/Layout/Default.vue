@@ -22,8 +22,20 @@
                             <inertia-link v-if="route().current(item.route)" :href="route(item.route)" aria-current="page">{{ item.name }}</inertia-link>
                             <inertia-link v-else :href="route(item.route)">{{ item.name }}</inertia-link>
                         </li>
-                        <li v-if="authed">
-                            <a href="/settings">Administration</a>
+                    </ul>
+                </nav>
+                <nav>
+                    <ul id="bottom">
+                        <li v-if="this.authed">
+                            <inertia-link href="/settings">
+                                Administration
+                            </inertia-link>
+                        </li>
+                        <li v-else>
+                            <inertia-link :href="route('auth', 'github')">
+                                <i class="fab fa-github fa-fw"></i>
+                                Login with GitHub
+                            </inertia-link>
                         </li>
                     </ul>
                 </nav>

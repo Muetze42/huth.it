@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Page;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
@@ -34,10 +35,13 @@ class PageMeta
                 unset($page['media']);
             }
 
+            $url = Str::finish(config('muetze-site.site-repo.url'), '/blob/'.config('muetze-site.site-repo.branch').'/');
+            $studly = Str::studly($route);
+
             Inertia::share('metaTitle', $page['title']);
             Inertia::share('currentRoute', $page['route']);
-            Inertia::share('gitController', $page['controller_url']);
-            Inertia::share('gitComponent', $page['component_url']);
+            Inertia::share('gitController', $url.'app/Http/Controllers/'.$studly.'Controller.php');
+            Inertia::share('gitComponent', $url.'resources/js/Pages/'.$studly.'/Index.vue');
         }
 
         view()->share('pageMeta', $page);
