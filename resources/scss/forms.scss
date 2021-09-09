@@ -1,15 +1,26 @@
+.form-check {
+    @apply px-2 mb-1;
+
+    label {
+        @apply inline-flex items-center;
+    }
+
+    input[type=checkbox] {
+        @apply mr-2 rounded border-gray-300 text-indigo-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+    }
+}
 .form-row {
     @apply px-2;
 
     label {
-        @apply block text-gray-200;
+        @apply text-gray-200;
     }
 
     .help {
         @apply text-gray-500 mb-0 text-sm;
     }
 
-    input[type=text], input[type=email], textarea {
+    input, textarea {
         @apply block w-full rounded-md border-gray-300 focus:ring focus:ring-purple-500 focus:ring-opacity-100 text-gray-900 placeholder-opacity-25;
 
         &.invalid {
@@ -29,8 +40,21 @@
     }
 }
 
+.form-group {
+    @apply relative flex flex-wrap items-stretch w-full;
+    input[type=text], input[type=email] {
+        @apply rounded-r-none relative block;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+    }
+    button {
+        @apply flex items-center bg-purple-500 rounded-r px-3 cursor-pointer hover:bg-pink-500;
+    }
+}
+
 .form-body {
-    div {
+    div:not(.form-check) {
         @apply mb-3;
 
         &:last-child {
@@ -38,7 +62,6 @@
         }
     }
 }
-
 
 .submit-row {
     button {

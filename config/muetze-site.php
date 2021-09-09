@@ -37,6 +37,10 @@ return [
             'route' => 'contact.index',
             'text'  => 'Contact',
         ],
+        [
+            'route' => 'password-generator.index',
+            'text'  => 'Password Generator',
+        ],
     ],
 
     /*
