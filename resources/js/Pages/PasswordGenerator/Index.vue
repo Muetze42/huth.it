@@ -1,12 +1,12 @@
 <template>
     <card :title="'Password Generator'" :cardClass="'w-120'" :bodyClass="'form-body'">
-        <form @input="generatePassword()" v-on:submit.prevent>
+        <form v-on:submit.prevent>
             <div class="form-row">
                 <label for="password" class="hidden">
                     Password
                 </label>
                 <div class="form-group">
-                    <input id="password" type="text" v-model="password">
+                    <input id="password" type="text" v-model="password" @input="hideHash()">
                     <button @click="generatePassword()">
                         <i class="fas fa-sync-alt fa-fw"></i>
                     </button>
@@ -14,19 +14,19 @@
             </div>
             <div class="form-check">
                 <label>
-                    <input type="checkbox" v-model="charsSmall">
+                    <input type="checkbox" v-model="charsSmall" @input="generatePassword()">
                     Using „a-z“ character set
                 </label>
             </div>
             <div class="form-check">
                 <label>
-                    <input type="checkbox" v-model="charsBig">
+                    <input type="checkbox" v-model="charsBig" @input="generatePassword()">
                     Using „A-Z“ character set
                 </label>
             </div>
             <div class="form-check mb-3">
                 <label>
-                    <input type="checkbox" v-model="numbers">
+                    <input type="checkbox" v-model="numbers" @input="generatePassword()">
                     Using „0-9“ number set
                 </label>
             </div>
@@ -34,13 +34,13 @@
                 <label for="specialChars">
                     Special Characters
                 </label>
-                <input type="text" id="specialChars" v-model="specialChars">
+                <input type="text" id="specialChars" v-model="specialChars" @input="generatePassword()">
             </div>
             <div class="form-row">
                 <label for="passLength">
                     Password Length
                 </label>
-                <input type="number" id="passLength" v-model="passLength" min="1" step="1">
+                <input type="number" id="passLength" v-model="passLength" min="1" step="1" @input="generatePassword()">
             </div>
         </form>
         <template v-slot:footer>
@@ -62,13 +62,13 @@
                     <label for="wordpress">
                         WordPress
                     </label>
-                    <input id="wordpress" type="text" readonly :value="passHash.wordpress">
+                    <input id="wordpress" type="text" readonly :value="passHash.wordpress" @focus="$event.target.select()">
                 </div>
                 <div class="form-row">
                     <label for="joomla">
                         Joomla
                     </label>
-                    <input id="joomla" type="text" readonly :value="passHash.joomla">
+                    <input id="joomla" type="text" readonly :value="passHash.joomla" @focus="$event.target.select()">
                 </div>
             </div>
         </template>
@@ -117,9 +117,12 @@ export default {
                 }
             })
         }, 10),
+        hideHash() {
+            this.passHash = {}
+        },
         generatePassword() {
             let characters = ''
-            this.passHash = {}
+            this.hideHash()
 
             if (this.charsSmall) {
                 characters += 'abcdefghijklmnopqrstuvwxyz'
