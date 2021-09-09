@@ -119,6 +119,7 @@ export default {
         }, 10),
         generatePassword() {
             let characters = ''
+            this.passHash = {}
 
             if (this.charsSmall) {
                 characters += 'abcdefghijklmnopqrstuvwxyz'
@@ -131,6 +132,8 @@ export default {
             }
 
             characters += this.specialChars
+
+            this.disabled = !characters.length || this.passLength<1;
 
             let newPassword = '';
             for(let i=0; i < this.passLength; i++) {
