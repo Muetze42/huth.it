@@ -68,7 +68,7 @@
         @apply bg-purple-500 text-white font-bold py-2 px-4 rounded;
 
         &:enabled {
-            @apply hover:bg-purple-700;
+            @apply hover:bg-pink-500;
         }
         &:not(:enabled) {
             @apply bg-gray-500;
