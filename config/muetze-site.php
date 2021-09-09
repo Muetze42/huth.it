@@ -28,6 +28,20 @@ return [
         'url' => env('SITE_GIT_URL', 'https://github.com/Muetze42/huth.it'),
         'branch' => env('SITE_GIT_BRANCH', 'main'),
     ],
+    'menu-items' => [
+        [
+            'route' => 'home',
+            'text'  => 'Links',
+        ],
+        [
+            'route' => 'contact.index',
+            'text'  => 'Contact',
+        ],
+        [
+            'route' => 'password-generator.index',
+            'text'  => 'Password Generator',
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------

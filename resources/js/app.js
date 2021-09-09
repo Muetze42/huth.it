@@ -23,6 +23,7 @@ createApp({
     .mixin({
         props: {
             authed: Boolean,
+            menuItems: Array,
         },
         methods: {
             route: (name, params, absolute) => route(name, params, absolute, Ziggy),

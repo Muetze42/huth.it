@@ -18,9 +18,9 @@
             <div id="sidebar-content" :class="[open ? 'max-w-lg border-r border-gray-500' : 'max-w-0']">
                 <nav role="navigation">
                     <ul>
-                        <li v-for="(item, index) in menuItems" :key="index">
-                            <inertia-link v-if="route().current(item.route)" :href="route(item.route)" aria-current="page">{{ item.name }}</inertia-link>
-                            <inertia-link v-else :href="route(item.route)">{{ item.name }}</inertia-link>
+                        <li v-for="(item, index) in this.menuItems" :key="index">
+                            <inertia-link v-if="route().current(item.route)" :href="route(item.route)" aria-current="page">{{ item.text }}</inertia-link>
+                            <inertia-link v-else :href="route(item.route)">{{ item.text }}</inertia-link>
                         </li>
                     </ul>
                 </nav>
@@ -72,16 +72,6 @@ export default {
         return {
             open: false,
             dimmer: true,
-            menuItems: [
-                {
-                    name: "Links",
-                    route: "home",
-                },
-                {
-                    name: "Contact",
-                    route: "contact.index",
-                },
-            ]
         };
     },
     methods: {

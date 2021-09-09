@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RepoWatch;
-use App\Models\User;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 class DevelopmentController extends Controller
 {
-    protected string $tomorrow;
-    protected string $dayAfterTomorrow;
-    protected string $gitHubUrl = 'https://github.com/:package';
-    protected string $gitHubApiUrl = 'https://api.github.com/repos/:package/releases/latest';
-
     public function index()
     {
-        //
+        dd(implode('', range('.', '%')));
+        foreach(range('.', '%') as $letter) {
+        }
+
+        exit;
+
+        Hash::make('A');
     }
 
-    public function getColumns(string $table)
+    public function getColumns(string $table): array
     {
         return Schema::getColumnListing($table);
     }
