@@ -27,9 +27,9 @@
                 <nav>
                     <ul id="bottom">
                         <li v-if="this.authed">
-                            <inertia-link href="/settings">
+                            <a href="/settings">
                                 Administration
-                            </inertia-link>
+                            </a>
                         </li>
                         <li v-else>
                             <inertia-link :href="route('auth', 'github')">
