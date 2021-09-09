@@ -50,8 +50,9 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            '_token' => csrf_token(),
-            'authed' => auth()->check(),
+            '_token'    => csrf_token(),
+            'authed'    => auth()->check(),
+            'menuItems' => config('muetze-site.menu-items'),
         ]);
     }
 }
