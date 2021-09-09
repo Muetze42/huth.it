@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Notifications\Telegram\HtmlText;
 use App\Rules\Honeypot;
 use App\Rules\NoTrashMail;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Inertia\Inertia;
@@ -27,9 +25,9 @@ class ContactController extends Controller
 
     /**
      * @param Request $request
-     * @return HttpResponse|Application|ResponseFactory
+     * @return HttpResponse
      */
-    public function store(Request $request): HttpResponse|Application|ResponseFactory
+    public function store(Request $request): HttpResponse
     {
         $request->validate([
             'name'         => ['string', 'required'],
