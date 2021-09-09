@@ -7,8 +7,6 @@ use App\Rules\Honeypot;
 use App\Rules\NoTrashMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
-use Inertia\Inertia;
-use Inertia\Response as InertiaResponse;
 use App\Models\ContactRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Response as HttpResponse;

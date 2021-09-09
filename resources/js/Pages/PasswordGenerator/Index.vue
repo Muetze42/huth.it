@@ -43,6 +43,35 @@
                 <input type="number" id="passLength" v-model="passLength" min="1" step="1">
             </div>
         </form>
+        <template v-slot:footer>
+            <form @submit.prevent="generateHash">
+                <div class="submit-row">
+                    <span class="ping-container">
+                        <button type="submit" :disabled='disabled'>
+                            Create WordPress & Joomla Hash
+                        </button>
+                        <span class="ping-1" v-if='sending'>
+                            <span class="ping-2"></span>
+                            <span class="ping-3"></span>
+                        </span>
+                    </span>
+                </div>
+            </form>
+            <div v-if="Object.keys(passHash).length || passHash.length" class="form-body">
+                <div class="form-row mt-4">
+                    <label for="wordpress">
+                        WordPress
+                    </label>
+                    <input id="wordpress" type="text" readonly :value="passHash.wordpress">
+                </div>
+                <div class="form-row">
+                    <label for="joomla">
+                        Joomla
+                    </label>
+                    <input id="joomla" type="text" readonly :value="passHash.joomla">
+                </div>
+            </div>
+        </template>
     </card>
 </template>
 
@@ -60,15 +89,35 @@ export default {
             numbers: true,
             password: '',
             passLength: 16,
-            specialChars: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+            sending: false,
+            specialChars: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~',
+            passHash: {},
+            disabled: false,
         }
     },
     components: {
         Card
     },
     methods: {
+        generateHash: _.debounce(function () {
+            this.sending = true
+            this.disabled = true
+            console.log(this.passHash)
+
+            axios.post(route("password-generator.hash"), {
+                _token: this._token,
+                password: this.password,
+            }) .then(response => {
+                this.passHash = response.data
+                this.sending = false
+                this.disabled = false
+            }).catch((error) => {
+                if (window.confirm("An unknown error has occurred. Please try again at another time")) {
+                    this.sending = false
+                }
+            })
+        }, 10),
         generatePassword() {
-            console.log(this.chars)
             let characters = ''
 
             if (this.charsSmall) {
@@ -90,11 +139,6 @@ export default {
 
             this.password = newPassword;
         },
-        count(id) {
-            axios.post('/link/'+id, {
-                _token: this.$page.props.csrf_token,
-            });
-        }
     },
     mounted: function(){
         this.generatePassword()
