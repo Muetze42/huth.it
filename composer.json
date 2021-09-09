@@ -1,8 +1,16 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Norman's Website",
+    "keywords": [
+        "framework",
+        "laravel",
+        "tailwindcss",
+        "inertiajs",
+        "fontawesome",
+        "laravel-nova",
+        "vuejs"
+    ],
     "license": "MIT",
     "homepage": "https://huth.it",
     "authors": [
@@ -36,9 +44,9 @@
         "hisorange/browser-detect": "^4.4",
         "inertiajs/inertia-laravel": "^0.4.4",
         "laravel-notification-channels/telegram": "^0.5.1",
-        "laravel/framework": "^8.57",
+        "laravel/framework": "^8.60",
         "laravel/nova": "^3.29",
-        "laravel/socialite": "^5.2.4",
+        "laravel/socialite": "^5.2.5",
         "laravel/tinker": "^2.6.1",
         "laravelwebdev/responsive": "^1.0.1",
         "muetze/nova-icon-select": "^1.0",

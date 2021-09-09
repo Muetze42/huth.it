@@ -65,10 +65,6 @@
         top: 0;
         bottom: 0;
         z-index: 2;
-        -moz-animation:move-background 70s linear infinite;
-        -ms-animation:move-background 70s linear infinite;
-        -o-animation:move-background 70s linear infinite;
-        -webkit-animation:move-background 70s linear infinite;
         animation:move-background 70s linear infinite;
 
     }
@@ -83,11 +79,6 @@
         top: 0;
         bottom: 0;
         z-index: 3;
-
-        -moz-animation:move-background 150s linear infinite;
-        -ms-animation:move-background 150s linear infinite;
-        -o-animation:move-background 150s linear infinite;
-        -webkit-animation:move-background 150s linear infinite;
         animation:move-background 150s linear infinite;
     }
 }

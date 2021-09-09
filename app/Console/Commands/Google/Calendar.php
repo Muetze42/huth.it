@@ -93,8 +93,8 @@ class Calendar extends Command
 
         $count = count($items);
         if ($count) {
-            $content = $tomorrow ? trans_choice('Termin Morgen|Termine Morgen', $count) :
-                trans_choice('Termin Heute|Termine Heute', $count);
+            $content = $tomorrow ? trans_choice('Date tomorrow|Dates tomorrow', $count) :
+                trans_choice('Date today|Dates today', $count);
             $content = '<strong>'.$content.'</strong>';
 
             foreach ($items as $item) {
