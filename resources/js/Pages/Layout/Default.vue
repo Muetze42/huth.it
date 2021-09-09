@@ -32,10 +32,10 @@
                             </a>
                         </li>
                         <li v-else>
-                            <inertia-link :href="route('auth', 'github')">
+                            <a :href="route('auth', 'github')">
                                 <i class="fab fa-github fa-fw"></i>
                                 Login with GitHub
-                            </inertia-link>
+                            </a>
                         </li>
                     </ul>
                 </nav>
