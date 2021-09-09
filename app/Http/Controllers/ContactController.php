@@ -16,14 +16,6 @@ use Illuminate\Http\Response as HttpResponse;
 class ContactController extends Controller
 {
     /**
-     * @return InertiaResponse
-     */
-    public function index(): InertiaResponse
-    {
-        return Inertia::render('Contact/Index');
-    }
-
-    /**
      * @param Request $request
      * @return HttpResponse
      */
