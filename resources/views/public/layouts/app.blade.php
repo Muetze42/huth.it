@@ -8,6 +8,7 @@
     <link href="{{ _asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ _asset('/css/buttons.css') }}" rel="stylesheet">
     <script src="{{ _asset('/js/app.js') }}" defer></script>
+    <script src="{{ _asset('/js/ziggy.js') }}" defer></script>
     @include('public.layouts.favicon')
     <script src="https://kit.fontawesome.com/d96ba313b0.js" crossorigin="anonymous"></script>
     @mobile<style>.card {margin-bottom: 3rem;}</style>@endmobile
@@ -19,7 +20,6 @@
     <div class="twinkling"></div>
     <div class="clouds"></div>
 </div>
-@routes
 @inertia
 </body>
 </html>

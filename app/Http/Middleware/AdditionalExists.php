@@ -27,6 +27,10 @@ class AdditionalExists
             Artisan::call('sitemap');
         }
 
+        if (!file_exists(public_path('js/ziggy.js'))) {
+            Artisan::call('ziggy:production');
+        }
+
         return $next($request);
     }
 }
