@@ -15,6 +15,11 @@ class Controller extends BaseController
 
     public function index(): InertiaResponse
     {
-        return Inertia::render(str_replace('Controller', '', class_basename($this)).'/Index');
+        return Inertia::render(str_replace('Controller', '', class_basename($this)).'/Index', $this->indexData());
+    }
+
+    public function indexData(): array
+    {
+        return [];
     }
 }
