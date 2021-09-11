@@ -2,12 +2,12 @@
     <card :title="'Password Generator'" :cardClass="'w-120'" :bodyClass="'form-body'">
         <form v-on:submit.prevent>
             <div class="form-row">
-                <label for="password" class="hidden">
+                <label for="password" class="sr-only">
                     Password
                 </label>
                 <div class="form-group">
                     <input id="password" type="text" v-model="password" @input="hideHash()">
-                    <button @click="generatePassword()">
+                    <button @click="generatePassword()" aria-label="Refresh">
                         <i class="fas fa-sync-alt fa-fw"></i>
                     </button>
                 </div>

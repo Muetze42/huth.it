@@ -6,7 +6,7 @@
     }
 
     input[type=checkbox] {
-        @apply mr-2 rounded border-gray-300 text-indigo-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+        @apply mr-2 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
     }
 }
 
@@ -14,7 +14,7 @@
     @apply block px-2 ml-6 mb-1;
 
     input[type=radio] {
-        @apply border-gray-300 text-indigo-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+        @apply border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
         @apply float-left mt-1 align-top;
         margin-left: -1.5em;
     }
@@ -36,7 +36,7 @@ select {
     }
 
     .help {
-        @apply text-gray-500 mb-0 text-sm;
+        @apply text-gray-400 mb-0 text-sm;
     }
 
     input, textarea {
@@ -68,7 +68,7 @@ select {
         min-width: 0;
     }
     button {
-        @apply flex items-center bg-purple-500 rounded-r px-3 cursor-pointer hover:bg-pink-500;
+        @apply flex items-center bg-purple-600 rounded-r px-3 cursor-pointer hover:bg-pink-500;
     }
 }
 
@@ -84,7 +84,7 @@ select {
 
 .submit-row {
     button {
-        @apply bg-purple-500 text-white font-bold py-2 px-4 rounded;
+        @apply bg-purple-600 text-white font-bold py-2 px-4 rounded;
 
         &:enabled {
             @apply hover:bg-pink-500;
