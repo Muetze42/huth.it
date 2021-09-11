@@ -12,19 +12,15 @@
                     </button>
                 </div>
             </div>
-            <div class="form-check">
+            <div class="form-list">
                 <label>
                     <input type="checkbox" v-model="charsSmall" @input="generatePassword()">
                     Using „a-z“ character set
                 </label>
-            </div>
-            <div class="form-check">
                 <label>
                     <input type="checkbox" v-model="charsBig" @input="generatePassword()">
                     Using „A-Z“ character set
                 </label>
-            </div>
-            <div class="form-check mb-3">
                 <label>
                     <input type="checkbox" v-model="numbers" @input="generatePassword()">
                     Using „0-9“ number set
@@ -104,7 +100,7 @@ export default {
             this.disabled = true
             console.log(this.passHash)
 
-            axios.post(route("password-generator.hash"), {
+            axios.post(route("password-generator.store"), {
                 _token: this._token,
                 password: this.password,
             }) .then(response => {

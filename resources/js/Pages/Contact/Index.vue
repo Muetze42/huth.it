@@ -113,7 +113,7 @@ export default {
                 confirmation : this.confirmation,
             }) .then(response => {
                 this.sent = true
-            }).catch((error) => {
+            }).catch(error => {
                 if (error.response && error.response.status === 422) {
                     this.sending = false
                     this.submitErrors = error.response.data.errors;

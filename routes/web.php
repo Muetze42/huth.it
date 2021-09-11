@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PasswordGeneratorController;
+use App\Http\Controllers\StringFormatterController;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Middleware\PageMeta;
 use Illuminate\Support\Facades\Route;
@@ -21,13 +22,9 @@ use App\Http\Controllers\AuthController;
 
 Route::middleware([PageMeta::class, HandleInertiaRequests::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-
-    Route::resource('contact', ContactController::class, ['names' => 'contact'])->only(['index', 'store']);
-
-    Route::name('password-generator.')->prefix('password-generator')->group(function () {
-        Route::get('/', [PasswordGeneratorController::class, 'index'])->name('index');
-        Route::post('/hash', [PasswordGeneratorController::class, 'hash'])->name('hash');
-    });
+    Route::resource('contact', ContactController::class)->only(['index', 'store']);
+    Route::resource('password-generator', PasswordGeneratorController::class)->only(['index', 'store']);
+    Route::resource('string-formatter', StringFormatterController::class)->only(['index', 'store']);
 });
 Route::post('/link/{link}', [HomeController::class, 'count']);
 

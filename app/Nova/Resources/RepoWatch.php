@@ -62,6 +62,8 @@ class RepoWatch extends Resource
     {
         return [
             Text::make(__('Name'), 'name')
+                ->required()
+                ->rules('required', 'unique:repo_watches,name')
                 ->sortable(),
             Text::make(__('Version'), 'version')
                 ->sortable()->exceptOnForms(),
