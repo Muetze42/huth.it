@@ -11,15 +11,11 @@ use App\Models\Link;
 class HomeController extends Controller
 {
     /**
-     * @return Response
+     * @return array
      */
-    public function index(): Response
+    public function indexData(): array
     {
-        $links = Link::where('active', true)->orderBy('order')->get();
-
-        return Inertia::render('Home/Index', [
-            'links' => $links,
-        ]);
+        return ['links' => Link::where('active', true)->orderBy('order')->get()];
     }
 
     /**
