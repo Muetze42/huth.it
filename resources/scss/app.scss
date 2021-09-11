@@ -83,6 +83,10 @@ a {
     @apply fixed bottom-0 text-gray-300 right-0 bg-gray-700 px-1 text-sm rounded-tl-md bg-opacity-20;
 }
 
+code {
+    @apply font-mono bg-gray-300 text-red-500 px-1 rounded;
+}
+
 @import "forms";
 @import "backgrounds/twinkling-stars-background";
 

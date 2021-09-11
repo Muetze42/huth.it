@@ -7,11 +7,6 @@ use Tightenco\Ziggy\Ziggy;
 
 class ZiggyProduction extends Command
 {
-    public static $generated;
-//    public static ?Ziggy $payload;
-    public static $payload;
-
-
     /**
      * The name and signature of the console command.
      *

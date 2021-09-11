@@ -41,6 +41,10 @@ return [
             'route' => 'password-generator.index',
             'text'  => 'Password Generator',
         ],
+        [
+            'route' => 'string-formatter.index',
+            'text'  => 'String Formatter',
+        ],
     ],
 
     /*
@@ -56,7 +60,7 @@ return [
         'migration'      => true,
         'policy'         => true,
         'resource'       => false,
-        'controller'     => false,
+        'controller'     => true,
         'api-controller' => false,
 
         'namespaces' => [

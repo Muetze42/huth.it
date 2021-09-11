@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PasswordGeneratorController extends Controller
 {
-    public function hash(Request $request): array
+    public function store(Request $request): array
     {
         $password = $request->input('password');
 
@@ -18,7 +18,7 @@ class PasswordGeneratorController extends Controller
 
         return [
             'wordpress' => $wpHash->HashPassword(trim($password)),
-            'joomla' => $jHash->HashPassword($password),
+            'joomla'    => $jHash->HashPassword($password),
         ];
     }
 }

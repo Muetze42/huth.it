@@ -1,14 +1,33 @@
-.form-check {
+.form-list {
     @apply px-2 mb-1;
 
     label {
-        @apply inline-flex items-center;
+        @apply inline-flex items-center w-full;
     }
 
     input[type=checkbox] {
         @apply mr-2 rounded border-gray-300 text-indigo-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
     }
 }
+
+.radio {
+    @apply block px-2 ml-6 mb-1;
+
+    input[type=radio] {
+        @apply border-gray-300 text-indigo-500 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+        @apply float-left mt-1 align-top;
+        margin-left: -1.5em;
+    }
+
+    small {
+        @apply block text-gray-400;
+    }
+}
+
+select {
+    @apply rounded-md border-gray-300 focus:ring focus:ring-purple-500 focus:ring-opacity-100 text-gray-900 placeholder-opacity-25 py-1;
+}
+
 .form-row {
     @apply px-2 text-left;
 
@@ -54,7 +73,7 @@
 }
 
 .form-body {
-    div:not(.form-check) {
+    div:not(.form-check):not(.radio) {
         @apply mb-3;
 
         &:last-child {
