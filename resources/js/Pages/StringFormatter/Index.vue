@@ -2,10 +2,10 @@
     <form @input="isDisabled()" @submit.prevent="submit">
         <card :title="'String Formatter'" :cardClass="'w-120'" :bodyClass="'form-body'">
             <div class="form-row">
-                <label for="password" class="hidden">
+                <label for="string" class="sr-only">
                     String
                 </label>
-                <input id="password" type="text" v-model="string">
+                <input id="string" type="text" v-model="string">
             </div>
             <div class="radio">
                 <input type="radio" id="camelCase" value="camelCase" v-model="stringMethod" name="stringMethod">
@@ -61,7 +61,7 @@
                     </span>
                 </div>
                 <div class="form-row mt-4">
-                    <label for="output" class="hidden">
+                    <label for="output" class="sr-only">
                         Output
                     </label>
                     <input id="output" type="text" v-model="output" readonly @focus="$event.target.select()">
