@@ -59,7 +59,7 @@ class Knowledge extends Resource
             Text::make(__('Title'), 'title')
                 ->sortable()->required()->rules(['required']),
             Markdown::make(__('Content'), 'content')
-                ->sortable()->required()->rules(['required'])->alwaysShow(),
+                ->required()->rules(['required'])->alwaysShow(),
             Tags::make('Tags', 'tags')
                 ->sortable()->type(static::$model),
         ];
