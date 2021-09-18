@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -46,7 +47,10 @@ class User extends Authenticatable
         if (is_string($value)) {
             return json_decode(decrypt($value), true);
         }
-        return $value;
+        if (!empty($value) && is_array($value)) {
+            return $value;
+        }
+        return [];
     }
 
     /**
@@ -67,4 +71,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the knowledge entries by the user.
+     */
+    public function knowledge(): HasOne
+    {
+        return $this->hasOne(Knowledge::class);
+    }
 }

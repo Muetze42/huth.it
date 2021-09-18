@@ -2,13 +2,15 @@
 
 namespace App\Nova\Resources;
 
-use App\Nova\Metrics\Referrer\ReferrerDomain;
+use App\Nova\Filters\WithTag;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Spatie\TagsField\Tags;
 use Titasgailius\SearchRelations\SearchesRelations;
 
-class ReferrerHost extends Resource
+class Knowledge extends Resource
 {
     use SearchesRelations;
 
@@ -17,31 +19,14 @@ class ReferrerHost extends Resource
      *
      * @var string
      */
-    public static string $model = \App\Models\ReferrerHost::class;
-
-    /**
-     * Get the logical group associated with the resource.
-     *
-     * @return string
-     */
-    public static function group(): string
-    {
-        return novaCat('Referrers');
-    }
-
-    /**
-     * Custom priority level of the resource.
-     *
-     * @var int
-     */
-    public static int $priority = 10;
+    public static string $model = \App\Models\Knowledge::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -49,7 +34,8 @@ class ReferrerHost extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'title',
+        'content',
     ];
 
     /**
@@ -58,16 +44,7 @@ class ReferrerHost extends Resource
      * @var array
      */
     public static array $searchRelations = [
-        'referrers' => ['url', 'ip'],
-    ];
-
-    /**
-     * The relationship columns that should be searched globally.
-     *
-     * @var array
-     */
-    public static array $globalSearchRelations = [
-        'referrers' => ['url', 'ip'],
+        'tags' => ['name'],
     ];
 
     /**
@@ -79,15 +56,12 @@ class ReferrerHost extends Resource
     public function fields(Request $request): array
     {
         return [
-            Text::make(__('Name'), 'name', function () {
-                return '<a href="https://'.e($this->name).'" class="'.config('muetze-site.nova.external_link_class').'" rel="noopener noreferrer" target="_blank">'.e($this->name).'</a><i class="'.config('muetze-site.nova.external_link_icon').'"></i>';
-            })->sortable()->asHtml(),
-
-            Text::make(__('Referrers'), 'referrer_count', function () {
-                return '<a href="'.config('nova.path').'/resources/referrer-hosts/'.$this->id.'" class="'.config('muetze-site.nova.external_link_class').' font-bold">'.$this->referrer_count.'</a>';
-            })->sortable()->asHtml()->onlyOnIndex(),
-
-            HasMany::make(__('Referrers'), 'referrers', Referrer::class),
+            Text::make(__('Title'), 'title')
+                ->sortable()->required()->rules(['required']),
+            Markdown::make(__('Content'), 'content')
+                ->sortable()->required()->rules(['required'])->alwaysShow(),
+            Tags::make('Tags', 'tags')
+                ->sortable()->type(static::$model),
         ];
     }
 
@@ -99,9 +73,7 @@ class ReferrerHost extends Resource
      */
     public function cards(Request $request): array
     {
-        return [
-            new ReferrerDomain,
-        ];
+        return [];
     }
 
     /**
@@ -112,7 +84,9 @@ class ReferrerHost extends Resource
      */
     public function filters(Request $request): array
     {
-        return [];
+        return [
+            new WithTag(static::$model),
+        ];
     }
 
     /**
