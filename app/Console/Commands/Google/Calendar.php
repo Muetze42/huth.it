@@ -44,20 +44,21 @@ class Calendar extends Command
         $max = Carbon::now()->addDays($addDays)->endOfDay()->setTimezone('UTC')->toIso8601String();
 
         $calUser = User::find(1);
-        $token = $calUser->google_token;
+        $token = json_encode($calUser->google_token);
 
         $this->googleCalendarInit();
         $this->googleClient->setAccessToken($token);
 
-        /*
-         * https://developers.google.com/calendar/api/quickstart/php
-         * https://stackoverflow.com/questions/62789668/undefined-index-expires-in-google-login-api
-         * */
         if ($this->googleClient->isAccessTokenExpired()) {
-            $this->googleClient->getRefreshToken();
-            $this->googleClient->fetchAccessTokenWithRefreshToken($this->googleClient->getRefreshToken());
+            $refreshTokenSaved = $this->googleClient->getRefreshToken();
+            $this->googleClient->fetchAccessTokenWithRefreshToken($refreshTokenSaved);
+            $accessTokenUpdated = $this->googleClient->getAccessToken();
+            $accessTokenUpdated['refresh_token'] = $refreshTokenSaved;
+            $accessToken = $refreshTokenSaved;
+            $this->googleClient->setAccessToken($accessToken);
+
             $calUser->update([
-                'google_token' => $this->googleClient->getAccessToken(),
+                'google_token' => json_encode($accessTokenUpdated),
             ]);
         }
 

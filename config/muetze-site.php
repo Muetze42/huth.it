@@ -17,6 +17,7 @@ return [
         'external_link_class' => 'no-underline dim text-primary',
         'external_link_icon' => 'fa-fw fal fa-external-link fa-xs',
         'menu-order' => [
+            'Bookmarks' => 20,
             'Referrers' => 30,
             'Dates'     => 50,
         ],
@@ -58,9 +59,9 @@ return [
     'make-bundle' => [
         'nova-ressource' => true,
         'migration'      => true,
-        'policy'         => true,
+        'policy'         => false,
         'resource'       => false,
-        'controller'     => true,
+        'controller'     => false,
         'api-controller' => false,
 
         'namespaces' => [

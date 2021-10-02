@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse as SymfonyRedirectResponse;
@@ -39,7 +40,16 @@ class AuthController extends Controller
      */
     public function callback(Request $request, $provider): RedirectResponse
     {
-        $socialiteUser = Socialite::driver($provider)->user();
+        $socialiteUser = null;
+        try {
+            $socialiteUser = Socialite::driver($provider)->user();
+        } catch (\Exception $exception) {
+            Log::info('Auth Callback Exception with provider `'.$provider."`\n".$exception);
+        }
+
+        if (!$socialiteUser) {
+            abort(Response::HTTP_UNAUTHORIZED);
+        }
 
         $user = User::where(['github_id' => $socialiteUser->getId()])->first();
 
@@ -58,6 +68,10 @@ class AuthController extends Controller
      */
     public function googleRedirect(): RedirectResponse
     {
+        if (Auth::id() != 1) {
+            abort(Response::HTTP_UNAUTHORIZED);
+        }
+
         $this->googleCalendarInit();
 
         $authUrl = $this->googleClient->createAuthUrl();
@@ -72,13 +86,17 @@ class AuthController extends Controller
      */
     public function googleCallback(Request $request): RedirectResponse
     {
-        $code = $request->input('code');
+        $authCode = $request->input('code');
+        if (!$authCode) {
+            abort(Response::HTTP_UNAUTHORIZED);
+        }
+
         $this->googleCalendarInit();
 
-        $token = $this->googleClient->fetchAccessTokenWithAuthCode($code);
+        $accessToken = $this->googleClient->fetchAccessTokenWithAuthCode($authCode);
 
         Auth::user()->update([
-            'google_token' => $token,
+            'google_token' => json_encode($accessToken),
         ]);
 
         return redirect()->route('home');

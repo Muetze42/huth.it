@@ -125,3 +125,17 @@ if (!function_exists('novaCat')) {
         return '<span class="hidden">'.config('muetze-site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
     }
 }
+
+if (!function_exists('errorImage')) {
+    function errorImage(int $errorCode): string
+    {
+        $errorImages = [
+            '401' => '403.svg',
+            '403' => '403.svg',
+            '404' => '404.svg',
+            '500' => '503.svg',
+        ];
+
+        return $errorImages[$errorCode] ?? '404.svg';
+    }
+}
