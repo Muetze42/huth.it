@@ -78,10 +78,10 @@ class Link extends Model implements Sortable
         });
         static::updated(function ($link) {
             if ($link->name != $link->getOriginal('name') || $link->target != $link->getOriginal('target')) {
-                gerateAdditionalStylesheet();
                 Page::find(1)->touch();
                 Artisan::call('sitemap');
             }
+            gerateAdditionalStylesheet();
         });
     }
 

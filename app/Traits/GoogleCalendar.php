@@ -25,5 +25,6 @@ trait GoogleCalendar
         $this->googleClient->setRedirectUri(route('auth.google.callback'));
         $this->googleClient->setAccessType('offline');
         $this->googleClient->setIncludeGrantedScopes(true);
+        $this->googleClient->setApprovalPrompt('force');
     }
 }
