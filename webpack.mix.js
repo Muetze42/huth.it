@@ -24,15 +24,13 @@ mix.js('resources/js/app.js', 'public/js').vue({
             }),
         ],
     };
-});
-mix.sass('resources/scss/app.scss', 'public/css')
+})
+    .sass('resources/scss/app.scss', 'public/css')
     .options({
         processCssUrls: false,
-        postCss: [ tailwindcss('./tailwind.config.js') ],
+        postCss: [tailwindcss('./tailwind.config.js')],
     })
-
-mix.webpackConfig({
-    output: {
-        chunkFilename: 'js/[name].js?id=[chunkhash]',
-    }
-})
+    .setPublicPath('public')
+    .version([
+        'public/css/error-pages.css'
+    ])
