@@ -17,6 +17,3 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-
-Route::post('/github/form', [GithubController::class, 'form']);
-Route::post('/github/json', [GithubController::class, 'json']);
