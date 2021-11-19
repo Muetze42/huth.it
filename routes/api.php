@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\LinkController;
+use App\Http\Controllers\Api\GithubController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+Route::post('/github/form', [GithubController::class, 'form']);
+Route::post('/github/json', [GithubController::class, 'json']);
