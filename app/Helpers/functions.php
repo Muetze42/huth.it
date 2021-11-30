@@ -139,3 +139,22 @@ if (!function_exists('errorImage')) {
         return $errorImages[$errorCode] ?? '404.svg';
     }
 }
+
+if (!function_exists('_asset')) {
+    /**
+     * @param $asset
+     * @return string
+     */
+    function _asset($asset): string
+    {
+        $asset = trim($asset, '\\/');
+
+        $file = public_path($asset);
+
+        if (file_exists($file)) {
+            return asset($asset).'?='.filemtime($file);
+        }
+
+        return $asset;
+    }
+}

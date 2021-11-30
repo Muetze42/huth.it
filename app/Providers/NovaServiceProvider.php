@@ -6,16 +6,6 @@ use App\Nova\Metrics\Link\LinkCounts;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use App\Nova\Metrics\Browser\BrowserEngine;
-use App\Nova\Metrics\Browser\BrowserFamily;
-use App\Nova\Metrics\Browser\DeviceOs;
-use App\Nova\Metrics\Browser\DeviceFamily;
-use App\Nova\Metrics\Browser\DeviceModel;
-use App\Nova\Metrics\Browser\DeviceType;
-use App\Nova\Metrics\Browser\MobileGrade;
-use App\Nova\Metrics\Browser\PlatformFamily;
-use App\Nova\Metrics\Browser\PlatformName;
-use App\Nova\Metrics\Referrer\ReferrerDomain;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -68,16 +58,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new LinkCounts,
-            new ReferrerDomain,
-            new DeviceType,
-            new DeviceOs,
-            new BrowserFamily,
-            new PlatformFamily,
-            new DeviceFamily,
-            new BrowserEngine,
-            new PlatformName,
-            new DeviceModel,
-            new MobileGrade,
         ];
     }
 

@@ -18,7 +18,6 @@ return [
         'external_link_icon' => 'fa-fw fal fa-external-link fa-xs',
         'menu-order' => [
             'Bookmarks' => 20,
-            'Referrers' => 30,
             'Dates'     => 50,
         ],
     ],

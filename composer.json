@@ -52,7 +52,6 @@
         "muetze/nova-icon-select": "^1.0",
         "muetze42/nova-charcounted-fields": "^1.0",
         "norman-huth/laravel-trash-mail": "dev-main",
-        "norman-huth/muetze-site": "^0.0.6",
         "optimistdigital/nova-sortable": "^2.4",
         "scssphp/scssphp": "^1.6",
         "socialiteproviders/github": "^4.1",

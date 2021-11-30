@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e9bcab4ba8b49d95ff589864a5fd2bd",
+    "content-hash": "c789ac73130b7b447936013d6af6e876",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4126,75 +4126,6 @@
                 "source": "https://github.com/Muetze42/laravel-trash-mail/tree/main"
             },
             "time": "2021-08-21T22:30:30+00:00"
-        },
-        {
-            "name": "norman-huth/muetze-site",
-            "version": "0.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Muetze42/muetze-site.git",
-                "reference": "d0d6009cf08c798b37ab5143c8a85af23e721ae0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Muetze42/muetze-site/zipball/d0d6009cf08c798b37ab5143c8a85af23e721ae0",
-                "reference": "d0d6009cf08c798b37ab5143c8a85af23e721ae0",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "illuminate/console": "^7.0|^8.0",
-                "illuminate/support": "^7.0|^8.0",
-                "php": "^7.4|^8.0"
-            },
-            "type": "laravel-package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "NormanHuth\\Muetze\\SiteServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NormanHuth\\Muetze\\": "src"
-                },
-                "files": [
-                    "Helpers/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Norman Huth",
-                    "email": "norman@huth.it"
-                }
-            ],
-            "description": "Always used Laravel resources",
-            "keywords": [
-                "commands",
-                "laravel",
-                "laravel-column-enceyption",
-                "laravel-command",
-                "laravel-many-to-many",
-                "laravel-nova",
-                "laravel-package",
-                "laravel-pivot-table",
-                "laravel-pivot-table-command",
-                "laravel-translation",
-                "many-to-many",
-                "nova",
-                "stubs",
-                "translation"
-            ],
-            "support": {
-                "issues": "https://github.com/Muetze42/muetze-site/issues",
-                "source": "https://github.com/Muetze42/muetze-site/tree/0.0.6"
-            },
-            "time": "2021-07-12T20:56:42+00:00"
         },
         {
             "name": "opis/closure",
