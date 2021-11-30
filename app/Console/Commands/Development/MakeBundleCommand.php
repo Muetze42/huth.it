@@ -3,7 +3,6 @@
 namespace App\Console\Commands\Development;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class MakeBundleCommand extends Command
@@ -38,7 +37,7 @@ class MakeBundleCommand extends Command
         $migration = $this->option('m') || config('muetze-site.make-bundle.migration', true);
         $policy = $this->option('p') || config('muetze-site.make-bundle.policy', true);
         $resource = $this->option('r') || config('muetze-site.make-bundle.resource', true);
-        $nova = $this->option('n') || config('muetze-site.make-bundle.nova-resource', false);
+        $nova = $this->option('n') || config('muetze-site.make-bundle.nova-ressource', false);
         $controller = $this->option('c') || config('muetze-site.make-bundle.controller', false);
         $apiController = $this->option('a') || config('muetze-site.make-bundle.api-controller', false);
 

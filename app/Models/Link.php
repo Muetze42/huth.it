@@ -13,6 +13,48 @@ use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
+/**
+ * App\Models\Link
+ *
+ * @property int $id
+ * @property int $active
+ * @property string $name
+ * @property string $target
+ * @property string|null $icon
+ * @property int $count
+ * @property int $real_count
+ * @property string $color
+ * @property int $order
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LinkCount[] $counts
+ * @property-read int|null $counts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\LinkRealCount[] $realCounts
+ * @property-read int|null $real_counts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Link newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Link newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Link onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Link ordered(string $direction = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder|Link query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereRealCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereTarget($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Link whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Link withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Link withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Link extends Model implements Sortable
 {
     use LogsActivity, HasFactory, SoftDeletes, SortableTrait;

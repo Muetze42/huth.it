@@ -13,6 +13,34 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+/**
+ * App\Models\Page
+ *
+ * @property int $id
+ * @property string|null $route
+ * @property string $title
+ * @property string $description
+ * @property string|null $og_title
+ * @property string|null $og_description
+ * @property int $robots
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|Media[] $media
+ * @property-read int|null $media_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Page newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Page newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Page query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereOgDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereOgTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereRobots($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereRoute($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Page whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Page extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, ErrorExceptionNotify;

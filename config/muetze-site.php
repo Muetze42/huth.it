@@ -9,26 +9,27 @@ return [
     | Specific settings for this app
     |
     */
-    'open-graph' => [
+    'open-graph'   => [
         'fallback-image' => 'img/fallback.jpg',
     ],
-    'count_delay' => env('LINK_COUNT_DELAY',240) > 10 ? env('LINK_COUNT_DELAY') : 10,
-    'nova' => [
+    'count_delay'  => env('LINK_COUNT_DELAY', 240) > 10 ? env('LINK_COUNT_DELAY') : 10,
+    'nova'         => [
         'external_link_class' => 'no-underline dim text-primary',
-        'external_link_icon' => 'fa-fw fal fa-external-link fa-xs',
-        'menu-order' => [
-            'Bookmarks' => 20,
-            'Dates'     => 50,
+        'external_link_icon'  => 'fa-fw fal fa-external-link fa-xs',
+        'menu-order'          => [
+            'Webhook'   => 10,
+            'Dates'     => 20,
+            'Bookmarks' => 30,
         ],
     ],
     'error-report' => [
         'throttle' => 3600,
     ],
-    'site-repo' => [
-        'url' => env('SITE_GIT_URL', 'https://github.com/Muetze42/huth.it'),
+    'site-repo'    => [
+        'url'    => env('SITE_GIT_URL', 'https://github.com/Muetze42/huth.it'),
         'branch' => env('SITE_GIT_BRANCH', 'main'),
     ],
-    'menu-items' => [
+    'menu-items'   => [
         [
             'route' => 'home',
             'text'  => 'Links',
@@ -55,7 +56,7 @@ return [
     | What should be generated without option?
     |
     */
-    'make-bundle' => [
+    'make-bundle'  => [
         'nova-ressource' => true,
         'migration'      => true,
         'policy'         => false,
