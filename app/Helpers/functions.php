@@ -122,7 +122,7 @@ if (!function_exists('novaCat')) {
      */
     function novaCat($category): string
     {
-        return '<span class="hidden">'.config('muetze-site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
+        return '<span class="hidden">'.config('site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
     }
 }
 

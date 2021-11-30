@@ -17,6 +17,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot(): void
     {
         parent::boot();
+
+        Nova::script('secret-field', 'js/nova/secret-field/field.js');
+        Nova::style('secret-field', 'css/nova/secret-field/field.css');
     }
 
     /**
