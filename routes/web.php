@@ -36,9 +36,3 @@ Route::middleware('auth')->group(function () {
 $providers = 'github|google';
 Route::get('auth/{provider}', [AuthController::class, 'redirect'])->name('auth')->where('provider', $providers);
 Route::get('auth/{provider}/callback', [AuthController::class, 'callback'])->where('provider', $providers);
-
-if (config('app.env') === 'local' && request()->getClientIp() === request()->ip()) {
-    Route::get('test', function () {
-        Auth::login(\App\Models\User::find(1), true);
-    });
-}

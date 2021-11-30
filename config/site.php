@@ -17,7 +17,7 @@ return [
         'external_link_class' => 'no-underline dim text-primary',
         'external_link_icon'  => 'fa-fw fal fa-external-link fa-xs',
         'menu-order'          => [
-            'Webhook'   => 10,
+            'Webhooks'  => 10,
             'Dates'     => 20,
             'Bookmarks' => 30,
         ],

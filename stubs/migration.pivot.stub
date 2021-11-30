@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('{{table}}', function (Blueprint $table) {
+            //$table->id();
+            $table->foreignId('{{snake0}}_{{id1column}}')->constrained('{{table0}}', 'id')->onDelete('cascade');
+            $table->foreignId('{{snake1}}_{{id1column}}')->constrained('{{table1}}', 'id')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{table}}');
+    }
+};

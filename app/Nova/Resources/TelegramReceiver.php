@@ -2,20 +2,21 @@
 
 namespace App\Nova\Resources;
 
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Text;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Database\Eloquent\Builder;
+use Laravel\Nova\Http\Controllers\AttachableController;
 
-class Telegram extends Resource
+class TelegramReceiver extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static string $model = \App\Models\Telegram::class;
+    public static string $model = \App\Models\TelegramReceiver::class;
 
     /**
      * Get the logical group associated with the resource.
@@ -24,27 +25,24 @@ class Telegram extends Resource
      */
     public static function group(): string
     {
-        return novaCat('Webhook');
+        return novaCat('Webhooks');
     }
 
     /**
-     * Get the displayable label of the resource.
-     *
-     * @return string
+     * @param NovaRequest $request
+     * @param Builder $query
+     * @return Builder
      */
-    public static function label(): string
+    public static function relatableQuery(NovaRequest $request, $query): Builder
     {
-        return __('Telegram Clients');
-    }
+        if ($request->route()->getController() instanceof AttachableController) {
+            $webhook = \App\Models\GithubWebhook::find($request->resourceId);
+            $receiverIds = $webhook->telegramReceivers->pluck('id');
 
-    /**
-     * Get the displayable singular label of the resource.
-     *
-     * @return string
-     */
-    public static function singularLabel(): string
-    {
-        return __('Telegram Client');
+            return $query->whereNotIn('id', $receiverIds);
+        }
+
+        return parent::relatableQuery($request, $query);
     }
 
     /**
@@ -73,19 +71,15 @@ class Telegram extends Resource
     public function fields(Request $request): array
     {
         return [
-            Number::make(__('Telegram ID'), 'telegram_id')
-                ->step(1)
-                ->sortable()
-                ->rules('required')
-                ->creationRules('unique:telegrams,id')
-                ->updateRules('unique:telegrams,id,{{resourceId}}')
-            ,
             Text::make(__('Name'), 'name')
                 ->sortable()
-                ->rules('required', 'string', 'max:254'),
-            Boolean::make(__('Group'), function () {
-                return $this->telegram_id < 0;
-            })->exceptOnForms(),
+                ->rules('required', 'max:255')->creationRules('unique:telegram_receivers,name')
+                ->updateRules('unique:telegram_receivers,name,{{resourceId}}'),
+            Number::make(__('Telegram ID'), 'telegram_id')
+                ->step(1)->sortable()
+                ->rules('required')
+                ->creationRules('unique:telegram_receivers,telegram_id')
+                ->updateRules('unique:telegram_receivers,telegram_id,{{resourceId}}'),
         ];
     }
 

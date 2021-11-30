@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\GithubController;
+use App\Http\Controllers\Api\GitHubWebhookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+Route::post('webhooks/github/{webhook}/{slug}', [GitHubWebhookController::class, 'index'])->name('webhooks.github');
+
+Route::fallback(function () {
+    return jsonResponse();
+});

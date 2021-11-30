@@ -37,6 +37,7 @@
         "php": "^8.0",
         "ext-dom": "*",
         "ext-pdo": "*",
+        "digital-creative/conditional-container": "^1.4",
         "dmitrybubyakin/nova-medialibrary-field": "^3.2.11",
         "fruitcake/laravel-cors": "^2.0.4",
         "google/apiclient": "2.x-dev",
@@ -93,7 +94,9 @@
             "@php artisan package:discover --ansi",
             "Google\\Task\\Composer::cleanup"
         ],
-        "post-update-cmd": [],
+        "post-update-cmd": [
+            "@php artisan helper"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],

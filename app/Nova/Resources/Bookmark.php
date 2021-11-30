@@ -69,7 +69,7 @@ class Bookmark extends Resource
     {
         return [
             Text::make(__('Link'), 'title', function () {
-                return '<a href="'.e($this->url).'" target="_blank" rel="noreferrer" class="'.config('muetze-site.nova.external_link_class').'">'.e($this->title).'</a><i class="'.config('muetze-site.nova.external_link_icon').'"></i>';
+                return '<a href="'.e($this->url).'" target="_blank" rel="noreferrer" class="'.config('site.nova.external_link_class').'">'.e($this->title).'</a><i class="'.config('site.nova.external_link_icon').'"></i>';
             })->sortable()->exceptOnForms()->asHtml(),
 
             Text::make(__('Title'), 'title')

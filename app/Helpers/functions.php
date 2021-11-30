@@ -122,7 +122,7 @@ if (!function_exists('novaCat')) {
      */
     function novaCat($category): string
     {
-        return '<span class="hidden">'.config('muetze-site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
+        return '<span class="hidden">'.config('site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
     }
 }
 
@@ -156,5 +156,22 @@ if (!function_exists('_asset')) {
         }
 
         return $asset;
+    }
+}
+
+if (!function_exists('jsonResponse')) {
+    /**
+     * @param string $message
+     * @param int $status
+     * @param bool $error
+     * @return \Illuminate\Http\JsonResponse
+     */
+    function jsonResponse(string $message = 'Not found', int $status = 404, bool $error = true): \Illuminate\Http\JsonResponse
+    {
+        return response()->json([
+            'error'   => $error,
+            'message' => __($message),
+            'time'    => now(),
+        ], $status);
     }
 }

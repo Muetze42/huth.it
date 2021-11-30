@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('telegrams', function (Blueprint $table) {
+        Schema::create('github_webhook_telegram_receiver', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('telegram_id');
-            $table->string('name');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->foreignId('github_webhook_id')->constrained('github_webhooks')->onDelete('cascade');
+            $table->foreignId('telegram_receiver_id')->constrained('telegram_receivers')->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('telegrams');
+        Schema::dropIfExists('github_webhook_telegram_receiver');
     }
 };

@@ -35,7 +35,7 @@
         @endif
     @endif
 @else
-    @php $image = config('muetze-site.open-graph.fallback-image', 'img/fallback.jpg') @endphp
+    @php $image = config('site.open-graph.fallback-image', 'img/fallback.jpg') @endphp
     <meta property="og:image" content="{{ url($image) }}">
     @if(file_exists($image))
         @php $size = @getimagesize($image) @endphp

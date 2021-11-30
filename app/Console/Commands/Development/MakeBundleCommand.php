@@ -34,12 +34,12 @@ class MakeBundleCommand extends Command
      */
     public function handle(): int
     {
-        $migration = $this->option('m') || config('muetze-site.make-bundle.migration', true);
-        $policy = $this->option('p') || config('muetze-site.make-bundle.policy', true);
-        $resource = $this->option('r') || config('muetze-site.make-bundle.resource', true);
-        $nova = $this->option('n') || config('muetze-site.make-bundle.nova-ressource', false);
-        $controller = $this->option('c') || config('muetze-site.make-bundle.controller', false);
-        $apiController = $this->option('a') || config('muetze-site.make-bundle.api-controller', false);
+        $migration = $this->option('m') || config('site.make-bundle.migration', true);
+        $policy = $this->option('p') || config('site.make-bundle.policy', true);
+        $resource = $this->option('r') || config('site.make-bundle.resource', true);
+        $nova = $this->option('n') || config('site.make-bundle.nova-ressource', false);
+        $controller = $this->option('c') || config('site.make-bundle.controller', false);
+        $apiController = $this->option('a') || config('site.make-bundle.api-controller', false);
 
         $name = $this->argument('name');
         $model = ucfirst(Str::singular($name));
@@ -75,7 +75,7 @@ class MakeBundleCommand extends Command
         if ($controller) {
             $this->line(__('Create controller: :model', ['model' => $model]));
             $this->call('make:controller', [
-                'name' => config('muetze-site.make-bundle.namespaces.controller').$model.'Controller',
+                'name' => config('site.make-bundle.namespaces.controller').$model.'Controller',
                 '--resource' => true,
             ]);
         }
@@ -83,7 +83,7 @@ class MakeBundleCommand extends Command
         if ($apiController) {
             $this->line(__('Create API controller: :model', ['model' => $model]));
             $this->call('make:controller', [
-                'name' => config('muetze-site.make-bundle.namespaces.api-controller').$model.'Controller',
+                'name' => config('site.make-bundle.namespaces.api-controller').$model.'Controller',
                 '--api' => true,
                 '--resource' => true,
             ]);

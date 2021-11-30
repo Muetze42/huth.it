@@ -24,7 +24,7 @@ trait ErrorExceptionNotify
             Notification::send(config('services.telegram-bot-api.receiver'), new ErrorReport($exception));
 
             if(!$status) {
-                Cache::add($this->cacheNotificationKey, 'send', config('muetze-site.error-report.throttle', 3600));
+                Cache::add($this->cacheNotificationKey, 'send', config('site.error-report.throttle', 3600));
             }
         }
     }
