@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         $link->update(['real_count' => DB::raw('real_count+1')]);
 
-        $delay = config('muetze-site.count_delay', 240);
+        $delay = config('site.count_delay', 240);
 
         $data = [
             'link_id' => $link->id,

@@ -35,7 +35,7 @@ class PageMeta
                 unset($page['media']);
             }
 
-            $url = Str::finish(config('muetze-site.site-repo.url'), '/blob/'.config('muetze-site.site-repo.branch').'/');
+            $url = Str::finish(config('site.site-repo.url'), '/blob/'.config('site.site-repo.branch').'/');
             $studly = Str::studly($route);
 
             Inertia::share('metaTitle', $page['title']);

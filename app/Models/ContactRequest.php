@@ -6,6 +6,35 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\Models\ContactRequest
+ *
+ * @property int $id
+ * @property string $subject
+ * @property string $message
+ * @property string $email
+ * @property string $name
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest newQuery()
+ * @method static \Illuminate\Database\Query\Builder|ContactRequest onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactRequest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|ContactRequest withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|ContactRequest withoutTrashed()
+ * @mixin \Eloquent
+ */
 class ContactRequest extends Model
 {
     use HasFactory, SoftDeletes;

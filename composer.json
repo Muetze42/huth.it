@@ -37,6 +37,7 @@
         "php": "^8.0",
         "ext-dom": "*",
         "ext-pdo": "*",
+        "digital-creative/conditional-container": "^1.4",
         "dmitrybubyakin/nova-medialibrary-field": "^3.2.11",
         "fruitcake/laravel-cors": "^2.0.4",
         "google/apiclient": "2.x-dev",
@@ -52,7 +53,6 @@
         "muetze/nova-icon-select": "^1.0",
         "muetze42/nova-charcounted-fields": "^1.0",
         "norman-huth/laravel-trash-mail": "dev-main",
-        "norman-huth/muetze-site": "^0.0.6",
         "optimistdigital/nova-sortable": "^2.4",
         "scssphp/scssphp": "^1.6",
         "socialiteproviders/github": "^4.1",
@@ -66,6 +66,7 @@
         "titasgailius/search-relations": "^2.0.1"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.10.1",
@@ -93,7 +94,9 @@
             "@php artisan package:discover --ansi",
             "Google\\Task\\Composer::cleanup"
         ],
-        "post-update-cmd": [],
+        "post-update-cmd": [
+            "@php artisan helper"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],

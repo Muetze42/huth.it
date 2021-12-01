@@ -122,7 +122,7 @@ if (!function_exists('novaCat')) {
      */
     function novaCat($category): string
     {
-        return '<span class="hidden">'.config('muetze-site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
+        return '<span class="hidden">'.config('site.nova.menu-order.'.$category, '999').'</span>'.e(__($category));
     }
 }
 
@@ -137,5 +137,41 @@ if (!function_exists('errorImage')) {
         ];
 
         return $errorImages[$errorCode] ?? '404.svg';
+    }
+}
+
+if (!function_exists('_asset')) {
+    /**
+     * @param $asset
+     * @return string
+     */
+    function _asset($asset): string
+    {
+        $asset = trim($asset, '\\/');
+
+        $file = public_path($asset);
+
+        if (file_exists($file)) {
+            return asset($asset).'?='.filemtime($file);
+        }
+
+        return $asset;
+    }
+}
+
+if (!function_exists('jsonResponse')) {
+    /**
+     * @param string $message
+     * @param int $status
+     * @param bool $error
+     * @return \Illuminate\Http\JsonResponse
+     */
+    function jsonResponse(string $message = 'Not found', int $status = 404, bool $error = true): \Illuminate\Http\JsonResponse
+    {
+        return response()->json([
+            'error'   => $error,
+            'message' => __($message),
+            'time'    => now(),
+        ], $status);
     }
 }

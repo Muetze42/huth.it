@@ -36,11 +36,3 @@ Route::middleware('auth')->group(function () {
 $providers = 'github|google';
 Route::get('auth/{provider}', [AuthController::class, 'redirect'])->name('auth')->where('provider', $providers);
 Route::get('auth/{provider}/callback', [AuthController::class, 'callback'])->where('provider', $providers);
-
-if (config('app.env') === 'local' && request()->getClientIp() === request()->ip()) {
-    Route::resource('test', \App\Http\Controllers\DevelopmentController::class);
-//    Route::get('login', function () {
-//        Auth::login(\App\Models\User::first(), true);
-//        return redirect(config('nova.path'));
-//    });
-}
