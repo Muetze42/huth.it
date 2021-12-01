@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
+/**
+ * App\Models\Github
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Github newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Github newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Github query()
+ * @mixin \Eloquent
+ */
 class Github extends Model
 {
     use HasFactory;
