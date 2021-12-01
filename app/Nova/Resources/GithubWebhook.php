@@ -70,9 +70,10 @@ class GithubWebhook extends Resource
                 ->options(array_combine($options, $options))
                 ->sortable()->rules('required'),
             Textarea::make(__('Message'), 'message')
-                ->alwaysShow()->rules('required'),
+                ->alwaysShow()->rules('required')
+                ->help(__('Variables: {repoName}, {repoUrl}, {repoVendor}, {branch}, {causerName}, {causerId}')),
             Text::make(__('Branches'), 'branches')
-                ->help(__('Variables: {repoName}, {repoUrl}, {repoVendor}, {branch}, {causerName}, {causerId}'))
+                ->help(__('Comma seperated'))
                 ->nullable()->sortable(),
             Text::make(__('Webhook'), function () {
                 return route('api.webhooks.github', ['webhook' => $this->id, 'slug' => $this->slug]);
