@@ -53,6 +53,7 @@ class GithubWebhook extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
         'event',
         'branches',
         'actions',
@@ -67,9 +68,10 @@ class GithubWebhook extends Model
      * @var array
      */
     protected $casts = [
-        'slug'    => 'encrypted',
-        'secret'  => 'encrypted',
-        'actions' => 'array',
+        'slug'     => 'encrypted',
+        'secret'   => 'encrypted',
+        'branches' => 'array',
+        'actions'  => 'array',
     ];
 
     /**
@@ -88,6 +90,9 @@ class GithubWebhook extends Model
             if ($secretLength) {
                 $webhook->secret = Str::random($secretLength);
             }
+        });
+        static::saving(function ($webhook) {
+            $webhook->branches = preg_replace('/\s+/', '', $webhook->branches);
         });
     }
 

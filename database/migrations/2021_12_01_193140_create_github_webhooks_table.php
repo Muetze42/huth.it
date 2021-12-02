@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('github_webhooks', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('event');
-            $table->string('branches')->nullable();
+            $table->json('branches')->nullable();
             $table->json('actions')->nullable();
             $table->text('slug')->nullable();
             $table->text('secret')->nullable();

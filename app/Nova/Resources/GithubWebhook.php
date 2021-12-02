@@ -3,6 +3,7 @@
 namespace App\Nova\Resources;
 
 use App\Nova\Fields\SecretField;
+use App\Nova\Filters\GithubWebhook\EventFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\BooleanGroup;
@@ -12,6 +13,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use App\Nova\Fields\ConditionalContainer;
 use DigitalCreative\ConditionalContainer\HasConditionalContainer;
+use NovaItemsField\Items;
 
 class GithubWebhook extends Resource
 {
@@ -39,7 +41,7 @@ class GithubWebhook extends Resource
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,6 +49,7 @@ class GithubWebhook extends Resource
      * @var array
      */
     public static $search = [
+        'name',
         'event',
         'branches',
         'actions',
@@ -66,15 +69,24 @@ class GithubWebhook extends Resource
         $options = array_keys($github);
 
         $fields = [
+            Text::make(__('name'), 'name')
+                ->sortable()
+                ->rules('required', 'max:254')
+                ->creationRules('unique:github_webhooks,name')
+                ->updateRules('unique:github_webhooks,name,{{resourceId}}'),
             Select::make(__('Event'), 'event')
                 ->options(array_combine($options, $options))
                 ->sortable()->rules('required'),
+
+            Text::make(__('Message'), 'message', function () {
+                return e($this->message);
+            })->sortable()->asHtml(),
             Textarea::make(__('Message'), 'message')
-                ->alwaysShow()->rules('required')
-                ->help(__('Variables: {repoName}, {repoUrl}, {repoVendor}, {branch}, {causerName}, {causerId}')),
-            Text::make(__('Branches'), 'branches')
-                ->help(__('Comma seperated'))
-                ->nullable()->sortable(),
+                ->alwaysShow()->rules('required')->onlyOnForms()
+                ->help(__('Variables: {repoName}, {repoUrl}, {repoVendor}, {branch}, {causerName}, {causerId}. Use <strong class="text-danger bg-60 px-1 rounded font-bold">`</strong> for Telegram code style.')),
+
+            Items::make(__('Branches'), 'branches')
+                ->help(__('Keep empty for every branch')),
             Text::make(__('Webhook'), function () {
                 return route('api.webhooks.github', ['webhook' => $this->id, 'slug' => $this->slug]);
             })->onlyOnDetail(),
@@ -123,7 +135,11 @@ class GithubWebhook extends Resource
      */
     public function filters(Request $request): array
     {
-        return [];
+        return [
+            (new EventFilter)->canSee(function () {
+                return static::$model::count();
+            }),
+        ];
     }
 
     /**
