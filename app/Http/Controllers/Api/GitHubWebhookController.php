@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\GithubWebhook as Webhook;
 use Illuminate\Http\JsonResponse;
 use App\Notifications\Telegram\Webhook as TelegramNotification;
+use Illuminate\Support\Facades\Log;
 
 class GitHubWebhookController extends Controller
 {
@@ -70,10 +71,11 @@ class GitHubWebhookController extends Controller
                         '{causerId}'   => $content->sender->id,
                     ];
 
-                    $message = str_replace(array_keys($replace), array_values($replace), $this->webhook->message);
+                    $message = preg_replace('/`(.*?)`/', '<code>$1</code>', e($this->webhook->message));
+                    $message = str_replace(array_keys($replace), array_values($replace), $message);
 
                     foreach ($this->webhook->telegramReceivers as $receiver) {
-                        $receiver->notify(new TelegramNotification(e($message)));
+                        $receiver->notify(new TelegramNotification($message));
                     }
                 }
             }
@@ -101,10 +103,10 @@ class GitHubWebhookController extends Controller
      */
     protected function checkBranch(string $branch): bool
     {
-        if(!$this->webhook->branches) {
+        if(!$this->webhook->branches || empty($this->webhook->branches)) {
             return true;
         }
-        $branches = explode(',', $this->webhook->branches);
+        $branches = (array) $this->webhook->branches;
 
         return in_array($branch, $branches);
     }

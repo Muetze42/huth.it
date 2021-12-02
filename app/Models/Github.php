@@ -13,6 +13,22 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Github newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Github query()
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $event
+ * @property string|null $action
+ * @property mixed $slug
+ * @property mixed|null $secret
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereAction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereEvent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereSecret($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Github whereUpdatedAt($value)
  */
 class Github extends Model
 {
