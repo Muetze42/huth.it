@@ -4,6 +4,8 @@ namespace App\Nova\Resources;
 
 use App\Nova\Fields\SecretField;
 use App\Nova\Filters\GithubWebhook\EventFilter;
+use App\Nova\Filters\GithubWebhook\NoReceiverFilter;
+use App\Nova\Metrics\GitHubWebhook\NoReceiverMetric;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\BooleanGroup;
@@ -19,12 +21,26 @@ class GithubWebhook extends Resource
 {
     use HasConditionalContainer;
 
+    protected static int $modelCount = 0;
+
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
     public static string $model = \App\Models\GithubWebhook::class;
+
+    /**
+     * @return int
+     */
+    protected static function getModelCount(): int
+    {
+        if (!static::$modelCount) {
+            static::$modelCount = static::$model::count();
+        }
+
+        return static::$modelCount;
+    }
 
     /**
      * Get the logical group associated with the resource.
@@ -79,19 +95,25 @@ class GithubWebhook extends Resource
                 ->sortable()->rules('required'),
 
             Text::make(__('Message'), 'message', function () {
-                return e($this->message);
-            })->sortable()->asHtml(),
+                return e($this->message ?? '');
+            })->sortable()->asHtml()->exceptOnForms(),
             Textarea::make(__('Message'), 'message')
                 ->alwaysShow()->rules('required')->onlyOnForms()
                 ->help(__('Variables: {repoName}, {repoUrl}, {repoVendor}, {branch}, {causerName}, {causerId}. Use <strong class="text-danger bg-60 px-1 rounded font-bold">`</strong> for Telegram code style.')),
 
             Items::make(__('Branches'), 'branches')
-                ->help(__('Keep empty for every branch')),
+                ->help(__('Keep empty for every branch'))->textAlign('center'),
             Text::make(__('Webhook'), function () {
-                return route('api.webhooks.github', ['webhook' => $this->id, 'slug' => $this->slug]);
+                return route('api.webhooks.github', ['webhook' => $this->id ?? 0, 'slug' => $this->slug ?? '']);
             })->onlyOnDetail(),
             SecretField::make(__('Secret'), 'secret')
                 ->nullable()->hideFromIndex()->hideWhenCreating(),
+
+            Text::make(__('Receivers'), function () {
+                $receivers = empty($this->model()->telegramReceivers) ? 0 : $this->model()->telegramReceivers->count();
+
+                return $receivers ?: '<span class="btn btn-danger p-2 rounded">'.$receivers.'</span>';
+            })->exceptOnForms()->asHtml()->textAlign('center'),
         ];
 
         foreach ($github as $event => $actions) {
@@ -124,7 +146,11 @@ class GithubWebhook extends Resource
      */
     public function cards(Request $request): array
     {
-        return [];
+        return [
+            (new NoReceiverMetric)->canSee(function () {
+                return static::getModelCount();
+            }),
+        ];
     }
 
     /**
@@ -137,7 +163,10 @@ class GithubWebhook extends Resource
     {
         return [
             (new EventFilter)->canSee(function () {
-                return static::$model::count();
+                return static::getModelCount();
+            }),
+            (new NoReceiverFilter)->canSee(function () {
+                return static::getModelCount();
             }),
         ];
     }

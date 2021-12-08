@@ -53,6 +53,7 @@
         "laravelwebdev/responsive": "^1.0.1",
         "muetze/nova-icon-select": "^1.0",
         "muetze42/nova-charcounted-fields": "^1.0",
+        "nalingia/nova-total-records-metric": "^1.0",
         "norman-huth/laravel-trash-mail": "dev-main",
         "optimistdigital/nova-sortable": "^2.4",
         "scssphp/scssphp": "^1.6",

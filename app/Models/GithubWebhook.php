@@ -42,6 +42,8 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Query\Builder|GithubWebhook withTrashed()
  * @method static \Illuminate\Database\Query\Builder|GithubWebhook withoutTrashed()
  * @mixin \Eloquent
+ * @property string $name
+ * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereName($value)
  */
 class GithubWebhook extends Model
 {
@@ -72,6 +74,16 @@ class GithubWebhook extends Model
         'secret'   => 'encrypted',
         'branches' => 'array',
         'actions'  => 'array',
+    ];
+
+    /**
+     * The model's attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'event'   => 'push',
+        'message' => 'The branch `{branch}` of the repository `{repoVendor}/{repoName}` get a update by `{causerName}`',
     ];
 
     /**

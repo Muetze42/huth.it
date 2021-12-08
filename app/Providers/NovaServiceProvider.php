@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Nova\Metrics\Link\LinkCounts;
+use App\Nova\Metrics\GitHubWebhook\NoReceiverMetric;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
@@ -46,9 +46,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Gate::define('viewNova', function ($user) {
             return true;
-//            return in_array($user->email, [
-//                //
-//            ]);
         });
     }
 
@@ -60,7 +57,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards(): array
     {
         return [
-            new LinkCounts,
+            new NoReceiverMetric,
         ];
     }
 

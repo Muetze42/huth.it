@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bac53e106248b6bf16766462d6961a7c",
+    "content-hash": "1b714f58f70af75ee8abb47609e224e1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3906,6 +3906,52 @@
                 }
             ],
             "time": "2021-07-05T08:18:36+00:00"
+        },
+        {
+            "name": "nalingia/nova-total-records-metric",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nalingia/nova-total-records-metric.git",
+                "reference": "adea252bce057d5f27a9a37e0b9cc1ca13f5f2d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nalingia/nova-total-records-metric/zipball/adea252bce057d5f27a9a37e0b9cc1ca13f5f2d6",
+                "reference": "adea252bce057d5f27a9a37e0b9cc1ca13f5f2d6",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nalingia\\TotalRecords\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nalingia\\TotalRecords\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/nalingia/nova-total-records-metric/issues",
+                "source": "https://github.com/nalingia/nova-total-records-metric/tree/1.0.1"
+            },
+            "time": "2020-04-25T09:14:07+00:00"
         },
         {
             "name": "nesbot/carbon",
