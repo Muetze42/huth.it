@@ -35,8 +35,7 @@
         "@inertiajs/inertia-vue3": "^0.4.7",
         "@inertiajs/progress": "^0.2.5",
         "@tailwindcss/forms": "^0.3.3",
-        "tailwindcss": "^2.2.2",
-        "vue": "^3.0.5",
-        "vue-tailwind": "^2.3.0"
+        "tailwindcss": "^2.2.19",
+        "vue": "^3.0.5"
     }
 }
