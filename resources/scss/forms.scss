@@ -1,0 +1,123 @@
+.form-list {
+    @apply px-2 mb-1;
+
+    label {
+        @apply inline-flex items-center w-full;
+    }
+
+    input[type=checkbox] {
+        @apply mr-2 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+    }
+}
+
+.radio {
+    @apply block px-2 ml-6 mb-1;
+
+    input[type=radio] {
+        @apply border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+        @apply float-left mt-1 align-top;
+        margin-left: -1.5em;
+    }
+
+    small {
+        @apply block text-gray-400;
+    }
+}
+
+select {
+    @apply rounded-md border-gray-300 focus:ring focus:ring-purple-500 focus:ring-opacity-100 text-gray-900 placeholder-opacity-25 py-1;
+}
+
+.form-row {
+    @apply px-2 text-left;
+
+    label {
+        @apply text-gray-200;
+    }
+
+    .help {
+        @apply text-gray-400 mb-0 text-sm;
+    }
+
+    input, textarea {
+        @apply block w-full rounded-md border-gray-300 focus:ring focus:ring-purple-500 focus:ring-opacity-100 text-gray-900 placeholder-opacity-25;
+
+        &.invalid {
+            @apply border-2 border-red-500 border-opacity-90;
+        }
+    }
+
+    &:last-of-type {
+        @apply mb-0;
+    }
+
+    p {
+        @apply text-red-500 text-xs italic text-center;
+    }
+    ul {
+        @apply bg-red-200 relative text-red-700 p-2 rounded-lg text-center font-bold;
+    }
+}
+
+.form-group {
+    @apply relative flex flex-wrap items-stretch w-full;
+    input[type=text], input[type=email] {
+        @apply rounded-r-none relative block;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+    }
+    button {
+        @apply flex items-center bg-purple-600 rounded-r px-3 cursor-pointer hover:bg-pink-500;
+    }
+}
+
+.form-body {
+    div:not(.form-check):not(.radio) {
+        @apply mb-3;
+
+        &:last-child {
+            @apply mb-0;
+        }
+    }
+}
+
+.submit-row {
+    button {
+        @apply bg-purple-600 text-white font-bold py-2 px-4 rounded;
+
+        &:enabled {
+            @apply hover:bg-pink-500;
+        }
+        &:not(:enabled) {
+            @apply bg-gray-500;
+        }
+    }
+    @apply flex justify-around;
+    .ping-container {
+        @apply relative inline-flex rounded-md shadow-sm;
+    }
+    .ping-1 {
+        @apply flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1;
+    }
+    .ping-2 {
+        @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75;
+    }
+    .ping-3 {
+        @apply relative inline-flex rounded-full h-3 w-3 bg-green-400;
+    }
+}
+
+.confirmations {
+    @apply hidden;
+}
+.contact-success {
+    @apply text-center bg-green-200 relative text-green-700 p-3 rounded-lg mx-2;
+}
+
+//.btn {
+//    @apply block text-xl px-5 py-2 text-indigo-100 transition-colors duration-150 rounded-lg focus:shadow mb-2 text-center;
+//    &:last-child {
+//        @apply mb-0;
+//    }
+//}

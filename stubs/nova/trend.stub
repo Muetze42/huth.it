@@ -1,0 +1,57 @@
+<?php
+
+namespace {{ namespace }};
+
+use DateInterval;
+use DateTimeInterface;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Metrics\Trend;
+use Laravel\Nova\Metrics\TrendResult;
+
+class {{ class }} extends Trend
+{
+    /**
+     * Calculate the value of the metric.
+     *
+     * @param NovaRequest $request
+     * @return TrendResult
+     */
+    public function calculate(NovaRequest $request): TrendResult
+    {
+        return $this->countByDays($request, Model::class);
+    }
+
+    /**
+     * Get the ranges available for the metric.
+     *
+     * @return array
+     */
+    public function ranges(): array
+    {
+        return [
+            30 => __(':days Days', ['days' => 30]),
+            60 => __(':days Days', ['days' => 60]),
+            90 => __(':days Days', ['days' => 90]),
+        ];
+    }
+
+    /**
+     * Determine for how many minutes the metric should be cached.
+     *
+     * @return  void
+     */
+    public function cacheFor()
+    {
+        // return now()->addMinutes(5);
+    }
+
+    /**
+     * Get the URI key for the metric.
+     *
+     * @return string
+     */
+    public function uriKey(): string
+    {
+        return 'car';
+    }
+}
