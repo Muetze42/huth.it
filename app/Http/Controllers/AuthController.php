@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
-use App\Traits\GoogleCalendar;
-use Google\Exception as GoogleException;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
@@ -18,8 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
-    use GoogleCalendar;
-
     /**
      * Redirect the user to the GitHub authentication page.
      *
@@ -66,39 +60,39 @@ class AuthController extends Controller
      * @throws GoogleException
      * @return RedirectResponse
      */
-    public function googleRedirect(): RedirectResponse
-    {
-        if (Auth::id() != 1) {
-            abort(Response::HTTP_UNAUTHORIZED);
-        }
-
-        $this->googleCalendarInit();
-
-        $authUrl = $this->googleClient->createAuthUrl();
-
-        return redirect($authUrl);
-    }
+//    public function googleRedirect(): RedirectResponse
+//    {
+//        if (Auth::id() != 1) {
+//            abort(Response::HTTP_UNAUTHORIZED);
+//        }
+//
+//        $this->googleCalendarInit();
+//
+//        $authUrl = $this->googleClient->createAuthUrl();
+//
+//        return redirect($authUrl);
+//    }
 
     /**
      * @param Request $request
      * @return RedirectResponse
      * @throws GoogleException
      */
-    public function googleCallback(Request $request): RedirectResponse
-    {
-        $authCode = $request->input('code');
-        if (!$authCode) {
-            abort(Response::HTTP_UNAUTHORIZED);
-        }
-
-        $this->googleCalendarInit();
-
-        $accessToken = $this->googleClient->fetchAccessTokenWithAuthCode($authCode);
-
-        Auth::user()->update([
-            'google_token' => json_encode($accessToken),
-        ]);
-
-        return redirect()->route('home');
-    }
+//    public function googleCallback(Request $request): RedirectResponse
+//    {
+//        $authCode = $request->input('code');
+//        if (!$authCode) {
+//            abort(Response::HTTP_UNAUTHORIZED);
+//        }
+//
+//        $this->googleCalendarInit();
+//
+//        $accessToken = $this->googleClient->fetchAccessTokenWithAuthCode($authCode);
+//
+//        Auth::user()->update([
+//            'google_token' => json_encode($accessToken),
+//        ]);
+//
+//        return redirect()->route('home');
+//    }
 }

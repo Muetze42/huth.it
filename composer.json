@@ -41,7 +41,6 @@
         "dillingham/nova-items-field": "^0.6.0",
         "dmitrybubyakin/nova-medialibrary-field": "^3.2.11",
         "fruitcake/laravel-cors": "^2.0.4",
-        "google/apiclient": "2.x-dev",
         "guzzlehttp/guzzle": "^7.3.0",
         "hisorange/browser-detect": "^4.4",
         "inertiajs/inertia-laravel": "^0.4.4",
@@ -93,8 +92,7 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "@php artisan package:discover --ansi",
-            "Google\\Task\\Composer::cleanup"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan helper"
