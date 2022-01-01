@@ -166,10 +166,16 @@ if (!function_exists('jsonResponse')) {
      * @param bool $error
      * @return \Illuminate\Http\JsonResponse
      */
-    function jsonResponse(string $message = 'Not found', int $status = 404, bool $error = true): \Illuminate\Http\JsonResponse
+    function jsonResponse(string $message = 'Not found', int $status = 404): \Illuminate\Http\JsonResponse
     {
+        if ($status >= 400) {
+            return response()->json([
+                'error'   => true,
+                'message' => __($message),
+                'time'    => now(),
+            ], $status);
+        }
         return response()->json([
-            'error'   => $error,
             'message' => __($message),
             'time'    => now(),
         ], $status);

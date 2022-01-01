@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Repository;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Models\GithubWebhook as Webhook;
@@ -74,6 +75,15 @@ class GitHubWebhookController extends Controller
                     $message = preg_replace('/`(.*?)`/', '<code>$1</code>', e($this->webhook->message));
                     $message = str_replace(array_keys($replace), array_values($replace), $message);
 
+                    if (!empty($content->after)) {
+                        $repo = Repository::where([
+                            'package' => $content->repository->name,
+                            'branch'  => $branch,
+                        ])->first();
+
+                        $repo?->update(['reference' => $content->after]);
+                    }
+
                     foreach ($this->webhook->telegramReceivers as $receiver) {
                         $receiver->notify(new TelegramNotification($message));
                     }
@@ -81,7 +91,7 @@ class GitHubWebhookController extends Controller
             }
         }
 
-        return jsonResponse('Ok', 200, false);
+        return jsonResponse('Ok', 200);
     }
 
     /**

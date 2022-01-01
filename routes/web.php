@@ -20,22 +20,6 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('test', function () {
-    $client = new \GuzzleHttp\Client;
-        $response = $client->request('GET', 'https://api.github.com/repos/Muetze42/hallo-alexa-ui/zipball/main', [
-        'stream' => true,
-        'headers' => [
-            'Authorization' => 'token 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',
-        ]
-    ]);
-
-    header('Content-Type: application/zip');
-    header('Content-Transfer-Encoding: Binary');
-    header('Expires: 0');
-    header('Content-Disposition: attachment; filename=hallo-alexa-ui.zip');
-    return $response->getBody()->getContents();
-});
-
 Route::middleware([PageMeta::class, HandleInertiaRequests::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::resource('contact', ContactController::class)->only(['index', 'store']);
