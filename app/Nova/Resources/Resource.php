@@ -3,6 +3,7 @@
 namespace App\Nova\Resources;
 
 use Illuminate\Database\Eloquent\Builder;
+use Laravel\Nova\Http\Controllers\AttachableController;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource as NovaResource;
 //use Laravel\Scout\Builder as ScoutBuilder;
@@ -79,8 +80,26 @@ abstract class Resource extends NovaResource
      * @param  Builder  $query
      * @return Builder
      */
+//    public static function relatableQuery(NovaRequest $request, $query): Builder
+//    {
+//        return parent::relatableQuery($request, $query);
+//    }
     public static function relatableQuery(NovaRequest $request, $query): Builder
     {
+        if ($request->route()->getController() instanceof AttachableController) {
+            $key = $query->getModel()->getQualifiedKeyName();
+
+            return $query->where(function (Builder $builder) use ($key, $query, $request) {
+                $builder->whereNotIn($key, function ($subQuery) use ($key, $query, $request) {
+                    $subQuery->fromSub(
+                        $request->findModelOrFail()->{$request->field}()->select($key)->getQuery(), 'tmp'
+                    );
+                })->when($request->get('current'), function (Builder $builder, $current) use ($key) {
+                    $builder->orWhere($key, $current);
+                });
+            });
+        }
+
         return parent::relatableQuery($request, $query);
     }
 }
