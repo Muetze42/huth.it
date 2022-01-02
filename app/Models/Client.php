@@ -2,38 +2,45 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
  * App\Models\Client
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Client newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Client newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Client query()
- * @mixin \Eloquent
+ * @method static Builder|Client newModelQuery()
+ * @method static Builder|Client newQuery()
+ * @method static Builder|Client query()
+ * @mixin Eloquent
  * @property int $id
  * @property string $client_id
  * @property mixed $token
  * @property mixed $refresh_token
- * @property \Illuminate\Support\Carbon|null $expired_at
- * @property \Illuminate\Support\Carbon|null $used_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|Client[] $repositories
+ * @property Carbon|null $expired_at
+ * @property Carbon|null $used_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Client[] $repositories
  * @property-read int|null $repositories_count
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereClientId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereExpiredAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereRefreshToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereUsedAt($value)
+ * @method static Builder|Client whereClientId($value)
+ * @method static Builder|Client whereCreatedAt($value)
+ * @method static Builder|Client whereExpiredAt($value)
+ * @method static Builder|Client whereId($value)
+ * @method static Builder|Client whereRefreshToken($value)
+ * @method static Builder|Client whereToken($value)
+ * @method static Builder|Client whereUpdatedAt($value)
+ * @method static Builder|Client whereUsedAt($value)
  * @property string $description
- * @method static \Illuminate\Database\Eloquent\Builder|Client whereDescription($value)
+ * @method static Builder|Client whereDescription($value)
+ * @property-read Collection|Config[] $configs
+ * @property-read int|null $configs_count
  */
 class Client extends Authenticatable
 {
@@ -113,5 +120,13 @@ class Client extends Authenticatable
     public function repositories(): BelongsToMany
     {
         return $this->belongsToMany(Repository::class);
+    }
+
+    /**
+     * The configs that belong to the client.
+     */
+    public function configs(): HasMany
+    {
+        return $this->hasMany(Config::class);
     }
 }

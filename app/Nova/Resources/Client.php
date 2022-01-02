@@ -6,6 +6,7 @@ use App\Nova\Fields\SecretField;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
 
 class Client extends Resource
@@ -26,6 +27,13 @@ class Client extends Resource
     {
         return novaCat('Consumer API');
     }
+
+    /**
+     * Custom priority level of the resource.
+     *
+     * @var int
+     */
+    public static int $priority = 10;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -83,6 +91,7 @@ class Client extends Resource
                 ->sortable()->nullable(),
 
             BelongsToMany::make(__('Repositories'), 'repositories', Repository::class),
+            HasMany::make(__('Configurations'), 'configs', Config::class),
         ];
     }
 

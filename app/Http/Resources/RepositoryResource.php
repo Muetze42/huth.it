@@ -23,6 +23,7 @@ class RepositoryResource extends JsonResource
             'download'    => route('api.consumer.repositories.download', $this),
             'created_at'  => $this->created_at,
             'updated_at'  => $this->updated_at,
+            'timestamp'   => $this->updated_at->timestamp,
         ];
     }
 }

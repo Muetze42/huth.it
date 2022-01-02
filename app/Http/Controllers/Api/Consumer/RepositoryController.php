@@ -28,7 +28,7 @@ class RepositoryController extends ApiController
     }
 
     /**
-     * Show only
+     * Show only Client repos
      *
      * @param Builder $query
      * @param Request $request
