@@ -40,10 +40,7 @@ return [
         'client_id'     => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect'      => env('GITHUB_REDIRECT_URI'),
-    ],
-
-    'google' => [
-        'calendar-id'      => env('GOOGLE_CALENDAR_ID'),
-        'credentials-file' => storage_path('secrets/' . env('GOOGLE_CREDENTIALS_FILE')),
+        'owner'         => env('GITHUB_OWNER'),
+        'access_token'  => env('GITHUB_ACCESS_TOKEN')
     ],
 ];

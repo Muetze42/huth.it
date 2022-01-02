@@ -27,10 +27,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/Muetze42/laravel-trash-mail"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/Muetze42/google-api-php-client"
         }
     ],
     "require": {
@@ -41,12 +37,11 @@
         "dillingham/nova-items-field": "^0.6.0",
         "dmitrybubyakin/nova-medialibrary-field": "^3.2.11",
         "fruitcake/laravel-cors": "^2.0.4",
-        "google/apiclient": "2.x-dev",
         "guzzlehttp/guzzle": "^7.3.0",
         "hisorange/browser-detect": "^4.4",
         "inertiajs/inertia-laravel": "^0.4.4",
         "laravel-notification-channels/telegram": "^0.5.1",
-        "laravel/framework": "^8.60",
+        "laravel/framework": "^8.75.0",
         "laravel/nova": "^3.29",
         "laravel/socialite": "^5.2.5",
         "laravel/tinker": "^2.6.1",
@@ -92,8 +87,7 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "@php artisan package:discover --ansi",
-            "Google\\Task\\Composer::cleanup"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan helper"
@@ -108,10 +102,7 @@
     "extra": {
         "laravel": {
             "dont-discover": []
-        },
-        "google/apiclient-services": [
-            "Calendar"
-        ]
+        }
     },
     "config": {
         "optimize-autoloader": true,

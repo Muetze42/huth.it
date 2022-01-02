@@ -42,6 +42,8 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Query\Builder|GithubWebhook withTrashed()
  * @method static \Illuminate\Database\Query\Builder|GithubWebhook withoutTrashed()
  * @mixin \Eloquent
+ * @property string $name
+ * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereName($value)
  */
 class GithubWebhook extends Model
 {

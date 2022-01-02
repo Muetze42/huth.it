@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\Paginator\LengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator as BaseBaseLengthAwarePaginator;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        app()->bind(BaseBaseLengthAwarePaginator::class, LengthAwarePaginator::class);
+        JsonResource::withoutWrapping();
     }
 }
