@@ -181,3 +181,41 @@ if (!function_exists('jsonResponse')) {
         ], $status);
     }
 }
+
+if (!function_exists('opensslEncrypt')) {
+    function opensslEncrypt($string, $passphrase): string
+    {
+        $key = openssl_digest($passphrase, 'SHA256', true);
+
+        $ivLength = openssl_cipher_iv_length('AES-256-CBC');
+        $iv = openssl_random_pseudo_bytes($ivLength);
+        $ciphertextRaw = openssl_encrypt($string, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+
+        $hmac = hash_hmac('sha256', $ciphertextRaw, $key, true);
+
+        return base64_encode($iv . $hmac . $ciphertextRaw);
+    }
+}
+
+if (!function_exists('opensslDecrypt')) {
+    function opensslDecrypt($data, $passphrase): string|null
+    {
+        $data = base64_decode($data);
+
+        $key = openssl_digest($passphrase, 'SHA256', TRUE);
+
+        $ivLength = openssl_cipher_iv_length('AES-256-CBC');
+
+        $iv = substr($data, 0, $ivLength);
+        $hmac = substr($data, $ivLength, $sha2len = 32);
+        $ciphertext_raw = substr($data, $ivLength + $sha2len);
+        $text = openssl_decrypt($ciphertext_raw, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+
+        $hashHmac = hash_hmac('sha256', $ciphertext_raw, $key, true);
+        if (hash_equals($hmac, $hashHmac)) {
+            return $text;
+        }
+
+        return null;
+    }
+}

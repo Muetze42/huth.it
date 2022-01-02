@@ -51,6 +51,34 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Consumer Settings
+    |--------------------------------------------------------------------------
+    */
+    'config-types' => [
+        'app',
+        'broadcasting',
+        'cache',
+        'cors',
+        'database',
+        'filesystems',
+        'logging',
+        'mail',
+        'media-library',
+        'nova',
+        'nova-icon-select-fa-free',
+        'nova-icon-select-fa-pro',
+        'queue',
+        'services',
+        'session',
+        'tags',
+        'trash-mail',
+        'view',
+        'webhook',
+        'ziggy',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | make:bundle command
     |--------------------------------------------------------------------------
     |

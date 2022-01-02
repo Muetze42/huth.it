@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static Builder|Repository whereId($value)
  * @method static Builder|Repository whereRepo($value)
  * @method static Builder|Repository whereUpdatedAt($value)
+ * @property string $reference
+ * @method static Builder|Repository whereReference($value)
  */
 class Repository extends Model
 {

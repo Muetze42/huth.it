@@ -3,19 +3,25 @@
 namespace App\Nova\Resources;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Select;
 
-class Repository extends Resource
+class Config extends Resource
 {
+    /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
+
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static string $model = \App\Models\Repository::class;
+    public static string $model = \App\Models\Config::class;
 
     /**
      * Get the logical group associated with the resource.
@@ -32,32 +38,14 @@ class Repository extends Resource
      *
      * @var int
      */
-    public static int $priority = 20;
+    public static int $priority = 100;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
-
-    /**
-     * Get the value that should be displayed to represent the resource.
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        return $this->repo.' ['.$this->branch.']';
-    }
-
-    /**
-     * @return string|null
-     */
-    public function subtitle(): ?string
-    {
-        return $this->description;
-    }
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -65,9 +53,7 @@ class Repository extends Resource
      * @var array
      */
     public static $search = [
-        'repo',
-        'branch',
-        'description',
+        'name',
     ];
 
     /**
@@ -78,20 +64,22 @@ class Repository extends Resource
      */
     public function fields(Request $request): array
     {
+        $types = config('site.config-types');
+        sort($types);
+        $options = array_combine($types, $types);
+        $options = array_map(function ($value) {
+            return $value.'.php';
+        }, $options);
+
         return [
-            ID::make(__('ID'), 'id')
-                ->sortable(),
-            Text::make(__('Repo'), 'repo')
-                ->rules('required', 'string')->sortable(),
-            Text::make(__('Branch'), 'branch')
-                ->rules('required', 'string')->sortable(),
-            Text::make(__('Description'), 'description')
-                ->sortable()->nullable(),
-
-            DateTime::make(__('Updated at'), 'updated_at')
-                ->sortable()->exceptOnForms(),
-
-            BelongsToMany::make(__('Clients'), 'clients', Client::class),
+            Select::make(__('Name'), 'name')
+                ->displayUsingLabels()
+                ->options($options)
+                ->sortable()
+                ->rules('required', 'string', 'max:50'), # Todo Unique per Relation
+            BelongsTo::make(__('Client'), 'client', Client::class)
+                ->exceptOnForms(),
+            HasMany::make(__('Items'), 'items', ConfigItem::class),
         ];
     }
 
