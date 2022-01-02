@@ -47,6 +47,15 @@ class Config extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+//    protected $hidden = [
+//        'client_id',
+//    ];
+
+    /**
      * The client that belong to the config.
      * @return BelongsTo
      */
