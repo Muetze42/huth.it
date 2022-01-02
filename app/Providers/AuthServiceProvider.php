@@ -50,15 +50,16 @@ class AuthServiceProvider extends ServiceProvider
             abort(jsonResponse('The ClientId must be specified in the header', 401));
         }
 
-        $client = Client::where('client_id', $clientId)->firstOrFail();
         $token = $request->bearerToken();
 
         if (!$token) {
             abort(jsonResponse('Missing Bearer Token', 401));
         }
 
-        if ($client->token != $token) {
-            abort(jsonResponse('Invalid Bearer Token', 401));
+        $client = Client::where('client_id', $clientId)->first();
+
+        if (!$client || $client->token != $token) {
+            abort(jsonResponse('Invalid credentials', 401));
         }
 
         if (!$request->routeIs('api.consumer.client.refresh-token') && $client->expired_at && $client->expired_at <= now()) {

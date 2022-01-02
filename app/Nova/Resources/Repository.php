@@ -4,8 +4,12 @@ namespace App\Nova\Resources;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Http\Controllers\AttachableController;
+use Illuminate\Database\Eloquent\Builder;
 
 class Repository extends Resource
 {
@@ -79,6 +83,9 @@ class Repository extends Resource
                 ->rules('required', 'string')->sortable(),
             Text::make(__('Description'), 'description')
                 ->sortable()->nullable(),
+
+            DateTime::make(__('Updated at'), 'updated_at')
+                ->sortable()->exceptOnForms(),
 
             BelongsToMany::make(__('Clients'), 'clients', Client::class),
         ];
