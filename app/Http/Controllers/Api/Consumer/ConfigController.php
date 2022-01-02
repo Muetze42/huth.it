@@ -24,14 +24,24 @@ class ConfigController extends ApiController
     }
 
     /**
-     * @param Config $config
+     * @return array
+     */
+    protected function indexAdditional(): array
+    {
+        return [
+            'timestamps' => auth()->user()->configs->pluck('updated_at', 'name')->map(function ($value) {
+                return $value->timestamp;
+            })->toArray(),
+        ];
+    }
+
+    /**
+     * @param string $config
      * @return string|null
      */
-    public function protectedShow(Config $config): ?string
+    public function protectedShow(string $config): ?string
     {
-        if ($config->client_id != auth()->user()->id) {
-            return jsonResponse('Access denied', 401);
-        }
+        $config = Config::where('name', $config)->where('client_id', auth()->user()->id)->firstOrFail();
 
         $items = $this->items($config->items);
 
