@@ -29,6 +29,10 @@ class ConfigController extends ApiController
      */
     public function protectedShow(Config $config): ?string
     {
+        if ($config->client_id != auth()->user()->id) {
+            return jsonResponse('Access denied', 401);
+        }
+
         $items = $this->items($config->items);
 
         return empty($items) ? null : opensslEncrypt(json_encode($items), $config->client->token);
