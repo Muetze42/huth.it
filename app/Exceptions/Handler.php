@@ -72,7 +72,7 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
-                return $this->JsonErrorResponse('404', 404);
+                return jsonResponse();
             }
             return null;
         });
@@ -97,17 +97,4 @@ class Handler extends ExceptionHandler
 //
 //        return parent::renderHttpException($e);
 //    }
-
-    /**
-     * @param string $message
-     * @param int $status
-     * @return JsonResponse
-     */
-    protected function JsonErrorResponse(string $message, int $status): JsonResponse
-    {
-        return response()->json([
-            'error' => true,
-            'message' => $message,
-        ], $status);
-    }
 }
