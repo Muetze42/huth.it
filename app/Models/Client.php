@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * App\Models\Client
@@ -44,7 +45,7 @@ use Illuminate\Support\Str;
  */
 class Client extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     public function guardName(): string
     {
@@ -61,6 +62,7 @@ class Client extends Authenticatable
         'token',
         'refresh_token',
         'description',
+        'domains',
         'used_at',
         'expired_at',
     ];
@@ -73,6 +75,7 @@ class Client extends Authenticatable
     protected $casts = [
         'token'         => 'encrypted',
         'refresh_token' => 'encrypted',
+        'domains'       => 'array',
         'used_at'       => 'datetime',
         'expired_at'    => 'datetime',
     ];
