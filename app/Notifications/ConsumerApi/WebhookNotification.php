@@ -2,61 +2,44 @@
 
 namespace App\Notifications\ConsumerApi;
 
+use App\Notifications\Channels\Webhook\WebhookChannel;
+use App\Notifications\Channels\Webhook\WebhookMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\Client;
 
 class WebhookNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    public string $case;
+
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param string $case
      */
-    public function __construct(Client $client)
+    public function __construct(string $case)
     {
-        //
+        $this->case = $case;
     }
 
     /**
-     * Get the notification's delivery channels.
+     * Get the notification channels.
      *
-     * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
+    public function via(): array
     {
-        return ['mail'];
+        return [WebhookChannel::class];
     }
 
     /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return WebhookMessage
      */
-    public function toMail($notifiable)
+    public function toWebhook(): WebhookMessage
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+        return WebhookMessage::create()
+            ->case($this->case);
     }
 }

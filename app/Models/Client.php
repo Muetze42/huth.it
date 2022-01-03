@@ -42,6 +42,10 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|Client whereDescription($value)
  * @property-read Collection|Config[] $configs
  * @property-read int|null $configs_count
+ * @property-read Collection|\App\Models\Domain[] $domains
+ * @property-read int|null $domains_count
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
  */
 class Client extends Authenticatable
 {

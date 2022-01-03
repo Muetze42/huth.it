@@ -59,9 +59,9 @@ class Github extends Model
     /**
      * Get all the notifications that are assigned this tag.
      */
-    public function notifications(): MorphToMany
-    {
-        // Todo: Github <- notifications ->
-        // return $this->morphedByMany(Notification::class, 'taggable');
-    }
+//    public function notifications(): MorphToMany
+//    {
+//        // Todo: Github <- notifications ->
+//        // return $this->morphedByMany(Notification::class, 'taggable');
+//    }
 }
