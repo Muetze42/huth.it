@@ -98,6 +98,7 @@ class Client extends Resource
 
             BelongsToMany::make(__('Repositories'), 'repositories', Repository::class),
             HasMany::make(__('Configurations'), 'configs', Config::class),
+            HasMany::make(__('Domains'), 'domains', Domain::class),
         ];
     }
 

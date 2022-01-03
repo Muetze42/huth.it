@@ -219,3 +219,12 @@ if (!function_exists('opensslDecrypt')) {
         return null;
     }
 }
+
+if (!function_exists('removeUri')) {
+    function removeUri(string $url): string
+    {
+        $parts = parse_url($url);
+
+        return $parts['scheme'].'://'.$parts['host'];
+    }
+}

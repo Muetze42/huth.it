@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->json('domains')->nullable()->after('description');
+        Schema::create('domains', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->text('url');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->dropColumn('domains');
-        });
+        Schema::dropIfExists('domains');
     }
 };

@@ -62,7 +62,6 @@ class Client extends Authenticatable
         'token',
         'refresh_token',
         'description',
-        'domains',
         'used_at',
         'expired_at',
     ];
@@ -131,5 +130,13 @@ class Client extends Authenticatable
     public function configs(): HasMany
     {
         return $this->hasMany(Config::class);
+    }
+
+    /**
+     * Get the domains for the client.
+     */
+    public function domains(): HasMany
+    {
+        return $this->hasMany(Domain::class);
     }
 }
