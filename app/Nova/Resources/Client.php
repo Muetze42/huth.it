@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Text;
+use NovaItemsField\Items;
 
 class Client extends Resource
 {
@@ -60,6 +61,7 @@ class Client extends Resource
     public static $search = [
         'client_id',
         'description',
+        'domains',
     ];
 
     /**
@@ -83,6 +85,10 @@ class Client extends Resource
                 ->rules('required', 'string')
                 ->creationRules('unique:clients,description')
                 ->updateRules('unique:clients,description,{{resourceId}}'),
+
+            Items::make(__('Domains'), 'domains')->rules([
+                'domains.*' => 'string|required|url',
+            ]),
 
             DateTime::make(__('Used at'), 'used_at')
                 ->sortable()->exceptOnForms(),
