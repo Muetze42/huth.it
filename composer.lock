@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71717b2353277cc8c6571889588c7d34",
+    "content-hash": "a99056c4bf6a41406d19c5c476845fb6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3972,6 +3972,53 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.2"
             },
             "time": "2021-11-30T19:35:32+00:00"
+        },
+        {
+            "name": "norman-huth/consumer-api-administration",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Muetze42/consumer-api-administration.git",
+                "reference": "6a3a0d3d290f1f8b5fc0121aaa572129b00e4d8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muetze42/consumer-api-administration/zipball/6a3a0d3d290f1f8b5fc0121aaa572129b00e4d8a",
+                "reference": "6a3a0d3d290f1f8b5fc0121aaa572129b00e4d8a",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.75.0",
+                "php": "^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NormanHuth\\ConsumerApiAdministration\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NormanHuth\\ConsumerApiAdministration\\": "src/"
+                },
+                "files": [
+                    "src/Helpers/functions.php"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Norman Huth",
+                    "email": "norman@huth.it"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/Muetze42/consumer-api-administration/tree/main",
+                "issues": "https://github.com/Muetze42/consumer-api-administration/issues"
+            },
+            "time": "2022-01-04T20:11:39+00:00"
         },
         {
             "name": "norman-huth/laravel-trash-mail",
@@ -12413,6 +12460,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "norman-huth/consumer-api-administration": 20,
         "norman-huth/laravel-trash-mail": 20
     },
     "prefer-stable": true,
@@ -12420,6 +12468,7 @@
     "platform": {
         "php": "^8.0",
         "ext-dom": "*",
+        "ext-openssl": "*",
         "ext-pdo": "*"
     },
     "platform-dev": [],
