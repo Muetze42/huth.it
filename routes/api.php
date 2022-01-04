@@ -32,4 +32,4 @@ Route::middleware('auth:consumer-api')->group(function () {
 
 Route::fallback(function () {
     return jsonResponse();
-});
+})->name('fallback');

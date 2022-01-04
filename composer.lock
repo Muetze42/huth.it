@@ -3979,12 +3979,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:Muetze42/consumer-api-administration.git",
-                "reference": "6a3a0d3d290f1f8b5fc0121aaa572129b00e4d8a"
+                "reference": "ef276381a14257633f02771ebc143bbd3438b09a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Muetze42/consumer-api-administration/zipball/6a3a0d3d290f1f8b5fc0121aaa572129b00e4d8a",
-                "reference": "6a3a0d3d290f1f8b5fc0121aaa572129b00e4d8a",
+                "url": "https://api.github.com/repos/Muetze42/consumer-api-administration/zipball/ef276381a14257633f02771ebc143bbd3438b09a",
+                "reference": "ef276381a14257633f02771ebc143bbd3438b09a",
                 "shasum": ""
             },
             "require": {
@@ -4018,7 +4018,7 @@
                 "source": "https://github.com/Muetze42/consumer-api-administration/tree/main",
                 "issues": "https://github.com/Muetze42/consumer-api-administration/issues"
             },
-            "time": "2022-01-04T20:11:39+00:00"
+            "time": "2022-01-04T21:08:42+00:00"
         },
         {
             "name": "norman-huth/laravel-trash-mail",
