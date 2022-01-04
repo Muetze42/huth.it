@@ -1,0 +1,94 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use {{ namespacedModel }};
+use {{ namespacedUserModel }};
+
+class {{ class }}
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view any models.
+     *
+     * @param {{ user }} $user
+     * @return bool
+     */
+    public function viewAny({{ user }} $user): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can view the model.
+     *
+     * @param {{ user }} $user
+     * @param {{ model }} ${{ modelVariable }}
+     * @return bool
+     */
+    public function view({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can create models.
+     *
+     * @param {{ user }} $user
+     * @return bool
+     */
+    public function create({{ user }} $user): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param {{ user }} $user
+     * @param {{ model }} ${{ modelVariable }}
+     * @return bool
+     */
+    public function update({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can delete the model.
+     *
+     * @param {{ user }} $user
+     * @param {{ model }} ${{ modelVariable }}
+     * @return bool
+     */
+    public function delete({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     *
+     * @param {{ user }} $user
+     * @param {{ model }} ${{ modelVariable }}
+     * @return bool
+     */
+    public function restore({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     *
+     * @param {{ user }} $user
+     * @param {{ model }} ${{ modelVariable }}
+     * @return bool
+     */
+    public function forceDelete({{ user }} $user, {{ model }} ${{ modelVariable }}): bool
+    {
+        return true;
+    }
+}
