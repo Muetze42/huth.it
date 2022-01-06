@@ -7,7 +7,8 @@ return [
         'form_params' => [], # Not case & argument
         'route'       => '/api/huth-api/{client}',
     ],
-    'nova' => [
-        'base-resource' => \App\Nova\Resources\Resource::class,
+    'routeing' => [
+        'target' => '/api/huth-api/{client}',
+        'name-prefix' => 'consumer-api',
     ],
 ];
