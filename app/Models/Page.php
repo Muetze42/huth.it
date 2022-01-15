@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Helpers\Sitemap;
 use App\Traits\ErrorExceptionNotify;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
