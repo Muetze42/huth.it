@@ -54,7 +54,11 @@
     <main>
         <slot />
     </main>
+    <a href="https://www.netcup.de/?ref=177959" target="_blank"  id="netcup">
+        <img src="/img/netcup/netcup-hlogo-2019-b110h50.png" alt="Norman Huth">
+    </a>
     <div id="github-edit" v-if="gitController || gitComponent">
+        <img src="/img/netcup/netcup-setC-120x600.png" alt="Hosted by Netcup">
         <i class="fa-fw fab fa-github"></i> Edit [ <a v-if="gitComponent" :href="gitComponent" target="_blank">Component</a> <template v-if="gitController && gitComponent"> | </template> <a v-if="gitController" :href="gitController" target="_blank">Controller</a> ]
     </div>
 </template>

@@ -82,6 +82,18 @@ a {
 #github-edit {
     @apply fixed bottom-0 text-gray-300 right-0 bg-gray-700 px-1 text-sm rounded-tl-md bg-opacity-20;
 }
+@media (max-width: 374px) {
+    #github-edit {
+        display: none;
+    }
+}
+#netcup {
+    @apply fixed bottom-0 left-0 bg-white px-1 text-sm rounded-tr-md bg-opacity-50;
+
+    &:hover {
+        @apply bg-opacity-80;
+    }
+}
 
 code {
     @apply font-mono bg-gray-200 text-red-700 px-1 rounded;
