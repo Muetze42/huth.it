@@ -18,6 +18,7 @@ return [
         'domain'   => env('MAILGUN_DOMAIN'),
         'secret'   => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        'scheme'   => 'https',
     ],
 
     'postmark' => [
@@ -43,4 +44,5 @@ return [
         'owner'         => env('GITHUB_OWNER'),
         'access_token'  => env('GITHUB_ACCESS_TOKEN')
     ],
+
 ];

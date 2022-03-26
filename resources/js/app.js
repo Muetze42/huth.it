@@ -1,43 +1,51 @@
-require('./bootstrap');
+import {createApp, h} from 'vue'
+import {createInertiaApp, Link} from '@inertiajs/inertia-vue3'
+import {InertiaProgress} from '@inertiajs/progress'
+import Layout from './Components/Layout'
 
-/*
-|----------------------------------------------------------------
-| Vue 3
-|----------------------------------------------------------------
-*/
+/* Font Awesome */
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {faInstagram, faTwitch, faGithub, faLinkedin, faXing, faRedditAlien} from "@fortawesome/free-brands-svg-icons";
+import {faBrightness, faMoon, faSync, faBars, faXmark} from "@fortawesome/pro-regular-svg-icons";
+import {faAt} from "@fortawesome/pro-light-svg-icons";
+library.add(
+    faTwitch,
+    faInstagram,
+    faBrightness,
+    faMoon,
+    faGithub,
+    faLinkedin,
+    faXing,
+    faRedditAlien,
+    faAt,
+    faSync,
+    faBars,
+    faXmark,
+);
 
-import { createApp, h } from 'vue'
-import { App, plugin } from '@inertiajs/inertia-vue3'
-import { InertiaProgress } from '@inertiajs/progress'
+createInertiaApp({
+    resolve: async name => {
+        let page = (await import(`./Pages/${name}`)).default;
 
-InertiaProgress.init()
+        if (page.layout === undefined) {
+            page.layout = Layout;
+        }
 
-const el = document.getElementById('app')
-
-createApp({
-    render: () => h(App, {
-        initialPage: JSON.parse(el.dataset.page),
-        resolveComponent: name => import(`./Pages/${name}`).then(module => module.default),
-    }),
+        return page;
+    },
+    setup({el, App, props, plugin}) {
+        createApp({render: () => h(App, props)})
+            .use(plugin)
+            .component("Link", Link)
+            .component("font-awesome-icon", FontAwesomeIcon)
+            .mount(el)
+    }
 })
-    .mixin({
-        props: {
-            authed: Boolean,
-            menuItems: Array,
-        },
-        methods: {
-            route: (name, params, absolute) => route(name, params, absolute, Ziggy),
-            setViewHeight: function() {
-                let vh = window.innerHeight * 0.01
-                document.documentElement.style.setProperty('--vh', `${vh}px`)
-            },
-        },
-        mounted: function() {
-            this.setViewHeight()
-            window.addEventListener('resize', () => {
-                this.setViewHeight()
-            })
-        },
-    })
-    .use(plugin)
-    .mount(el)
+
+InertiaProgress.init({
+    delay: 300,
+    color: '#0ea5e9',
+    includeCSS: true,
+    showSpinner: true,
+})

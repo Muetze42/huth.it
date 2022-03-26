@@ -15,7 +15,3 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('webhooks/github/{webhook}/{slug}', [GitHubWebhookController::class, 'index'])->name('webhooks.github');
-
-Route::fallback(function () {
-    return jsonResponse();
-})->name('fallback');

@@ -12,12 +12,12 @@ use Illuminate\Support\Str;
  * App\Models\GithubWebhook
  *
  * @property int $id
+ * @property string $name
  * @property string $event
- * @property string|null $branches
+ * @property array|null $branches
  * @property array|null $actions
- * @property mixed $slug
+ * @property mixed|null $slug
  * @property mixed|null $secret
- * @property string $title
  * @property string $message
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -35,24 +35,22 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereEvent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|GithubWebhook withTrashed()
  * @method static \Illuminate\Database\Query\Builder|GithubWebhook withoutTrashed()
  * @mixin \Eloquent
- * @property string $name
- * @method static \Illuminate\Database\Eloquent\Builder|GithubWebhook whereName($value)
  */
 class GithubWebhook extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',

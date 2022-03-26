@@ -2,17 +2,8 @@
 
 namespace App\Exceptions;
 
-use App\Notifications\Telegram\ErrorReport;
 use App\Traits\ErrorExceptionNotify;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\ViewErrorBag;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -22,7 +13,7 @@ class Handler extends ExceptionHandler
     /**
      * A list of the exception types that are not reported.
      *
-     * @var array
+     * @var array<int, class-string<Throwable>>
      */
     protected $dontReport = [
         //
@@ -31,13 +22,25 @@ class Handler extends ExceptionHandler
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $dontFlash = [
         'current_password',
         'password',
         'password_confirmation',
     ];
+
+    /**
+     * Register the exception handling callbacks for the application.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->reportable(function (Throwable $e) {
+            //
+        });
+    }
 
     /**
      * Report or log an exception.
@@ -62,39 +65,4 @@ class Handler extends ExceptionHandler
             $this->sendTelegramMessage($exception);
         }
     }
-
-    /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
-     */
-    public function register(): void
-    {
-        $this->renderable(function (NotFoundHttpException $e, $request) {
-            if ($request->is('api/*')) {
-                return jsonResponse();
-            }
-            return null;
-        });
-    }
-
-    /**
-     * Render the given HttpException.
-     *
-     * @param HttpExceptionInterface $e
-     * @return Response
-     */
-//    protected function renderHttpException(HttpExceptionInterface $e): Response
-//    {
-//        if ($e instanceof NotFoundHttpException) {
-//            if (view()->exists($view = $this->getHttpExceptionView($e))) {
-//                return response()->view('errors.404', [
-//                    'errors' => new ViewErrorBag,
-//                    'exception' => $e,
-//                ], $e->getStatusCode(), $e->getHeaders());
-//            }
-//        }
-//
-//        return parent::renderHttpException($e);
-//    }
 }
