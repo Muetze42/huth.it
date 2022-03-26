@@ -1,107 +1,93 @@
-@import "colors";
-@import "mixins";
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "navigation";
-
-@keyframes gradient {
-    0% {
-        background-position: 0 95%;
-    }
-    50% {
-        background-position: 100% 95%;
-    }
-    100% {
-        background-position: 0 95%;
-    }
-}
-body {
-    @apply text-gray-100 bg-gray-900;
-}
-//div#app {
-//    @include bg-pattern;
-//}
-main {
-    @apply h-screen flex justify-center flex-wrap content-center z-50 px-2;
-}
-
-@keyframes fadein {
-    from { opacity: .5; }
-    to   { opacity: 1; }
-}
-
-img.avatar {
-    @apply rounded-full border border-gray-400 mx-auto;
-    width: 6.25rem;
-    height: 6.25rem;
-}
-
-.card {
-    animation: fadein 1s;
-    @apply relative flex flex-col min-w-0 rounded-md break-words border bg-gray-800 border-gray-600 shadow-md;
-    max-width: calc(100vw - 1rem);
-    .header {
-        @apply py-3 px-4 mb-0 border-gray-600 text-gray-100 border-b border-gray-400 bg-gray-900 bg-opacity-25;
-    }
-    .body {
-        @apply flex-auto p-4;
-    }
-    .footer {
-        @apply py-3 px-4 mb-0 border-gray-600 text-gray-100 border-t border-gray-400 text-center bg-gray-900 bg-opacity-25;
-    }
-    div {
-        &:first-child {
-            @apply rounded-t-md;
-        }
-        &:last-child {
-            @apply rounded-b-md;
-        }
-    }
+.w-content {
+    @apply max-w-xl md:max-w-4xl mx-auto px-4 lg:px-0;
 }
 
 h1 {
-    @apply text-center;
-}
-a {
-    @apply text-blue-400 hover:text-blue-300;
+    @apply text-2xl mb-1.5 font-medium;
 }
 
-.group {
-    @apply inline-flex rounded-l-md rounded-r-md;
+.content {
+    @apply mt-16 lg:mt-24 flex;
+}
+
+.theme-switch {
+    @apply rounded px-1 py-0.5 focus:ring-1 cursor-pointer;
+    @apply dark:text-neutral-100 dark:bg-amber-500 dark:hover:bg-yellow-500 dark:focus:ring-emerald-500;
+    @apply text-neutral-900 bg-blue-500 hover:bg-sky-300 focus:ring-cyan-500;
+}
+.menu-toggle {
+    @apply ml-2 rounded px-1 py-0.5 focus:ring-1 cursor-pointer border lg:hidden;
+    @apply bg-white          text-slate-700      border-slate-300        ring-offset-slate-50;
+    @apply dark:bg-slate-700 dark:text-slate-200 dark:border-transparent dark:ring-offset-slate-900;
+}
+.sidebar {
+    @apply hidden lg:block;
+    @apply w-full lg:pr-6 max-w-[13rem] absolute lg:static z-20 top-0 left-0 h-screen lg:h-auto;
+    @apply bg-neutral-100 dark:bg-neutral-900 lg:bg-transparent dark:lg:bg-transparent;
+    @apply border-r lg:border-0 border-neutral-900/10 dark:border-neutral-100/10;
+}
+.open {
+    @apply block #{!important};
+}
+.overlay {
+    @apply absolute w-full h-full bg-slate-800/80 z-10 lg:hidden;
+}
+nav {
+    @apply w-full lg:sticky lg:top-20 overflow-auto;
+    @apply lg:border-r border-neutral-900/10 dark:border-neutral-100/10;
+
     a {
-        @apply flex items-center px-4 py-2 transition-colors duration-200 transform bg-gray-700 text-gray-200;
-        &:first-child {
-            @apply rounded-l-md;
+        @apply block pb-2 pt-1.5 px-2;
+
+        &:hover {
+            @apply bg-slate-300;
+            @apply dark:bg-slate-700;
         }
-        &:last-child {
-            @apply rounded-r-md;
+        &.active {
+            @apply font-semibold;
+            @apply bg-slate-200;
+            @apply dark:bg-slate-800;
+        }
+        &.active, &:hover {
+            @apply border-r-4 dark:border-sky-300 border-green-600;
+        }
+    }
+}
+main {
+    @apply w-full px-8 py-6 mt-6 lg:mt-0 border border-neutral-900/10 dark:border-neutral-100/10 shadow-md dark:shadow dark:shadow-cyan-500/50;
+}
+
+header {
+    @apply fixed w-full z-20 top-0 py-4 border-b border-gray-500/50 bg-neutral-100 dark:bg-neutral-900;
+    .w-content {
+        @apply flex justify-between;
+    }
+}
+
+ul.socials {
+    @apply max-w-[15rem] mx-auto mt-2;
+    li {
+        @apply py-2;
+        a {
+            @apply block text-center;
         }
     }
 }
 
-#github-edit {
-    @apply fixed bottom-0 text-gray-300 right-0 bg-gray-700 px-1 text-sm rounded-tl-md bg-opacity-20;
-}
-@media (max-width: 374px) {
-    #github-edit {
-        display: none;
-    }
-}
-#netcup {
-    @apply fixed bottom-0 left-0 bg-white px-1 text-sm rounded-tr-md bg-opacity-50;
-
-    &:hover {
-        @apply bg-opacity-80;
-    }
+.site-title {
+    @apply text-lg font-medium;
 }
 
-code {
-    @apply font-mono bg-gray-200 text-red-700 px-1 rounded;
+body {
+    @apply flex flex-col min-h-screen overflow-auto;
+}
+
+#app {
+    @apply bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 min-h-screen;
 }
 
 @import "forms";
-@import "backgrounds/twinkling-stars-background";
-
-@tailwind components;
-
-@tailwind utilities;

@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -13,7 +15,7 @@ class HandleInertiaRequests extends Middleware
      * @see https://inertiajs.com/server-side-setup#root-template
      * @var string
      */
-    protected $rootView = 'public.layouts.app';
+    protected $rootView = 'app';
 
     /**
      * Determines the current asset version.
@@ -28,19 +30,6 @@ class HandleInertiaRequests extends Middleware
     }
 
     /**
-     * Sets the root template that's loaded on the first page visit.
-     *
-     * @see https://inertiajs.com/server-side-setup#root-template
-     * @param Request $request
-     * @return string
-     * Todo Later for other layouts
-     */
-//    public function rootView(Request $request): string
-//    {
-//        return 'public.layouts.app';
-//    }
-
-    /**
      * Defines the props that are shared by default.
      *
      * @see https://inertiajs.com/shared-data
@@ -49,10 +38,19 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $route = Route::currentRouteName();
+        $routePart = explode('.', $route)[0];
+        $pageTitle = config('app.name');
+        if ($routePart && $routePart != 'home') {
+            $pageTitle = ucfirst($routePart).' « '.$pageTitle;
+        }
+
+        view()->share('pageTitle', $pageTitle);
+
         return array_merge(parent::share($request), [
-            '_token'    => csrf_token(),
-            'authed'    => auth()->check(),
-            'menuItems' => config('site.menu-items'),
+            'csrf_token'    => csrf_token(),
+            'pageTitle'     => $pageTitle,
+            'authed'        => auth()->check(),
         ]);
     }
 }

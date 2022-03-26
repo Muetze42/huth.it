@@ -1,5 +1,5 @@
 @extends('errors::illustrated-layout')
 
-@section('title', __('Service Unavailable'))
+@section('title', __('Maintenance Mode'))
 @section('code', '503')
-@section('message', __('Service Unavailable'))
+@section('message', (__("Short maintenance.\nWe'll be right back.")))

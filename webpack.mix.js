@@ -12,25 +12,17 @@ const tailwindcss = require('tailwindcss');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').vue({
-    extractStyles: true,
-    globalStyles: false,
-}).webpackConfig((webpack) => {
-    return {
-        plugins: [
-            new webpack.DefinePlugin({
-                __VUE_OPTIONS_API__: true,
-                __VUE_PROD_DEVTOOLS__: !mix.inProduction(),
-            }),
-        ],
-    };
-})
-    .sass('resources/scss/app.scss', 'public/css')
+mix.js('resources/js/app.js', 'public/js')
+    .extract(['vue'])
+    .vue(3)
     .options({
         processCssUrls: false,
         postCss: [tailwindcss('./tailwind.config.js')],
     })
-    .setPublicPath('public')
+    .sass('resources/scss/app.scss', 'public/css')
     .version([
         'public/css/error-pages.css'
     ])
+    .sourceMaps()
+    .disableNotifications()
+;

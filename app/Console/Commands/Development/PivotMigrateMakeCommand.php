@@ -151,7 +151,12 @@ class PivotMigrateMakeCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        return base_path('stubs/migration.pivot.stub');
+        $file = base_path('stubs/migration.pivot.stub');
+        if (file_exists($file)) {
+            return $file;
+        }
+
+        exit(__('Stub not „:file“ not exist', ['file' => $file]));
     }
 
     /**

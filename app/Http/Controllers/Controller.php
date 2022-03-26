@@ -7,17 +7,23 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Inertia\Inertia;
-use Inertia\Response as InertiaResponse;
+use Inertia\Response;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index(): InertiaResponse
+    /**
+     * @return Response
+     */
+    public function index(): Response
     {
         return Inertia::render(str_replace('Controller', '', class_basename($this)).'/Index', $this->indexData());
     }
 
+    /**
+     * @return array
+     */
     public function indexData(): array
     {
         return [];

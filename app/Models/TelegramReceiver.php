@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\TelegramReceiver
@@ -16,10 +15,6 @@ use Illuminate\Notifications\Notifiable;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\GithubWebhook[] $gitHubWebhooks
- * @property-read int|null $git_hub_webhooks_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
  * @method static \Illuminate\Database\Eloquent\Builder|TelegramReceiver newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TelegramReceiver newQuery()
  * @method static \Illuminate\Database\Query\Builder|TelegramReceiver onlyTrashed()
@@ -36,32 +31,15 @@ use Illuminate\Notifications\Notifiable;
  */
 class TelegramReceiver extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'telegram_id',
         'name',
     ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'telegram_id' => 'integer',
-    ];
-
-    /**
-     * The GitHub Webhooks that belong to the receiver.
-     */
-    public function gitHubWebhooks(): BelongsToMany
-    {
-        return $this->belongsToMany(GithubWebhook::class);
-    }
 }

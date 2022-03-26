@@ -18,7 +18,7 @@ class IdeHelper extends Command
      *
      * @var string
      */
-    protected $description = 'Run `Laravel IDE Helper Generator` for `PHPDoc generation for Laravel Facades`, `PHPDocs for models` and `PhpStorm Meta file`';
+    protected $description = 'Update `Laravel IDE Helper`';
 
     /**
      * Execute the console command.
@@ -31,6 +31,7 @@ class IdeHelper extends Command
             $this->call('ide-helper:models', ['--write' => true]);
             $this->call('ide-helper:generate');
             $this->call('ide-helper:meta');
+            $this->call('ide-helper:macros');
 
             return 0;
         }
