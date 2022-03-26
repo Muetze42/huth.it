@@ -79,7 +79,10 @@ ul.socials {
 }
 
 .site-title {
-    @apply text-lg font-medium;
+    @apply text-xl font-medium;
+    //@apply underline decoration-1 decoration-wavy;
+    //@apply decoration-neutral-200;
+    //@apply dark:decoration-neutral-800;
 }
 
 body {
@@ -87,7 +90,9 @@ body {
 }
 
 #app {
-    @apply bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 min-h-screen;
+    @apply min-h-screen;
+    @apply bg-neutral-100       text-neutral-900;
+    @apply dark:bg-neutral-900  dark:text-neutral-100;
 }
 
 @import "forms";

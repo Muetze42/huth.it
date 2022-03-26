@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="w-content">
-            <div class="site-title">Norman Huth</div>
+            <Link href="/" class="site-title">Norman Huth</Link>
             <div>
                 <button @click="toggleT()" class="theme-switch">
                     <font-awesome-icon v-if="dark" :icon="['far', 'brightness']" class="fa-fw" title="Toggle to Light Mode" />
