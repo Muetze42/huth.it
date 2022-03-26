@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use NormanHuth\ConsumerApiAdministration\app\Models\Repository;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Models\GithubWebhook as Webhook;
@@ -74,11 +73,11 @@ class GitHubWebhookController extends Controller
                     $message = preg_replace('/`(.*?)`/', '<code>$1</code>', e($this->webhook->message));
                     $message = str_replace(array_keys($replace), array_values($replace), $message);
 
-                    if (!empty($content->before) && !empty($content->after) && $content->before != $content->after) {
-                        Repository::where('repo', $content->repository->name)->each(function ($repository) {
-                            $repository->touch();
-                        });
-                    }
+//                    if (!empty($content->before) && !empty($content->after) && $content->before != $content->after) {
+//                        Repository::where('repo', $content->repository->name)->each(function ($repository) {
+//                            $repository->touch();
+//                        });
+//                    } Todo: Consumer API
 
                     foreach ($this->webhook->telegramReceivers as $receiver) {
                         $receiver->notify(new TelegramNotification($message));
