@@ -6,7 +6,7 @@ import Layout from './Components/Layout'
 /* Font Awesome */
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {faInstagram, faTwitch, faGithub, faLinkedin, faXing, faRedditAlien} from "@fortawesome/free-brands-svg-icons";
+import {faInstagram, faTwitch, faGithub, faLinkedin, faXing, faRedditAlien, faLaravel} from "@fortawesome/free-brands-svg-icons";
 import {faBrightness, faMoon, faSync, faBars, faXmark} from "@fortawesome/pro-regular-svg-icons";
 import {faAt} from "@fortawesome/pro-light-svg-icons";
 library.add(
@@ -22,6 +22,7 @@ library.add(
     faSync,
     faBars,
     faXmark,
+    faLaravel,
 );
 
 createInertiaApp({

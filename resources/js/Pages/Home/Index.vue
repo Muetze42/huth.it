@@ -35,6 +35,12 @@
                 Reddit
             </a>
         </li>
+        <li>
+            <a href="https://laracasts.com/@Muetze" target="_blank" class="btn">
+                <font-awesome-icon :icon="['fab', 'laravel']" class="fa-fw"/>
+                Laracasts
+            </a>
+        </li>
     </ul>
 </template>
 
