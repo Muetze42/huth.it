@@ -41,6 +41,12 @@
                 Laracasts
             </a>
         </li>
+        <li>
+            <a href="https://youtube.huth.it" target="_blank" class="btn">
+                <font-awesome-icon :icon="['fab', 'youtube']" class="fa-fw"/>
+                YouTube
+            </a>
+        </li>
     </ul>
 </template>
 
