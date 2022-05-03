@@ -45,4 +45,8 @@ return [
         'access_token'  => env('GITHUB_ACCESS_TOKEN')
     ],
 
+    'font-awesome' => [
+        'kit-id' => env('FONT_AWESOME_KIT_ID')
+    ],
+
 ];

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImprintController;
 use App\Http\Controllers\PasswordGeneratorController;
@@ -28,3 +29,7 @@ Route::middleware([HandleInertiaRequests::class])->group(function () {
     Route::get('/string-formatter', [StringFormatterController::class, 'index'])->name('string-formatter.index');
     Route::post('/string-formatter', [StringFormatterController::class, 'index'])->name('string-formatter.format');
 });
+
+$providers = 'github';
+Route::get('auth/{provider}', [AuthController::class, 'redirect'])->name('auth')->where('provider', $providers);
+Route::get('auth/{provider}/callback', [AuthController::class, 'callback'])->where('provider', $providers);

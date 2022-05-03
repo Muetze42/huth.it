@@ -1,7 +1,12 @@
 <template>
     <header>
         <div class="w-content">
-            <Link href="/" class="site-title">Norman Huth</Link>
+            <div>
+                <Link href="/" class="site-title">Norman Huth</Link>
+                <a href="https://stand-with-ukraine.pp.ua/" target="_blank" id="StandWithUkraine">
+                    <img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg" alt="StandWithUkraine">
+                </a>
+            </div>
             <div>
                 <button @click="toggleT()" class="theme-switch">
                     <font-awesome-icon v-if="dark" :icon="['far', 'brightness']" class="fa-fw" title="Toggle to Light Mode" />
@@ -21,7 +26,6 @@
                 <Link href="/" :class="{ 'active': $page.url.split('?')[0] === '/' }">Home</Link>
                 <Link href="/password-generator" :class="{ 'active': $page.url.split('?')[0] === '/password-generator' }">Password Generator</Link>
                 <Link href="/string-formatter" :class="{ 'active': $page.url.split('?')[0] === '/string-formatter' }">String Formatter</Link>
-                <!-- Link href="/references" :class="{ 'active': $page.url.split('?')[0] === '/references' }">References</Link -->
                 <Link href="/imprint" :class="{ 'active': $page.url.split('?')[0] === '/imprint' }">Imprint</Link>
             </nav>
         </div>
