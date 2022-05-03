@@ -1,0 +1,53 @@
+<?php
+
+namespace {{ namespace }};
+
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Metrics\Progress;
+
+class {{ class }} extends Progress
+{
+    /**
+     * Get the displayable name of the metric.
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return __('{{Name}}');
+    }
+
+    /**
+     * Calculate the value of the metric.
+     *
+     * @param NovaRequest $request
+     * @return ProgressResult
+     */
+    public function calculate(NovaRequest $request): ProgressResult
+    {
+        return $this->count($request, Model::class, function ($query) {
+            return $query;
+        }, target: 100);
+    }
+
+    /**
+     * Determine the amount of time the results of the metric should be cached.
+     *
+     * @return DateInterval|float|DateTimeInterface|int|null
+     */
+    public function cacheFor(): DateInterval|float|DateTimeInterface|int|null
+    {
+        // return now()->addMinutes(5);
+        return null;
+    }
+
+    /**
+     * Get the URI key for the metric.
+     *
+     * @return string
+     */
+    public function uriKey(): string
+    {
+        return 'uri-key';
+    }
+}

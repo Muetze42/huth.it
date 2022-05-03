@@ -1,0 +1,36 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Carbon;
+use Laravel\Nova\Filters\DateFilter;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Database\Eloquent\Builder;
+
+class {{ class }} extends DateFilter
+{
+    /**
+     * Get the displayable name of the filter.
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return __('{{Name}}');
+    }
+
+    /**
+     * Apply the filter to the given query.
+     *
+     * @param  NovaRequest  $request
+     * @param  Builder  $query
+     * @param  mixed  $value
+     * @return Builder
+     */
+    public function apply(NovaRequest $request, $query, $value): Builder
+    {
+        $value = Carbon::parse($value);
+
+        return $query;
+    }
+}

@@ -29,6 +29,8 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Query\Builder|TelegramReceiver withTrashed()
  * @method static \Illuminate\Database\Query\Builder|TelegramReceiver withoutTrashed()
  * @mixin \Eloquent
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
  */
 class TelegramReceiver extends Model
 {

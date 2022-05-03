@@ -96,3 +96,12 @@ body {
 }
 
 @import "forms";
+
+@media (min-width: 1280px) {
+    #StandWithUkraine {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 100;
+    }
+}
