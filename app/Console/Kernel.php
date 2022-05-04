@@ -20,6 +20,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('repo:watch')
             ->dailyAt('12:00');
 
+        $schedule->command('package:update')
+            ->hourly();
+
         $schedule->command('queue:work --stop-when-empty --timeout=0')
             ->everyMinute()
             ->withoutOverlapping();

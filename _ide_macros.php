@@ -2,6 +2,12 @@
 
 namespace Illuminate\Support {
     class Carbon {
+        public static function createFromApi(string $datetime) {
+
+        }
+        public static function fromApiToDateTimeString(string $datetime) {
+
+        }
         public static function firstDayOfQuarter($timezone = 'UTC') {
 
         }
@@ -13,6 +19,12 @@ namespace Illuminate\Support {
 
 namespace Carbon {
     class Carbon {
+        public static function createFromApi(string $datetime) {
+
+        }
+        public static function fromApiToDateTimeString(string $datetime) {
+
+        }
         public static function firstDayOfQuarter($timezone = 'UTC') {
 
         }

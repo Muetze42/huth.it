@@ -13,8 +13,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('{{ table }}', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('github');
+            $table->string('packagist');
+            $table->string('version');
+            $table->unsignedInteger('downloads');
+            $table->unsignedInteger('stars');
+            $table->unsignedInteger('forks');
+            $table->timestamp('pushed_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('{{ table }}');
+        Schema::dropIfExists('packages');
     }
 };

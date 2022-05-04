@@ -30,7 +30,8 @@
         "norman-huth/nova-assets-changer": "^1.0",
         "norman-huth/nova-secret-field": "^1.0",
         "norman-huth/nova-values-field": "^1.0",
-        "socialiteproviders/github": "^4.1"
+        "socialiteproviders/github": "^4.1",
+        "ext-curl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12.3",
