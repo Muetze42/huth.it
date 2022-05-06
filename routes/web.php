@@ -29,7 +29,7 @@ Route::middleware([HandleInertiaRequests::class])->group(function () {
     Route::get('/password-generator', [PasswordGeneratorController::class, 'index'])->name('password-generator.index');
     Route::get('/string-formatter', [StringFormatterController::class, 'index'])->name('string-formatter.index');
     Route::post('/string-formatter', [StringFormatterController::class, 'index'])->name('string-formatter.format');
-    Route::get('/nova-packages', [NovaPackagesController::class, 'index']);
+    Route::get('/nova-packages', [NovaPackagesController::class, 'index'])->name('nova-packages.index');
 });
 
 $providers = 'github';
