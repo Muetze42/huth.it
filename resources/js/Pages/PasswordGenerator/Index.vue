@@ -7,7 +7,7 @@
         <div class="form-group">
             <input id="password" type="text" v-model="password">
             <button @click="generatePassword()" aria-label="Refresh">
-                <font-awesome-icon :icon="['far', 'sync']" class="fa-fw"/>
+                <font-awesome-icon :icon="['far', 'arrows-rotate']" class="fa-fw"/>
             </button>
         </div>
     </div>

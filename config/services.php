@@ -46,7 +46,10 @@ return [
     ],
 
     'font-awesome' => [
-        'kit-id' => env('FONT_AWESOME_KIT_ID')
+        'kit-id' => env('FONT_AWESOME_KIT_ID'),
+    ],
+    'composer' => [
+        'vendors' => env('COMPOSER_VENDORS'),
     ],
 
 ];

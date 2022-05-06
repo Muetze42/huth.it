@@ -17227,6 +17227,13 @@
      * 
      *
      */ 
+        class MorphToMany {
+         
+    }
+            /**
+     * 
+     *
+     */ 
         class MorphMany {
          
     }
