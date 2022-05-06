@@ -20,10 +20,13 @@ return new class extends Migration
             $table->string('github');
             $table->string('packagist');
             $table->string('version');
+            $table->string('parent')->nullable();
             $table->unsignedInteger('downloads');
             $table->unsignedInteger('stars');
             $table->unsignedInteger('forks');
+            $table->unsignedInteger('watchers');
             $table->timestamp('pushed_at')->nullable();
+            $table->timestamp('released_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -35,6 +35,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @mixin \Eloquent
  * @property \Illuminate\Support\Carbon|null $pushed_at
  * @method static \Illuminate\Database\Eloquent\Builder|Package wherePushedAt($value)
+ * @property string $name
+ * @property string $github
+ * @property string $packagist
+ * @property string|null $parent
+ * @property int $downloads
+ * @property int $stars
+ * @property int $forks
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereDownloads($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereForks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereGithub($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package wherePackagist($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereParent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereStars($value)
+ * @property int $watchers
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereWatchers($value)
+ * @property \Illuminate\Support\Carbon|null $released_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereReleasedAt($value)
  */
 class Package extends Model
 {
@@ -52,9 +70,12 @@ class Package extends Model
         'packagist',
         'version',
         'downloads',
+        'parent',
         'stars',
         'forks',
+        'watchers',
         'pushed_at',
+        'released_at',
     ];
 
     /**
@@ -63,9 +84,11 @@ class Package extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'downloads' => 'int',
-        'stars' => 'int',
-        'forks' => 'int',
-        'pushed_at' => 'datetime',
+        'downloads'   => 'int',
+        'stars'       => 'int',
+        'forks'       => 'int',
+        'watchers'    => 'int',
+        'pushed_at'   => 'datetime',
+        'released_at' => 'datetime',
     ];
 }

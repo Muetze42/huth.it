@@ -5,7 +5,6 @@ namespace App\Console\Commands\Package;
 use App\Models\Package;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 
 class UpdateCommand extends Command
 {
@@ -114,11 +113,14 @@ class UpdateCommand extends Command
                 $data['description'] = $array['description'];
                 $name = $array['name'];
                 $data['forks'] = $array['forks_count'];
-                $data['pushed_at'] = Carbon::fromApiToDateTimeString($array['pushed_at']);
+                $data['watchers'] = $array['watchers'];
+                $data['pushed_at'] = $array['pushed_at'] ?? Carbon::fromApiToDateTimeString($array['pushed_at']);
                 $topics = $array['topics'];
 
+                $data['parent'] = $array['fork'] ? $array['parent']['html_url'] : null;
+
                 /*
-                 * Getting more package data
+                 * Getting packagist data
                  */
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -139,6 +141,33 @@ class UpdateCommand extends Command
                 curl_close($curl);
                 $array = json_decode($response, true);
                 $data['downloads'] = $array['package']['downloads']['total'];
+
+
+
+                /*
+                 * Get the latest release
+                 */
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL            => 'https://api.github.com/repos/'.$data['github'].'/releases/latest',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING       => '',
+                    CURLOPT_MAXREDIRS      => 10,
+                    CURLOPT_TIMEOUT        => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST  => 'GET',
+                    CURLOPT_HTTPHEADER     => [
+                        'User-Agent: huth.it Request',
+                        'Authorization: Bearer '.config('services.github.access_token'),
+                        'Content-Type: application/json',
+                    ],
+                ));
+                $response = curl_exec($curl);
+                curl_close($curl);
+                $array = json_decode($response, true);
+
+                $data['released_at'] = !empty($array['published_at']) ? Carbon::fromApiToDateTimeString($array['published_at']) : null;
 
                 Package::updateOrCreate(
                     ['name' => $name],
