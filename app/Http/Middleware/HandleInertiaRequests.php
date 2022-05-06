@@ -42,7 +42,8 @@ class HandleInertiaRequests extends Middleware
         $routePart = explode('.', $route)[0];
         $pageTitle = config('app.name');
         if ($routePart && $routePart != 'home') {
-            $pageTitle = ucfirst($routePart).' « '.$pageTitle;
+            $routePart = str_replace('-', ' ', $routePart);
+            $pageTitle = ucwords($routePart).' « '.$pageTitle;
         }
 
         view()->share('pageTitle', $pageTitle);
