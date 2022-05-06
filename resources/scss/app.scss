@@ -157,7 +157,7 @@ body {
 }
 .tags {
     span {
-        @apply inline-block bg-gray-200 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 pt-0.5 pb-1 rounded mr-2 dark:bg-gray-700 dark:text-gray-300;
+        @apply inline-block bg-gray-200 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 pt-0.5 pb-1 rounded mr-2 mt-2 dark:bg-gray-700 dark:text-gray-300;
 
         &.danger {
             @apply bg-red-100 text-red-800 dark:bg-red-200 dark:text-red-900;
