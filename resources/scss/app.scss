@@ -156,7 +156,9 @@ body {
         }
     }
     a {
-        @apply block text-center w-full px-4 py-2 border-gray-200 dark:border-gray-600 text-gray-900 bg-white hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700;
+        @apply block text-center w-full px-4 py-2;
+        @apply border-gray-200      text-gray-900      bg-gray-100      hover:text-blue-900     hover:bg-slate-200;
+        @apply dark:border-gray-600 dark:text-gray-400 dark:bg-gray-800 dark:hover:text-sky-100 dark:hover:bg-slate-700;
     }
 }
 .tags {
