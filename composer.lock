@@ -1740,16 +1740,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.11.0",
+            "version": "v9.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "598a8c84d452a66b90a3213b1d67189cc726c728"
+                "reference": "b5b5c635f1a93f277b5248725a1f7ffc97e20810"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/598a8c84d452a66b90a3213b1d67189cc726c728",
-                "reference": "598a8c84d452a66b90a3213b1d67189cc726c728",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b5b5c635f1a93f277b5248725a1f7ffc97e20810",
+                "reference": "b5b5c635f1a93f277b5248725a1f7ffc97e20810",
                 "shasum": ""
             },
             "require": {
@@ -1915,27 +1915,27 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-05-03T14:47:20+00:00"
+            "time": "2022-05-11T13:38:26+00:00"
         },
         {
             "name": "laravel/nova",
-            "version": "4.4.1",
+            "version": "4.5.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "c70bdc0055baf6a97dfe0a6edae53dce67da44f2"
+                "reference": "23a2001aeb28cdce4dbb84f638477fd87c1067e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-c70bdc0055baf6a97dfe0a6edae53dce67da44f2-zip-00712e.zip",
-                "reference": "c70bdc0055baf6a97dfe0a6edae53dce67da44f2",
-                "shasum": "883270fcd6dc0954f64d4dabbaf403bdf20cbe88"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-23a2001aeb28cdce4dbb84f638477fd87c1067e4-zip-512dac.zip",
+                "reference": "23a2001aeb28cdce4dbb84f638477fd87c1067e4",
+                "shasum": "9f10a19383ab876a0b66f72923a737c356b37bb0"
             },
             "require": {
                 "brick/money": "^0.5.0",
                 "doctrine/dbal": "^2.13.3|^3.1.2",
                 "illuminate/support": "^8.83.4|^9.3.1",
-                "inertiajs/inertia-laravel": "^0.4.5|^0.5.2",
+                "inertiajs/inertia-laravel": "^0.4.5|^0.5.2|^0.6.0",
                 "laravel/ui": "^3.3",
                 "nesbot/carbon": "^2.53.1",
                 "php": "^7.3|^8.0",
@@ -2022,9 +2022,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.4.1"
+                "source": "https://github.com/laravel/nova/tree/v4.5.4"
             },
-            "time": "2022-05-05T19:15:36+00:00"
+            "time": "2022-05-12T18:43:40+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -2760,16 +2760,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.5.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "4192345e260f1d51b365536199744b987e160edc"
+                "reference": "247918972acd74356b0a91dfaa5adcaec069b6c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/4192345e260f1d51b365536199744b987e160edc",
-                "reference": "4192345e260f1d51b365536199744b987e160edc",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/247918972acd74356b0a91dfaa5adcaec069b6c0",
+                "reference": "247918972acd74356b0a91dfaa5adcaec069b6c0",
                 "shasum": ""
             },
             "require": {
@@ -2782,18 +2782,23 @@
             "require-dev": {
                 "aws/aws-sdk-php": "^2.4.9 || ^3.0",
                 "doctrine/couchdb": "~1.0@dev",
-                "elasticsearch/elasticsearch": "^7",
+                "elasticsearch/elasticsearch": "^7 || ^8",
+                "ext-json": "*",
                 "graylog2/gelf-php": "^1.4.2",
+                "guzzlehttp/guzzle": "^7.4",
+                "guzzlehttp/psr7": "^2.2",
                 "mongodb/mongodb": "^1.8",
                 "php-amqplib/php-amqplib": "~2.4 || ^3",
                 "php-console/php-console": "^3.1.3",
-                "phpspec/prophecy": "^1.6.1",
+                "phpspec/prophecy": "^1.15",
                 "phpstan/phpstan": "^0.12.91",
-                "phpunit/phpunit": "^8.5",
+                "phpunit/phpunit": "^8.5.14",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3 || ^2 || ^3",
-                "ruflin/elastica": ">=0.90@dev",
-                "swiftmailer/swiftmailer": "^5.3|^6.0"
+                "ruflin/elastica": "^7",
+                "swiftmailer/swiftmailer": "^5.3|^6.0",
+                "symfony/mailer": "^5.4 || ^6",
+                "symfony/mime": "^5.4 || ^6"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -2843,7 +2848,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.5.0"
+                "source": "https://github.com/Seldaek/monolog/tree/2.6.0"
             },
             "funding": [
                 {
@@ -2855,7 +2860,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-08T15:43:54+00:00"
+            "time": "2022-05-10T09:36:00+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3251,16 +3256,16 @@
         },
         {
             "name": "norman-huth/nova-values-field",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Muetze42/nova-values-field.git",
-                "reference": "d6208a62fa38c4257339e6dbefa6841f475a1e0f"
+                "reference": "e146d84bced9436556f41c4a5f90f4e85d358781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Muetze42/nova-values-field/zipball/d6208a62fa38c4257339e6dbefa6841f475a1e0f",
-                "reference": "d6208a62fa38c4257339e6dbefa6841f475a1e0f",
+                "url": "https://api.github.com/repos/Muetze42/nova-values-field/zipball/e146d84bced9436556f41c4a5f90f4e85d358781",
+                "reference": "e146d84bced9436556f41c4a5f90f4e85d358781",
                 "shasum": ""
             },
             "require": {
@@ -3283,16 +3288,28 @@
             "license": [
                 "MIT"
             ],
-            "description": "A Laravel Nova field.",
+            "authors": [
+                {
+                    "name": "Norman Huth",
+                    "homepage": "https://huth.it"
+                }
+            ],
+            "description": "This field is a clone of the KeyValue field without keys.",
+            "homepage": "https://github.com/Muetze42/nova-values-field",
             "keywords": [
                 "laravel",
-                "nova"
+                "laravel-nova",
+                "laravel-nova-field",
+                "nova",
+                "nova-4",
+                "nova-fields"
             ],
             "support": {
+                "docs": "https://github.com/Muetze42/nova-values-field#readme",
                 "issues": "https://github.com/Muetze42/nova-values-field/issues",
-                "source": "https://github.com/Muetze42/nova-values-field/tree/1.0.0"
+                "source": "https://github.com/Muetze42/nova-values-field"
             },
-            "time": "2022-04-21T20:55:39+00:00"
+            "time": "2022-05-12T04:35:23+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -3780,16 +3797,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.3",
+            "version": "v0.11.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "6833626ee48ef9bcc8aca8f9f166760441c12573"
+                "reference": "05c544b339b112226ad14803e1e5b09a61957454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/6833626ee48ef9bcc8aca8f9f166760441c12573",
-                "reference": "6833626ee48ef9bcc8aca8f9f166760441c12573",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/05c544b339b112226ad14803e1e5b09a61957454",
+                "reference": "05c544b339b112226ad14803e1e5b09a61957454",
                 "shasum": ""
             },
             "require": {
@@ -3850,9 +3867,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.3"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.4"
             },
-            "time": "2022-05-05T02:19:43+00:00"
+            "time": "2022-05-06T12:49:14+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -7340,16 +7357,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.14.1",
+            "version": "v1.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "9a7348dedfccc894718a21f71c09d669747e3f33"
+                "reference": "0e0e51f19c758c79acbda11e3870641fbad5b7d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/9a7348dedfccc894718a21f71c09d669747e3f33",
-                "reference": "9a7348dedfccc894718a21f71c09d669747e3f33",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/0e0e51f19c758c79acbda11e3870641fbad5b7d9",
+                "reference": "0e0e51f19c758c79acbda11e3870641fbad5b7d9",
                 "shasum": ""
             },
             "require": {
@@ -7396,7 +7413,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-05-02T13:58:40+00:00"
+            "time": "2022-05-12T12:53:10+00:00"
         },
         {
             "name": "mockery/mockery",

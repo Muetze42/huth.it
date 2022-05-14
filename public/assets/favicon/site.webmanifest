@@ -1,19 +1,19 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Norman Huth",
+    "short_name": "Norman Huth",
     "icons": [
         {
-            "src": "/assets/favicon/android-chrome-192x192.png",
+            "src": "/favicon/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/assets/favicon/android-chrome-512x512.png",
+            "src": "/favicon/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
     ],
-    "theme_color": "#6441a5",
-    "background_color": "#6441a5",
+    "theme_color": "#30bbda",
+    "background_color": "#30bbda",
     "display": "standalone"
 }

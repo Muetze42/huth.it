@@ -129,15 +129,19 @@ body {
 }
 
 .git {
+    .packages-card {
+        @apply sm:flex;
+    }
+
     //@apply border p-2 mb-4 rounded-sm border-neutral-900/10 dark:border-neutral-100/10 shadow dark:shadow-sm;
-    @apply border mb-4 lg:mb-6 rounded-sm border-neutral-900/10 dark:border-neutral-100/10 shadow dark:shadow-sm;
+    @apply border mb-4 sm:mb-6 rounded-sm border-neutral-900/10 dark:border-neutral-100/10 shadow dark:shadow-sm;
     .title {
         @apply text-lg font-medium mb-1 p-2;
         //@apply text-sky-600 dark:text-sky-400;
         //@apply hover:text-blue-700 hover:text-blue-300;
     }
     .box {
-        @apply lg:w-48 text-sm text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white;
+        @apply sm:w-48 text-sm text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white;
 
         div {
             @apply w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600;

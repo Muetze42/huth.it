@@ -53,6 +53,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Package whereWatchers($value)
  * @property \Illuminate\Support\Carbon|null $released_at
  * @method static \Illuminate\Database\Eloquent\Builder|Package whereReleasedAt($value)
+ * @property string|null $homepage
+ * @property string|null $np_rating
+ * @property int $np_rates
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereHomepage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereNpRates($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Package whereNpRating($value)
  */
 class Package extends Model
 {
@@ -71,6 +77,9 @@ class Package extends Model
         'version',
         'downloads',
         'parent',
+        'homepage',
+        'np_rating',
+        'np_rates',
         'stars',
         'forks',
         'watchers',
@@ -84,6 +93,8 @@ class Package extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'np_rating'   => 'decimal:2',
+        'np_rates'    => 'int',
         'downloads'   => 'int',
         'stars'       => 'int',
         'forks'       => 'int',
