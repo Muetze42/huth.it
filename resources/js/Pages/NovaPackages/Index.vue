@@ -81,9 +81,9 @@
                                     {{ git.rating }} of 5
                                 </span>
                                 <span class="absolute">
-                                    <font-awesome-icon :icon="['fas', 'star']" class="fa-fw text-lg star text-yellow-500" v-for="n in 5" :style="getStarStyle(git.rating, n)" />
+                                    <font-awesome-icon :icon="['fas', 'star']" class="fa-fw text-lg star" v-for="n in 5" :style="getStarStyle(git.rating, n)" />
                                 </span>
-                                <font-awesome-icon :icon="['fas', 'star']" class="fa-fw text-lg" v-for="n in 5" />
+                                <font-awesome-icon :icon="['fas', 'star']" class="fa-fw text-lg star-bg" v-for="n in 5" />
                                 <span class="text-xs block">
                                     {{ git.rates }}
                                     {{ git.rates == 1 ? 'rating' : 'ratings' }}
@@ -120,7 +120,6 @@ export default {
                 }
 
                 m = 100-(100-diff)
-                console.log(m)
             }
 
             return {'clip-path': 'inset(0 '+m+'% 0 0)'};

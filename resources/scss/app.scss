@@ -169,3 +169,9 @@ body {
     }
 }
 
+.star {
+    @apply text-amber-500 dark:text-amber-400;
+}
+.star-bg {
+    @apply text-neutral-300 dark:text-neutral-500;
+}
