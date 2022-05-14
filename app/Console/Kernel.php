@@ -21,7 +21,10 @@ class Kernel extends ConsoleKernel
             ->dailyAt('12:00');
 
         $schedule->command('package:update')
-            ->hourly();
+            ->hourly()
+            ->then(function () {
+                $this->call('package:update:novapackages');
+            });
 
         $schedule->command('queue:work --stop-when-empty --timeout=0')
             ->everyMinute()

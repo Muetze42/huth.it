@@ -5,6 +5,7 @@ namespace App\Console\Commands\Package;
 use App\Models\Package;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class UpdateCommand extends Command
 {
@@ -116,7 +117,8 @@ class UpdateCommand extends Command
                 $data['watchers'] = $array['watchers'];
                 $data['pushed_at'] = $array['pushed_at'] ?? Carbon::fromApiToDateTimeString($array['pushed_at']);
                 $topics = $array['topics'];
-
+                $data['homepage'] = empty($array['homepage']) ? null : $array['homepage'];
+                Log::debug($data['homepage']);
                 $data['parent'] = $array['fork'] ? $array['parent']['html_url'] : null;
 
                 /*
@@ -141,8 +143,6 @@ class UpdateCommand extends Command
                 curl_close($curl);
                 $array = json_decode($response, true);
                 $data['downloads'] = $array['package']['downloads']['total'];
-
-
 
                 /*
                  * Get the latest release

@@ -22,7 +22,7 @@ namespace Carbon {
         public static function createFromApi(string $datetime) {
 
         }
-        public static function fromApiToDateTimeString(string $datetime): string {
+        public static function fromApiToDateTimeString(string $datetime) {
 
         }
         public static function firstDayOfQuarter($timezone = 'UTC') {

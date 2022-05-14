@@ -7,7 +7,8 @@ import Layout from './Components/Layout'
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faInstagram, faTwitch, faGithub, faLinkedin, faXing, faRedditAlien, faLaravel, faYoutube} from "@fortawesome/free-brands-svg-icons";
-import {faBrightness, faMoon, faBars, faXmark, faCaretRight, faCaretDown, faEllipsisVertical, faArrowsRotate, faElephant} from "@fortawesome/pro-regular-svg-icons";
+import {faBrightness, faMoon, faBars, faXmark, faCaretRight, faCaretDown, faEllipsisVertical, faArrowsRotate, faElephant, faBoxOpenFull} from "@fortawesome/pro-regular-svg-icons";
+import {faStar} from "@fortawesome/free-solid-svg-icons";
 import {faAt} from "@fortawesome/pro-light-svg-icons";
 library.add(
     faTwitch,
@@ -28,6 +29,8 @@ library.add(
     faEllipsisVertical,
     faArrowsRotate,
     faElephant,
+    faBoxOpenFull,
+    faStar,
 );
 
 createInertiaApp({
