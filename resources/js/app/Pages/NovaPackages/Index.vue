@@ -6,7 +6,7 @@
     <div v-for="(repository, index) in repositories.data">
         <hr v-if="index">
         <h2 class="h3">
-            <a :href="'https://github.com/Muetze42/'+repository.name">{{repository.name}}</a>
+            <a :href="'https://github.com/Muetze42/'+repository.name" target="_blank">{{repository.name}}</a>
         </h2>
         <div v-if="repository.description">
             {{ repository.description }}
