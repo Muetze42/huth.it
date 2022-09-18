@@ -3,10 +3,12 @@
     @apply shadow-black/5 ring-black/5;
     @apply bg-secondary ring-inset ring-black/5;
     @apply dark:bg-secondary-dark dark:ring-inset dark:ring-white/5;
-    @apply hover:bg-primary-400 dark:hover:bg-primary-700;
 
     &.active {
         @apply bg-primary-400 dark:bg-primary-700;
+    }
+    &:enabled {
+        @apply hover:bg-primary-400 dark:hover:bg-primary-700;
     }
 }
 
@@ -20,4 +22,24 @@
 
 .form-row {
     @apply block p-1 mb-1;
+
+    &:last-child {
+        @apply mb-0;
+    }
+}
+.form-row-2 {
+    @apply block px-1 py-0.5;
+}
+
+.ping-container {
+    @apply relative inline-flex rounded-md shadow-sm;
+}
+.ping-1 {
+    @apply flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1;
+}
+.ping-2 {
+    @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75;
+}
+.ping-3 {
+    @apply relative inline-flex rounded-full h-3 w-3 bg-green-400;
 }
