@@ -9,3 +9,15 @@
         @apply bg-primary-400 dark:bg-primary-700;
     }
 }
+
+.form-input, .form-textarea, .form-select {
+    @apply text-black w-full rounded;
+}
+
+.form-checkbox {
+    @apply rounded;
+}
+
+.form-row {
+    @apply block p-1 mb-1;
+}
