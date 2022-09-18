@@ -17,6 +17,7 @@ class NovaPackagesController extends Controller
             'repositories' => Repository::query()
                 ->orderByDesc('github_pushed_at')
                 ->where('name', '!=', 'lura')
+                ->where('fork', false)
                 ->whereJsonContains('topics', 'laravel-nova')
                 ->paginate(50)
                 ->withQueryString()
