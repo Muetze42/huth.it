@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
              ->withoutOverlapping()
              ->onSuccess(function () {
                  $this->call('repositories:nova-packages:update');
+                 $this->call('repositories:packagist:update');
              });
     }
 

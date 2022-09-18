@@ -41,10 +41,9 @@ class NovaPackagesUpdate extends Update
             Repository::where('name', basename($item['url']))
                 ->first()
                 ?->update([
-                    'rating'              => $item['rating'],
-                    'rating_count'        => $item['rating_count'],
-                    'novapackages_url'    => $item['novapackages_url'],
-                    'packagist_downloads' => $item['packagist_downloads'],
+                    'rating'           => $item['rating'],
+                    'rating_count'     => $item['rating_count'],
+                    'novapackages_url' => $item['novapackages_url'],
                 ]);
         }
 

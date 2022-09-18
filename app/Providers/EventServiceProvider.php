@@ -18,6 +18,25 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \Illuminate\Console\Events\ScheduledTaskStarting::class => [
+            \App\Listeners\Schedule\LogScheduledTaskStarting::class,
+        ],
+
+        \Illuminate\Console\Events\ScheduledTaskFinished::class => [
+            \App\Listeners\Schedule\LogScheduledTaskFinished::class,
+        ],
+
+        \Illuminate\Console\Events\ScheduledBackgroundTaskFinished::class => [
+            \App\Listeners\Schedule\LogScheduledBackgroundTaskFinished::class,
+        ],
+
+        \Illuminate\Console\Events\ScheduledTaskSkipped::class => [
+            \App\Listeners\Schedule\LogScheduledTaskSkipped::class,
+        ],
+
+        \Illuminate\Console\Events\ScheduledTaskFailed::class => [
+            \App\Listeners\Schedule\LogScheduledTaskFailed::class,
+        ],
     ];
 
     /**
@@ -25,7 +44,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }
@@ -35,7 +54,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return bool
      */
-    public function shouldDiscoverEvents()
+    public function shouldDiscoverEvents(): bool
     {
         return false;
     }

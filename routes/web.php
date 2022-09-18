@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/test', [HomeController::class, 'test']);
 
 Route::name('legal.')->group(function () {
     Route::get('imprint', [ImprintController::class, 'index'])
