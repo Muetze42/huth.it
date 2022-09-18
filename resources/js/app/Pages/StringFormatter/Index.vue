@@ -1,5 +1,5 @@
 <template>
-    <h1 class="hidden">String Formatter</h1>
+    <h1 >String Formatter</h1>
     <form @input="isDisabled()" @submit.prevent="submit">
         <div class="form-row">
             <label for="string" class="sr-only">

@@ -1,5 +1,5 @@
 <template>
-    <h1 class="hidden">Password Generator</h1>
+    <h1>Password Generator</h1>
     <div class="form-row">
         <input id="password" type="text" v-model="password" class="form-input" aria-label="Password">
         <button @click="generatePassword()" aria-label="Refresh" class="btn">

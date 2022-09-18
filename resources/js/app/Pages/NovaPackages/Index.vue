@@ -1,8 +1,8 @@
 <template>
+    <h1>Nova Packages</h1>
     <div class="danger">
         This page is under reconstruction.
     </div>
-    <h1 class="hidden">Nova Packages</h1>
     <div v-for="(repository, index) in repositories.data">
         <hr v-if="index">
         <h2 class="h3">{{ repository.name }}</h2>
@@ -20,7 +20,14 @@
         </div>
         <div>
             Stars: {{ repository.stars }}
+            <span class="mx-1">
+                &bull;
+            </span>
             Watchers: {{ repository.watchers }}
+            <span class="mx-1">
+                &bull;
+            </span>
+            Downloads: {{ repository.downloads }}
         </div>
         <div v-if="repository.ratingCount">
             Rating: {{ repository.rating }}/5<br>

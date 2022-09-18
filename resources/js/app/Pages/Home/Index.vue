@@ -1,5 +1,5 @@
 <template>
-    <h1 class="hidden">Home</h1>
+    <h1>Homepage</h1>
     <p>Hi, I’m Norman</p>
     <p>born on June 17th and I’m a developer.</p>
     <p>Nice that you found your way to my site.</p>

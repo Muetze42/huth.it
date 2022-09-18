@@ -4,7 +4,7 @@
     @apply dark:border-secondary-dark;
 
     .nav {
-        @apply fixed overflow-auto w-[13rem];
+        @apply fixed overflow-y-auto w-[13rem] content:pl-0.5;
         max-height: calc(100vh - 10rem);
     }
 }
