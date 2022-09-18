@@ -15,7 +15,8 @@ class NovaPackagesController extends Controller
     {
         return [
             'repositories' => Repository::query()
-                ->orderByDesc('github_updated_at')
+                ->orderByDesc('github_pushed_at')
+                ->where('name', '!=', 'lura')
                 ->whereJsonContains('topics', 'laravel-nova')
                 ->paginate(50)
                 ->withQueryString()
@@ -23,12 +24,12 @@ class NovaPackagesController extends Controller
                     'name'           => $repository->name,
                     'description'    => $repository->description,
                     'homepage'       => $repository->homepage,
-                    'stars'          => $repository->stars,
-                    'forks'          => $repository->forks,
-                    'watchers'       => $repository->watchers,
+                    'stars'          => number_format($repository->stars),
+                    'forks'          => number_format($repository->forks),
+                    'watchers'       => number_format($repository->watchers),
                     'rating'         => $repository->rating,
-                    'ratingCount'    => $repository->rating_count,
-                    'downloads'      => $repository->packagist_downloads,
+                    'ratingCount'    => number_format($repository->rating_count),
+                    'downloads'      => number_format($repository->packagist_downloads),
                     'topics'         => $repository->topics,
                     'novaPackageUrl' => $repository->novapackages_url,
                 ])
