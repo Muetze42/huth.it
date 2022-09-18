@@ -1,7 +1,21 @@
 <template>
-    <div v-if="menuOpen" class="absolute bg-secondary dark:bg-secondary-dark z-40 top-12 w-full h-full temp">
-        <MainMenu />
-    </div>
+    <TransitionRoot as="template" :show="menuOpen">
+        <Dialog as="div" class="mobile-nav" @close="menuOpen = false">
+            <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300"
+                             leave-from="opacity-100" leave-to="opacity-0">
+                <DialogOverlay class="mobile-overlay"/>
+            </TransitionChild>
+            <TransitionChild class="mobile-menu" as="div" enter="transition ease-in-out duration-300 transform" enter-from="-translate-x-full" enter-to="translate-x-0"
+                             leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0" leave-to="-translate-x-full">
+                <div class="text-right">
+                    <button type="button" class="btn" @click="menuOpen = false">
+                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-xmark']" :class="$page.props.faClass" />
+                    </button>
+                </div>
+                <MainMenu />
+            </TransitionChild>
+        </Dialog>
+    </TransitionRoot>
     <header>
         <div class="container">
             <Menu as="div" class="menu">
@@ -61,6 +75,7 @@
 </template>
 
 <script>
+import { Inertia } from '@inertiajs/inertia';
 import MainMenu from './../Components/MainMenu.vue';
 import Footer from './../Components/Footer.vue';
 /* FontAwesome START */
@@ -71,12 +86,14 @@ import {
     faSunBright,
     faMoon,
     faBars,
+    faXmark,
 } from '@fortawesome/pro-solid-svg-icons'
 library.add(
     faDisplay,
     faSunBright,
     faMoon,
     faBars,
+    faXmark,
 );
 /* FontAwesome END */
 /* "Headless UI START */
@@ -87,6 +104,11 @@ import {
     MenuItem,
     TransitionRoot,
     TransitionChild,
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    DialogDescription,
+    DialogOverlay,
 } from '@headlessui/vue'
 /* "Headless UI End */
 
@@ -102,6 +124,11 @@ export default {
         Footer,
         TransitionRoot,
         TransitionChild,
+        Dialog,
+        DialogPanel,
+        DialogTitle,
+        DialogDescription,
+        DialogOverlay,
     },
     data() {
         return {
@@ -126,9 +153,9 @@ export default {
         toggleTheme(scheme) {
             console.log(scheme)
             scheme ? localStorage.theme = scheme : localStorage.removeItem('theme')
-            this.applySystemColorTheme()
+            this.applyColorTheme()
         },
-        applySystemColorTheme() {
+        applyColorTheme() {
             if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark')
             } else {
@@ -145,7 +172,10 @@ export default {
         },
     },
     mounted() {
-        this.applySystemColorTheme()
+        this.applyColorTheme()
+        Inertia.on("navigate", (event) => {
+            this.menuOpen = false
+        });
     },
     updated() {
         document.title = this.$page.props.pageTitle
