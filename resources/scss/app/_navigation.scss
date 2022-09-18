@@ -8,12 +8,12 @@
     @apply space-y-5 content:space-y-9;
 
     .label {
-        @apply font-medium text-primary-900 dark:text-white mb-1;
+        @apply font-medium text-primary-900 dark:text-white mb-2;
     }
 
     ul.items {
         @apply lg:border-l-2 border-primary-100 dark:border-primary-800 lg:border-primary-300;
-        @apply space-y-2;
+        @apply space-y-3;
 
         &:last-child {
             @apply mt-0;
@@ -43,7 +43,7 @@
     @apply relative inline-block;
 }
 .menu-items {
-    @apply absolute rounded-lg p-2 z-30 border mt-0.5 left-0;
+    @apply absolute rounded-lg p-2 border mt-0.5 left-0;
     @apply bg-white border-secondary;
     @apply dark:border-secondary-dark dark:bg-secondary-dark;
 }
@@ -59,10 +59,6 @@
     &.active {
         @apply text-sky-500;
     }
-}
-
-header {
-    @apply border-b;
 }
 
 footer {
@@ -95,7 +91,13 @@ footer {
     @apply relative p-4 flex flex-col bg-secondary dark:bg-secondary-dark min-w-[50%];
 }
 
+header {
+    @apply fixed w-full;
+    @apply z-40 border-b;
+    @apply bg-white dark:bg-primary-900
+}
+
 header, footer {
     @apply border-secondary;
-    @apply dark:border-secondary-dark;
+    @apply border-secondary dark:border-secondary-dark;
 }
