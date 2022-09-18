@@ -99,7 +99,11 @@ footer {
 header {
     @apply fixed w-full;
     @apply z-40 border-b;
-    @apply bg-white dark:bg-primary-900
+    @apply bg-white dark:bg-primary-900;
+
+    .container {
+        @apply flex flex-wrap justify-between items-center;
+    }
 }
 
 header, footer {

@@ -18,24 +18,25 @@
     </TransitionRoot>
     <header>
         <div class="container">
-            <Menu as="div" class="menu">
-                <button type="button" class="btn mr-2 content:hidden" @click="menuOpen = !menuOpen">
-                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-bars']" :class="$page.props.faClass" />
-                </button>
-                <MenuButton class="btn">
-                    <span class="sr-only">Switch between Dark & Light Mode</span>
-                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-sun-bright']" :class="$page.props.faClass" v-if="this.theme == 'light'"/>
-                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-moon']" :class="$page.props.faClass" v-else-if="this.theme == 'dark'"/>
-                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-display']" :class="$page.props.faClass" v-else/>
-                </MenuButton>
-                <transition
-                    enter-active-class="transition duration-100 ease-out"
-                    enter-from-class="transform scale-95 opacity-0"
-                    enter-to-class="transform scale-100 opacity-100"
-                    leave-active-class="transition duration-75 ease-in"
-                    leave-from-class="transform scale-100 opacity-100"
-                    leave-to-class="transform scale-95 opacity-0">
-                    <MenuItems class="menu-items">
+            <div>
+                <Menu as="div" class="menu">
+                    <button type="button" class="btn mr-2 content:hidden" @click="menuOpen = !menuOpen">
+                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-bars']" :class="$page.props.faClass" />
+                    </button>
+                    <MenuButton class="btn">
+                        <span class="sr-only">Switch between Dark & Light Mode</span>
+                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-sun-bright']" :class="$page.props.faClass" v-if="this.theme == 'light'"/>
+                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-moon']" :class="$page.props.faClass" v-else-if="this.theme == 'dark'"/>
+                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-display']" :class="$page.props.faClass" v-else/>
+                    </MenuButton>
+                    <transition
+                        enter-active-class="transition duration-100 ease-out"
+                        enter-from-class="transform scale-95 opacity-0"
+                        enter-to-class="transform scale-100 opacity-100"
+                        leave-active-class="transition duration-75 ease-in"
+                        leave-from-class="transform scale-100 opacity-100"
+                        leave-to-class="transform scale-95 opacity-0">
+                        <MenuItems class="menu-items">
                             <MenuItem class="menu-item" :class="{ 'active': this.theme == 'light' }">
                                 <button @click="toggleTheme('light')" type="button">
                                     <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-sun-bright']" :class="$page.props.faClass"/>
@@ -54,9 +55,15 @@
                                     System
                                 </button>
                             </MenuItem>
-                    </MenuItems>
-                </transition>
-            </Menu>
+                        </MenuItems>
+                    </transition>
+                </Menu>
+            </div>
+            <div>
+                <a href="https://stand-with-ukraine.pp.ua/" target="_blank" id="StandWithUkraine">
+                    <img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg" alt="StandWithUkraine">
+                </a>
+            </div>
         </div>
     </header>
     <main class="container o">
