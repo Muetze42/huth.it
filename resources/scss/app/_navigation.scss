@@ -10,7 +10,7 @@
 }
 
 .nav {
-    @apply space-y-5 content:space-y-9;
+    @apply space-y-5 content:space-y-9 select-none;
 
     .label {
         @apply font-medium text-primary-900 dark:text-white mb-2;

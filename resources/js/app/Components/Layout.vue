@@ -151,7 +151,6 @@ export default {
     },
     methods: {
         toggleTheme(scheme) {
-            console.log(scheme)
             scheme ? localStorage.theme = scheme : localStorage.removeItem('theme')
             this.applyColorTheme()
         },
