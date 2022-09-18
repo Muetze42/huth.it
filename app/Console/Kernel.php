@@ -10,25 +10,12 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param Schedule $schedule
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule): void
+    protected function schedule(Schedule $schedule)
     {
-        $schedule->command('twitch:changelog')
-            ->dailyAt('19:00');
-        $schedule->command('repo:watch')
-            ->dailyAt('12:00');
-
-        $schedule->command('package:update')
-            ->hourly()
-            ->then(function () {
-                $this->call('package:update:novapackages');
-            });
-
-        $schedule->command('queue:work --stop-when-empty --timeout=0')
-            ->everyMinute()
-            ->withoutOverlapping();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**
@@ -36,7 +23,7 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
-    protected function commands(): void
+    protected function commands()
     {
         $this->load(__DIR__.'/Commands');
 

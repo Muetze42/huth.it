@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{{ $__env->yieldContent('code').' - '.$__env->yieldContent('title') }}</title>
-        <link href="{{ mix('css/error-pages.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/error-pages.css') }}" rel="stylesheet">
     </head>
     <body class="antialiased font-sans">
         <div class="md:flex min-h-screen">

@@ -81,7 +81,7 @@
   "Select All": "Select All",
   "Select All Matching": "Select All Matching",
   "Something went wrong.": "Something went wrong.",
-  "The action ran successfully!": "The action ran successfully!",
+  "The action was executed successfully.": "The action was executed successfully.",
   "The government won't let us show you what's behind these doors": "The government won't let us show you what's behind these doors",
   "This image": "This image",
   "Update": "Update",
@@ -443,5 +443,15 @@
   "Light": "Light",
   "Dark": "Dark",
   "System": "System",
-  "There are no fields to display.": "There are no fields to display."
+  "From": "From",
+  "To": "To",
+  "There are no fields to display.": "There are no fields to display.",
+  "Notifications": "Notifications",
+  "Mark all as Read": "Mark all as Read",
+  "Copy to clipboard": "Copy to clipboard",
+  "Are you sure you want to delete this notification?": "Are you sure you want to delete this notification?",
+  "Filename": "Filename",
+  "Type": "Type",
+  "CSV (.csv)": "CSV (.csv)",
+  "Excel (.xlsx)": "Excel (.xlsx)"
 }

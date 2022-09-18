@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply text-neutral-100;
+    @apply bg-fixed;
+    @apply text-center;
+    @apply bg-gradient-to-b from-gray-900 to-gray-700;
+}
+h1 {
+    @apply font-semibold text-xl mb-4;
+}
+h2 {
+    @apply font-medium text-lg mb-4 mt-8;
+}
+a {
+    @apply p-2 bg-slate-500 mb-4 flex justify-center rounded rounded-md;
+    @apply text-2xl font-semibold;
+    @apply hover:bg-slate-50;
+    @apply hover:text-gray-900;
+}
+
+.content {
+    @apply mx-auto max-w-sm max-w-sm px-4 mt-4;
+}

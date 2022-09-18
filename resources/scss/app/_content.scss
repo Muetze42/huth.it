@@ -1,0 +1,34 @@
+.content {
+    @apply content:ml-8 overflow-y-auto py-8 w-full;
+}
+
+p {
+    @apply mb-2 text-justify;
+}
+
+hr {
+    @apply border-secondary dark:border-secondary-dark my-2;
+}
+
+.privacy {
+    @apply mb-4;
+
+    .btn {
+        &:first-child {
+            @apply rounded-r-none;
+        }
+        &:last-child {
+            @apply rounded-l-none;
+        }
+    }
+}
+
+address {
+    @apply mb-4 not-italic;
+}
+
+.danger {
+    @apply p-4 mb-4 text-sm rounded-lg border shadow-md;
+    @apply text-red-700 bg-red-100 border-red-700 shadow-red-300;
+    @apply dark:bg-red-200 dark:text-red-800 dark:border-red-800;
+}
