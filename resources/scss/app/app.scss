@@ -1,11 +1,11 @@
 @tailwind base;
 @layer base {
     h1, .h1 {
-        @apply text-3xl mb-2 font-bold border-b border-dashed leading-relaxed;
+        @apply text-3xl mb-8 font-bold border-b border-dashed leading-relaxed;
         @apply border-primary-500;
     }
     h2, .h2 {
-        @apply text-2xl mb-2 font-bold;
+        @apply text-2xl mb-4 font-bold;
     }
     h3, .h3 {
         @apply text-xl mb-2 font-semibold;
