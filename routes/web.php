@@ -5,6 +5,7 @@ use App\Http\Controllers\app\ImprintController;
 use App\Http\Controllers\app\NovaPackagesController;
 use App\Http\Controllers\app\PasswordGeneratorController;
 use App\Http\Controllers\app\PrivacyController;
+use App\Http\Controllers\app\StringFormatterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::name('legal.')->group(function () {
-    Route::get('/imprint', [ImprintController::class, 'index'])
+    Route::get('imprint', [ImprintController::class, 'index'])
         ->name('imprint');
-    Route::get('/privacy', [PrivacyController::class, 'index'])
+    Route::get('privacy', [PrivacyController::class, 'index'])
         ->name('privacy');
 });
 
@@ -33,8 +34,10 @@ Route::name('stuff.')->group(function () {
 });
 
 Route::name('tools.')->group(function () {
-    Route::get('/password-generator', [PasswordGeneratorController::class, 'index'])
+    Route::get('password-generator', [PasswordGeneratorController::class, 'index'])
         ->name('password-generator');
-    Route::get('/string-formatter', [PasswordGeneratorController::class, 'index'])
+    Route::get('string-formatter', [StringFormatterController::class, 'index'])
         ->name('string-formatter');
+    Route::post('string-formatter', [StringFormatterController::class, 'index'])
+        ->name('string-formatter.format');
 });

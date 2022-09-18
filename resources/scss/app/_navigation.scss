@@ -1,7 +1,12 @@
 .left-nav {
-    @apply my-8 overflow-y-auto px-1 min-w-[13rem] border-r hidden content:block;
+    @apply my-8 overflow-y-auto px-1 min-w-[14rem] border-r hidden content:block;
     @apply border-secondary;
     @apply dark:border-secondary-dark;
+
+    .nav {
+        @apply fixed overflow-auto w-[13rem];
+        max-height: calc(100vh - 10rem);
+    }
 }
 
 .nav {
