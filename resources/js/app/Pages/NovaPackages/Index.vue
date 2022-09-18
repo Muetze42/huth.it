@@ -5,12 +5,14 @@
     </div>
     <div v-for="(repository, index) in repositories.data">
         <hr v-if="index">
-        <h2 class="h3">{{ repository.name }}</h2>
+        <h2 class="h3">
+            <a :href="'https://github.com/Muetze42/'+repository.name">{{repository.name}}</a>
+        </h2>
         <div v-if="repository.description">
             {{ repository.description }}
         </div>
-        <div>
-            Topics:
+        <div class="mt-2 text-sm">
+            Topics:<br>
             <span v-for="(topic, index) in repository.topics">
                 <span v-if="index" class="mx-1">
                     &bull;
@@ -18,24 +20,19 @@
                 {{ topic }}
             </span>
         </div>
-        <div>
+        <div class="mt-2 text-sm">
             Stars: {{ repository.stars }}
-            <span class="mx-1">
-                &bull;
-            </span>
+            <br>
             Watchers: {{ repository.watchers }}
-            <span class="mx-1">
-                &bull;
-            </span>
+            <br>
             Downloads: {{ repository.downloads }}
         </div>
-        <div v-if="repository.ratingCount">
-            Rating: {{ repository.rating }}/5<br>
-            {{ repository.ratingCount }} {{ repository.ratingCount == 1 ? 'Rate':'Rates' }}
+        <div v-if="repository.ratingCount > 0" class="mt-2 text-sm">
+            Rating:
+            {{ repository.rating }}/5 with {{ repository.ratingCount }} {{ repository.ratingCount == 1 ? 'vote':'votes' }} on <a :href="repository.homepage" target="_blank">NovaPackages.com</a>
         </div>
-        <a :href="'https://github.com/Muetze42/'+repository.name">GitHub</a>
-        <div v-if="repository.homepage">
-            <a :href="repository.homepage" target="_blank">NovaPackages.com</a>
+        <div v-if="repository.homepage && repository.ratingCount < 1" class="mt-2 text-sm">
+            Unrated on <a :href="repository.homepage" target="_blank">NovaPackages.com</a>
         </div>
     </div>
 </template>
