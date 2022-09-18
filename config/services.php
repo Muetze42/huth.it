@@ -31,25 +31,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'telegram-bot-api' => [
-        'token'      => env('TELEGRAM_BOT_TOKEN'),
-        'receiver'   => env('TELEGRAM_RECEIVER'),
-        'home-group' => env('TELEGRAM_HOME_GROUP'),
-    ],
-
     'github' => [
-        'client_id'     => env('GITHUB_CLIENT_ID'),
-        'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        'redirect'      => env('GITHUB_REDIRECT_URI'),
-        'owner'         => env('GITHUB_OWNER'),
-        'access_token'  => env('GITHUB_ACCESS_TOKEN')
+        'user_name' => env('GITHUB_USER_NAME'),
     ],
 
-    'font-awesome' => [
-        'kit-id' => env('FONT_AWESOME_KIT_ID'),
+    'novapackages' => [
+        'token'  => env('NOVA_PACKAGES_TOKEN'),
+        'author' => env('NOVA_PACKAGES_AUTHOR', 'Norman Huth')
     ],
-    'composer' => [
-        'vendors' => env('COMPOSER_VENDORS'),
-    ],
-
 ];

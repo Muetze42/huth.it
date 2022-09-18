@@ -1,0 +1,11 @@
+.btn {
+    @apply inline-flex p-2 items-center justify-center rounded shadow-md ring-1;
+    @apply shadow-black/5 ring-black/5;
+    @apply bg-secondary ring-inset ring-black/5;
+    @apply dark:bg-secondary-dark dark:ring-inset dark:ring-white/5;
+    @apply hover:bg-primary-400 dark:hover:bg-primary-700;
+
+    &.active {
+        @apply bg-primary-400 dark:bg-primary-700;
+    }
+}

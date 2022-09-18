@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.12.2.
+ * Generated for Laravel 9.30.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1496,6 +1496,52 @@
                         /** @var \Illuminate\Foundation\Application $instance */
                         $instance->offsetUnset($key);
         }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Illuminate\Foundation\Application::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Illuminate\Foundation\Application::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Illuminate\Foundation\Application::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {
+                        \Illuminate\Foundation\Application::flushMacros();
+        }
          
     }
             /**
@@ -2770,11 +2816,12 @@
      *
      * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(string $channel, callable|string  $callback, array $options = [])
      * @method static mixed auth(\Illuminate\Http\Request $request)
+     * @method static void resolveAuthenticatedUserUsing(Closure $callback)
      * @see \Illuminate\Contracts\Broadcasting\Factory
      */ 
         class Broadcast {
                     /**
-         * Register the routes for handling broadcast authentication and sockets.
+         * Register the routes for handling broadcast channel authentication and sockets.
          *
          * @param array|null $attributes
          * @return void 
@@ -2784,6 +2831,32 @@
         {
                         /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
                         $instance->routes($attributes);
+        }
+                    /**
+         * Register the routes for handling broadcast user authentication.
+         *
+         * @param array|null $attributes
+         * @return void 
+         * @static 
+         */ 
+        public static function userRoutes($attributes = null)
+        {
+                        /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
+                        $instance->userRoutes($attributes);
+        }
+                    /**
+         * Register the routes for handling broadcast authentication and sockets.
+         * 
+         * Alias of "routes" method.
+         *
+         * @param array|null $attributes
+         * @return void 
+         * @static 
+         */ 
+        public static function channelRoutes($attributes = null)
+        {
+                        /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
+                        $instance->channelRoutes($attributes);
         }
                     /**
          * Get the socket ID for the given request.
@@ -3110,6 +3183,18 @@
                         return $instance->map($map);
         }
                     /**
+         * Specify the jobs that should be dispatched instead of faked.
+         *
+         * @param array|string $jobsToDispatch
+         * @return void 
+         * @static 
+         */ 
+        public static function except($jobsToDispatch)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
+                        $instance->except($jobsToDispatch);
+        }
+                    /**
          * Assert if a job was dispatched based on a truth-test callback.
          *
          * @param string|\Closure $command
@@ -3285,6 +3370,17 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
                         $instance->assertBatchCount($count);
+        }
+                    /**
+         * Assert that no batched jobs were dispatched.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingBatched()
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
+                        $instance->assertNothingBatched();
         }
                     /**
          * Get all of the jobs matching a truth-test callback.
@@ -4200,6 +4296,52 @@
                         /** @var \Illuminate\Config\Repository $instance */
                         $instance->offsetUnset($key);
         }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Illuminate\Config\Repository::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Illuminate\Config\Repository::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Illuminate\Config\Repository::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {
+                        \Illuminate\Config\Repository::flushMacros();
+        }
          
     }
             /**
@@ -4229,7 +4371,7 @@
                         return $instance->make($name, $value, $minutes, $path, $domain, $secure, $httpOnly, $raw, $sameSite);
         }
                     /**
-         * Create a cookie that lasts "forever" (five years).
+         * Create a cookie that lasts "forever" (400 days).
          *
          * @param string $name
          * @param string $value
@@ -5183,6 +5325,52 @@
                         $instance->logQuery($query, $bindings, $time);
         }
                     /**
+         * Register a callback to be invoked when the connection queries for longer than a given amount of time.
+         *
+         * @param \DateTimeInterface|\Carbon\CarbonInterval|float|int $threshold
+         * @param callable $handler
+         * @return void 
+         * @static 
+         */ 
+        public static function whenQueryingForLongerThan($threshold, $handler)
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->whenQueryingForLongerThan($threshold, $handler);
+        }
+                    /**
+         * Allow all the query duration handlers to run again, even if they have already run.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function allowQueryDurationHandlersToRunAgain()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->allowQueryDurationHandlersToRunAgain();
+        }
+                    /**
+         * Get the duration of all run queries in milliseconds.
+         *
+         * @return float 
+         * @static 
+         */ 
+        public static function totalQueryDuration()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        return $instance->totalQueryDuration();
+        }
+                    /**
+         * Reset the duration of all run queries.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function resetTotalQueryDuration()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->resetTotalQueryDuration();
+        }
+                    /**
          * Register a hook to be run just before a database query is executed.
          *
          * @param \Closure $callback
@@ -6035,10 +6223,22 @@
                         \Illuminate\Events\Dispatcher::flushMacros();
         }
                     /**
+         * Specify the events that should be dispatched instead of faked.
+         *
+         * @param array|string $eventsToDispatch
+         * @return \Illuminate\Support\Testing\Fakes\EventFake 
+         * @static 
+         */ 
+        public static function except($eventsToDispatch)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\EventFake $instance */
+                        return $instance->except($eventsToDispatch);
+        }
+                    /**
          * Assert if an event has a listener attached to it.
          *
          * @param string $expectedEvent
-         * @param string $expectedListener
+         * @param string|array $expectedListener
          * @return void 
          * @static 
          */ 
@@ -6222,16 +6422,17 @@
                         return $instance->lines($path);
         }
                     /**
-         * Get the MD5 hash of the file at the given path.
+         * Get the hash of the file at the given path.
          *
          * @param string $path
+         * @param string $algorithm
          * @return string 
          * @static 
          */ 
-        public static function hash($path)
+        public static function hash($path, $algorithm = 'md5')
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->hash($path);
+                        return $instance->hash($path, $algorithm);
         }
                     /**
          * Write the contents of a file.
@@ -6500,6 +6701,19 @@
                         return $instance->isDirectory($directory);
         }
                     /**
+         * Determine if the given path is a directory that does not contain any other files or directories.
+         *
+         * @param string $directory
+         * @param bool $ignoreDotFiles
+         * @return bool 
+         * @static 
+         */ 
+        public static function isEmptyDirectory($directory, $ignoreDotFiles = false)
+        {
+                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+                        return $instance->isEmptyDirectory($directory, $ignoreDotFiles);
+        }
+                    /**
          * Determine if the given path is readable.
          *
          * @param string $path
@@ -6694,6 +6908,38 @@
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
                         return $instance->cleanDirectory($directory);
+        }
+                    /**
+         * Apply the callback if the given "value" is (or resolves to) truthy.
+         *
+         * @template TWhenParameter
+         * @template TWhenReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TWhenReturnType 
+         * @static 
+         */ 
+        public static function when($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+                        return $instance->when($value, $callback, $default);
+        }
+                    /**
+         * Apply the callback if the given "value" is (or resolves to) falsy.
+         *
+         * @template TUnlessParameter
+         * @template TUnlessReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TUnlessReturnType 
+         * @static 
+         */ 
+        public static function unless($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+                        return $instance->unless($value, $callback, $default);
         }
                     /**
          * Register a custom macro.
@@ -7045,6 +7291,33 @@
                         /** @var \Illuminate\Auth\Access\Gate $instance */
                         return $instance->setContainer($container);
         }
+                    /**
+         * Deny with a HTTP status code.
+         *
+         * @param int $status
+         * @param \Illuminate\Auth\Access\?string $message
+         * @param \Illuminate\Auth\Access\?int $code
+         * @return \Illuminate\Auth\Access\Response 
+         * @static 
+         */ 
+        public static function denyWithStatus($status, $message = null, $code = null)
+        {
+                        /** @var \Illuminate\Auth\Access\Gate $instance */
+                        return $instance->denyWithStatus($status, $message, $code);
+        }
+                    /**
+         * Deny with a 404 HTTP status code.
+         *
+         * @param \Illuminate\Auth\Access\?string $message
+         * @param \Illuminate\Auth\Access\?int $code
+         * @return \Illuminate\Auth\Access\Response 
+         * @static 
+         */ 
+        public static function denyAsNotFound($message = null, $code = null)
+        {
+                        /** @var \Illuminate\Auth\Access\Gate $instance */
+                        return $instance->denyAsNotFound($message, $code);
+        }
          
     }
             /**
@@ -7231,7 +7504,7 @@
      * @method static \Illuminate\Http\Client\PendingRequest asJson()
      * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
      * @method static \Illuminate\Http\Client\PendingRequest async()
-     * @method static \Illuminate\Http\Client\PendingRequest attach(string|array $name, string $contents = '', string|null $filename = null, array $headers = [])
+     * @method static \Illuminate\Http\Client\PendingRequest attach(string|array $name, string|resource $contents = '', string|null $filename = null, array $headers = [])
      * @method static \Illuminate\Http\Client\PendingRequest baseUrl(string $url)
      * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
      * @method static \Illuminate\Http\Client\PendingRequest bodyFormat(string $format)
@@ -7239,7 +7512,8 @@
      * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
      * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @method static \Illuminate\Http\Client\PendingRequest dump()
-     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0, ?callable $when = null, bool $throw = true)
+     * @method static \Illuminate\Http\Client\PendingRequest maxRedirects(int $max)
+     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleepMilliseconds = 0, ?callable $when = null, bool $throw = true)
      * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
      * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
      * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
@@ -7256,6 +7530,7 @@
      * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
      * @method static \Illuminate\Http\Client\PendingRequest throw(callable $callback = null)
      * @method static \Illuminate\Http\Client\PendingRequest throwIf($condition)
+     * @method \Illuminate\Http\Client\PendingRequest throwUnless($condition)
      * @method static array pool(callable $callback)
      * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response get(string $url, array|string|null $query = null)
@@ -7270,7 +7545,7 @@
                     /**
          * Create a new response instance for use during stubbing.
          *
-         * @param array|string $body
+         * @param array|string|null $body
          * @param int $status
          * @param array $headers
          * @return \GuzzleHttp\Promise\PromiseInterface 
@@ -7295,7 +7570,7 @@
                     /**
          * Register a stub callable that will intercept requests and be able to return stub responses.
          *
-         * @param callable|array $callback
+         * @param callable|array|null $callback
          * @return \Illuminate\Http\Client\Factory 
          * @static 
          */ 
@@ -7330,7 +7605,7 @@
                         return $instance->stubUrl($url, $callback);
         }
                     /**
-         * Indicate that an exception should not be thrown if any request is not faked.
+         * Indicate that an exception should be thrown if any request is not faked.
          *
          * @param bool $prevent
          * @return \Illuminate\Http\Client\Factory 
@@ -8126,6 +8401,7 @@
      * @method static void alwaysReplyTo(string $address, string|null $name = null)
      * @method static void alwaysReturnPath(string $address)
      * @method static void alwaysTo(string $address, string|null $name = null)
+     * @method static \Illuminate\Mail\PendingMail cc($users)
      * @method static \Illuminate\Mail\SentMessage|null plain(string $view, array $data, $callback)
      * @method static \Illuminate\Mail\SentMessage|null html(string $html, $callback)
      * @method static mixed laterOn(string $queue, \DateTimeInterface|\DateInterval|int $delay, \Illuminate\Contracts\Mail\Mailable|string|array $view)
@@ -8763,6 +9039,18 @@
                         $instance->assertSentTimes($notification, $expectedCount);
         }
                     /**
+         * Assert the total count of notification that were sent.
+         *
+         * @param int $expectedCount
+         * @return void 
+         * @static 
+         */ 
+        public static function assertCount($expectedCount)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+                        $instance->assertCount($expectedCount);
+        }
+                    /**
          * Assert the total amount of times a notification was sent.
          *
          * @param int $expectedCount
@@ -8802,6 +9090,17 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
                         return $instance->hasSent($notifiable, $notification);
+        }
+                    /**
+         * Get the notifications that have been sent.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function sentNotifications()
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+                        return $instance->sentNotifications();
         }
                     /**
          * Register a custom macro.
@@ -9087,6 +9386,18 @@
         {
                         /** @var \Illuminate\Queue\QueueManager $instance */
                         return $instance->setApplication($app);
+        }
+                    /**
+         * Specify the jobs that should be queued instead of faked.
+         *
+         * @param array|string $jobsToBeQueued
+         * @return \Illuminate\Support\Testing\Fakes\QueueFake 
+         * @static 
+         */ 
+        public static function except($jobsToBeQueued)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
+                        return $instance->except($jobsToBeQueued);
         }
                     /**
          * Assert if a job was pushed based on a truth-test callback.
@@ -9578,6 +9889,7 @@
          *
          * @param int $status
          * @return \Illuminate\Http\RedirectResponse 
+         * @deprecated Will be removed in a future Laravel version.
          * @static 
          */ 
         public static function home($status = 302)
@@ -9630,7 +9942,7 @@
                     /**
          * Create a new redirect response to the previously intended location.
          *
-         * @param string $default
+         * @param mixed $default
          * @param int $status
          * @param array $headers
          * @param bool|null $secure
@@ -9641,18 +9953,6 @@
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
                         return $instance->intended($default, $status, $headers, $secure);
-        }
-                    /**
-         * Set the intended url.
-         *
-         * @param string $url
-         * @return \Illuminate\Routing\Redirector 
-         * @static 
-         */ 
-        public static function setIntendedUrl($url)
-        {
-                        /** @var \Illuminate\Routing\Redirector $instance */
-                        return $instance->setIntendedUrl($url);
         }
                     /**
          * Create a new redirect response to the given path.
@@ -9781,6 +10081,29 @@
         {
                         /** @var \Illuminate\Routing\Redirector $instance */
                         $instance->setSession($session);
+        }
+                    /**
+         * Get the "intended" URL from the session.
+         *
+         * @return string|null 
+         * @static 
+         */ 
+        public static function getIntendedUrl()
+        {
+                        /** @var \Illuminate\Routing\Redirector $instance */
+                        return $instance->getIntendedUrl();
+        }
+                    /**
+         * Set the "intended" URL in the session.
+         *
+         * @param string $url
+         * @return \Illuminate\Routing\Redirector 
+         * @static 
+         */ 
+        public static function setIntendedUrl($url)
+        {
+                        /** @var \Illuminate\Routing\Redirector $instance */
+                        return $instance->setIntendedUrl($url);
         }
                     /**
          * Register a custom macro.
@@ -10009,6 +10332,39 @@
                         return $instance->fullUrlIs(...$patterns);
         }
                     /**
+         * Get the host name.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function host()
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->host();
+        }
+                    /**
+         * Get the HTTP host being requested.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function httpHost()
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->httpHost();
+        }
+                    /**
+         * Get the scheme and HTTP host.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function schemeAndHttpHost()
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->schemeAndHttpHost();
+        }
+                    /**
          * Determine if the request is the result of an AJAX call.
          *
          * @return bool 
@@ -10207,6 +10563,7 @@
                     /**
          * Gets the Session.
          *
+         * @throws SessionNotFoundException When session is not set properly
          * @static 
          */ 
         public static function getSession()
@@ -10237,6 +10594,30 @@
         {
                         /** @var \Illuminate\Http\Request $instance */
                         $instance->setLaravelSession($session);
+        }
+                    /**
+         * Set the locale for the request instance.
+         *
+         * @param string $locale
+         * @return void 
+         * @static 
+         */ 
+        public static function setRequestLocale($locale)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        $instance->setRequestLocale($locale);
+        }
+                    /**
+         * Set the default locale for the request instance.
+         *
+         * @param string $locale
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultRequestLocale($locale)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        $instance->setDefaultRequestLocale($locale);
         }
                     /**
          * Get the user making the request.
@@ -11652,6 +12033,19 @@
                         return $instance->date($key, $format, $tz);
         }
                     /**
+         * Retrieve input from the request as an enum.
+         *
+         * @param string $key
+         * @param string $enumClass
+         * @return mixed|null 
+         * @static 
+         */ 
+        public static function enum($key, $enumClass)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->enum($key, $enumClass);
+        }
+                    /**
          * Retrieve input from the request as a collection.
          *
          * @param array|string|null $key
@@ -11778,13 +12172,13 @@
          * Dump the request items and end the script.
          *
          * @param mixed $keys
-         * @return void 
+         * @return \Illuminate\Http\never 
          * @static 
          */ 
         public static function dd(...$keys)
         {
                         /** @var \Illuminate\Http\Request $instance */
-                        $instance->dd(...$keys);
+                        return $instance->dd(...$keys);
         }
                     /**
          * Dump the items.
@@ -13087,47 +13481,6 @@
         {
                         return \Illuminate\Routing\Router::inertia($uri, $component, $props);
         }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
-         * @static 
-         */ 
-        public static function auth($options = [])
-        {
-                        return \Illuminate\Routing\Router::auth($options);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
-         * @static 
-         */ 
-        public static function resetPassword()
-        {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
-        }
          
     }
             /**
@@ -14235,6 +14588,18 @@
                         return $instance->createS3Driver($config);
         }
                     /**
+         * Create a scoped driver.
+         *
+         * @param array $config
+         * @return \Illuminate\Filesystem\FilesystemAdapter 
+         * @static 
+         */ 
+        public static function createScopedDriver($config)
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemManager $instance */
+                        return $instance->createScopedDriver($config);
+        }
+                    /**
          * Set the given disk instance.
          *
          * @param string $name
@@ -14691,6 +15056,17 @@
                         return $instance->url($path);
         }
                     /**
+         * Determine if temporary URLs can be generated.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function providesTemporaryUrls()
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+                        return $instance->providesTemporaryUrls();
+        }
+                    /**
          * Get a temporary URL for the file at the given path.
          *
          * @param string $path
@@ -14825,6 +15201,38 @@
                         $instance->buildTemporaryUrlsUsing($callback);
         }
                     /**
+         * Apply the callback if the given "value" is (or resolves to) truthy.
+         *
+         * @template TWhenParameter
+         * @template TWhenReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TWhenReturnType 
+         * @static 
+         */ 
+        public static function when($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+                        return $instance->when($value, $callback, $default);
+        }
+                    /**
+         * Apply the callback if the given "value" is (or resolves to) falsy.
+         *
+         * @template TUnlessParameter
+         * @template TUnlessReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TUnlessReturnType 
+         * @static 
+         */ 
+        public static function unless($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+                        return $instance->unless($value, $callback, $default);
+        }
+                    /**
          * Register a custom macro.
          *
          * @param string $name
@@ -14893,14 +15301,27 @@
      */ 
         class URL {
                     /**
+         * Generate the URL to an application asset.
+         *
+         * @param string $path
+         * @param bool|null $secure
+         * @return string 
+         * @static 
+         */ 
+        public static function asset($path, $secure = null)
+        {
+                        /** @var \App\Helpers\UrlGenerator $instance */
+                        return $instance->asset($path, $secure);
+        }
+                    /**
          * Get the full URL for the current request.
          *
          * @return string 
          * @static 
          */ 
         public static function full()
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->full();
         }
                     /**
@@ -14910,8 +15331,8 @@
          * @static 
          */ 
         public static function current()
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->current();
         }
                     /**
@@ -14922,8 +15343,8 @@
          * @static 
          */ 
         public static function previous($fallback = false)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->previous($fallback);
         }
                     /**
@@ -14934,8 +15355,8 @@
          * @static 
          */ 
         public static function previousPath($fallback = false)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->previousPath($fallback);
         }
                     /**
@@ -14948,8 +15369,8 @@
          * @static 
          */ 
         public static function to($path, $extra = [], $secure = null)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->to($path, $extra, $secure);
         }
                     /**
@@ -14961,22 +15382,9 @@
          * @static 
          */ 
         public static function secure($path, $parameters = [])
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->secure($path, $parameters);
-        }
-                    /**
-         * Generate the URL to an application asset.
-         *
-         * @param string $path
-         * @param bool|null $secure
-         * @return string 
-         * @static 
-         */ 
-        public static function asset($path, $secure = null)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
-                        return $instance->asset($path, $secure);
         }
                     /**
          * Generate the URL to a secure asset.
@@ -14986,8 +15394,8 @@
          * @static 
          */ 
         public static function secureAsset($path)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->secureAsset($path);
         }
                     /**
@@ -15000,8 +15408,8 @@
          * @static 
          */ 
         public static function assetFrom($root, $path, $secure = null)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->assetFrom($root, $path, $secure);
         }
                     /**
@@ -15012,8 +15420,8 @@
          * @static 
          */ 
         public static function formatScheme($secure = null)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->formatScheme($secure);
         }
                     /**
@@ -15028,8 +15436,8 @@
          * @static 
          */ 
         public static function signedRoute($name, $parameters = [], $expiration = null, $absolute = true)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->signedRoute($name, $parameters, $expiration, $absolute);
         }
                     /**
@@ -15043,8 +15451,8 @@
          * @static 
          */ 
         public static function temporarySignedRoute($name, $expiration, $parameters = [], $absolute = true)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->temporarySignedRoute($name, $expiration, $parameters, $absolute);
         }
                     /**
@@ -15057,8 +15465,8 @@
          * @static 
          */ 
         public static function hasValidSignature($request, $absolute = true, $ignoreQuery = [])
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->hasValidSignature($request, $absolute, $ignoreQuery);
         }
                     /**
@@ -15070,8 +15478,8 @@
          * @static 
          */ 
         public static function hasValidRelativeSignature($request, $ignoreQuery = [])
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->hasValidRelativeSignature($request, $ignoreQuery);
         }
                     /**
@@ -15084,8 +15492,8 @@
          * @static 
          */ 
         public static function hasCorrectSignature($request, $absolute = true, $ignoreQuery = [])
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->hasCorrectSignature($request, $absolute, $ignoreQuery);
         }
                     /**
@@ -15096,8 +15504,8 @@
          * @static 
          */ 
         public static function signatureHasNotExpired($request)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->signatureHasNotExpired($request);
         }
                     /**
@@ -15111,8 +15519,8 @@
          * @static 
          */ 
         public static function route($name, $parameters = [], $absolute = true)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->route($name, $parameters, $absolute);
         }
                     /**
@@ -15126,8 +15534,8 @@
          * @static 
          */ 
         public static function toRoute($route, $parameters, $absolute)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->toRoute($route, $parameters, $absolute);
         }
                     /**
@@ -15141,8 +15549,8 @@
          * @static 
          */ 
         public static function action($action, $parameters = [], $absolute = true)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->action($action, $parameters, $absolute);
         }
                     /**
@@ -15153,8 +15561,8 @@
          * @static 
          */ 
         public static function formatParameters($parameters)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->formatParameters($parameters);
         }
                     /**
@@ -15166,8 +15574,8 @@
          * @static 
          */ 
         public static function formatRoot($scheme, $root = null)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->formatRoot($scheme, $root);
         }
                     /**
@@ -15180,8 +15588,8 @@
          * @static 
          */ 
         public static function format($root, $path, $route = null)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->format($root, $path, $route);
         }
                     /**
@@ -15192,8 +15600,8 @@
          * @static 
          */ 
         public static function isValidUrl($path)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->isValidUrl($path);
         }
                     /**
@@ -15204,8 +15612,8 @@
          * @static 
          */ 
         public static function defaults($defaults)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         $instance->defaults($defaults);
         }
                     /**
@@ -15215,8 +15623,8 @@
          * @static 
          */ 
         public static function getDefaultParameters()
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->getDefaultParameters();
         }
                     /**
@@ -15227,8 +15635,8 @@
          * @static 
          */ 
         public static function forceScheme($scheme)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         $instance->forceScheme($scheme);
         }
                     /**
@@ -15239,32 +15647,32 @@
          * @static 
          */ 
         public static function forceRootUrl($root)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         $instance->forceRootUrl($root);
         }
                     /**
          * Set a callback to be used to format the host of generated URLs.
          *
          * @param \Closure $callback
-         * @return \Illuminate\Routing\UrlGenerator 
+         * @return \App\Helpers\UrlGenerator 
          * @static 
          */ 
         public static function formatHostUsing($callback)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->formatHostUsing($callback);
         }
                     /**
          * Set a callback to be used to format the path of generated URLs.
          *
          * @param \Closure $callback
-         * @return \Illuminate\Routing\UrlGenerator 
+         * @return \App\Helpers\UrlGenerator 
          * @static 
          */ 
         public static function formatPathUsing($callback)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->formatPathUsing($callback);
         }
                     /**
@@ -15274,8 +15682,8 @@
          * @static 
          */ 
         public static function pathFormatter()
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->pathFormatter();
         }
                     /**
@@ -15285,8 +15693,8 @@
          * @static 
          */ 
         public static function getRequest()
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->getRequest();
         }
                     /**
@@ -15297,44 +15705,44 @@
          * @static 
          */ 
         public static function setRequest($request)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         $instance->setRequest($request);
         }
                     /**
          * Set the route collection.
          *
          * @param \Illuminate\Routing\RouteCollectionInterface $routes
-         * @return \Illuminate\Routing\UrlGenerator 
+         * @return \App\Helpers\UrlGenerator 
          * @static 
          */ 
         public static function setRoutes($routes)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->setRoutes($routes);
         }
                     /**
          * Set the session resolver for the generator.
          *
          * @param callable $sessionResolver
-         * @return \Illuminate\Routing\UrlGenerator 
+         * @return \App\Helpers\UrlGenerator 
          * @static 
          */ 
         public static function setSessionResolver($sessionResolver)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->setSessionResolver($sessionResolver);
         }
                     /**
          * Set the encryption key resolver.
          *
          * @param callable $keyResolver
-         * @return \Illuminate\Routing\UrlGenerator 
+         * @return \App\Helpers\UrlGenerator 
          * @static 
          */ 
         public static function setKeyResolver($keyResolver)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->setKeyResolver($keyResolver);
         }
                     /**
@@ -15344,20 +15752,20 @@
          * @static 
          */ 
         public static function getRootControllerNamespace()
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->getRootControllerNamespace();
         }
                     /**
          * Set the root controller namespace.
          *
          * @param string $rootNamespace
-         * @return \Illuminate\Routing\UrlGenerator 
+         * @return \App\Helpers\UrlGenerator 
          * @static 
          */ 
         public static function setRootControllerNamespace($rootNamespace)
-        {
-                        /** @var \Illuminate\Routing\UrlGenerator $instance */
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        /** @var \App\Helpers\UrlGenerator $instance */
                         return $instance->setRootControllerNamespace($rootNamespace);
         }
                     /**
@@ -15369,8 +15777,8 @@
          * @static 
          */ 
         public static function macro($name, $macro)
-        {
-                        \Illuminate\Routing\UrlGenerator::macro($name, $macro);
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        \App\Helpers\UrlGenerator::macro($name, $macro);
         }
                     /**
          * Mix another object into the class.
@@ -15382,8 +15790,8 @@
          * @static 
          */ 
         public static function mixin($mixin, $replace = true)
-        {
-                        \Illuminate\Routing\UrlGenerator::mixin($mixin, $replace);
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        \App\Helpers\UrlGenerator::mixin($mixin, $replace);
         }
                     /**
          * Checks if macro is registered.
@@ -15393,8 +15801,8 @@
          * @static 
          */ 
         public static function hasMacro($name)
-        {
-                        return \Illuminate\Routing\UrlGenerator::hasMacro($name);
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        return \App\Helpers\UrlGenerator::hasMacro($name);
         }
                     /**
          * Flush the existing macros.
@@ -15403,8 +15811,8 @@
          * @static 
          */ 
         public static function flushMacros()
-        {
-                        \Illuminate\Routing\UrlGenerator::flushMacros();
+        {            //Method inherited from \Illuminate\Routing\UrlGenerator         
+                        \App\Helpers\UrlGenerator::flushMacros();
         }
          
     }
@@ -15571,7 +15979,7 @@
                     /**
          * Get the container instance used by the validation factory.
          *
-         * @return \Illuminate\Contracts\Container\Container 
+         * @return \Illuminate\Contracts\Container\Container|null 
          * @static 
          */ 
         public static function getContainer()
@@ -16478,6 +16886,155 @@
         }
          
     }
+            /**
+     * 
+     *
+     * @see \Illuminate\Foundation\Vite
+     */ 
+        class Vite {
+                    /**
+         * Get the Content Security Policy nonce applied to all generated tags.
+         *
+         * @return string|null 
+         * @static 
+         */ 
+        public static function cspNonce()
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->cspNonce();
+        }
+                    /**
+         * Generate or set a Content Security Policy nonce to apply to all generated tags.
+         *
+         * @param \Illuminate\Foundation\?string $nonce
+         * @return string 
+         * @static 
+         */ 
+        public static function useCspNonce($nonce = null)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useCspNonce($nonce);
+        }
+                    /**
+         * Use the given key to detect integrity hashes in the manifest.
+         *
+         * @param string|false $key
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function useIntegrityKey($key)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useIntegrityKey($key);
+        }
+                    /**
+         * Set the Vite entry points.
+         *
+         * @param array $entryPoints
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function withEntryPoints($entryPoints)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->withEntryPoints($entryPoints);
+        }
+                    /**
+         * Get the Vite "hot" file path.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function hotFile()
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->hotFile();
+        }
+                    /**
+         * Set the Vite "hot" file path.
+         *
+         * @param string $path
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function useHotFile($path)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useHotFile($path);
+        }
+                    /**
+         * Set the Vite build directory.
+         *
+         * @param string $path
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function useBuildDirectory($path)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useBuildDirectory($path);
+        }
+                    /**
+         * Use the given callback to resolve attributes for script tags.
+         *
+         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): array)|array  $attributes
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function useScriptTagAttributes($attributes)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useScriptTagAttributes($attributes);
+        }
+                    /**
+         * Use the given callback to resolve attributes for style tags.
+         *
+         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): array)|array  $attributes
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function useStyleTagAttributes($attributes)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useStyleTagAttributes($attributes);
+        }
+                    /**
+         * Generate React refresh runtime script.
+         *
+         * @return \Illuminate\Support\HtmlString|void 
+         * @static 
+         */ 
+        public static function reactRefresh()
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->reactRefresh();
+        }
+                    /**
+         * Get the URL for an asset.
+         *
+         * @param string $asset
+         * @param string|null $buildDirectory
+         * @return string 
+         * @static 
+         */ 
+        public static function asset($asset, $buildDirectory = null)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->asset($asset, $buildDirectory);
+        }
+                    /**
+         * Get the Vite tag content as a string of HTML.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function toHtml()
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->toHtml();
+        }
+         
+    }
      
 }
 
@@ -16503,27 +17060,6 @@
         class Str {
          
     }
-            /**
-     * 
-     *
-     * @template TKey of array-key
-     * @template TValue
-     * @implements \ArrayAccess<TKey, TValue>
-     * @implements \Illuminate\Support\Enumerable<TKey, TValue>
-     */ 
-        class Collection {
-                    /**
-         * 
-         *
-         * @see \Laravel\Nova\NovaServiceProvider::registerCollectionMacros()
-         * @static 
-         */ 
-        public static function isAssoc()
-        {
-                        return \Illuminate\Support\Collection::isAssoc();
-        }
-         
-    }
      
 }
 
@@ -16537,21 +17073,11 @@
                     /**
          * 
          *
-         * @throws Http\Exceptions\MissingParameter
          * @static 
          */ 
         public static function make($apiKey = null, $contextDetector = null)
         {
                         return \Spatie\FlareClient\Flare::make($apiKey, $contextDetector);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */ 
-        public static function getReportDomain()
-        {
-                        return \Spatie\FlareClient\Flare::getReportDomain();
         }
                     /**
          * 
@@ -16632,6 +17158,16 @@
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
                         return $instance->filterExceptionsUsing($filterExceptionsCallable);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function filterReportsUsing($filterReportsCallable)
+        {
+                        /** @var \Spatie\FlareClient\Flare $instance */
+                        return $instance->filterReportsUsing($filterReportsCallable);
         }
                     /**
          * 
@@ -16915,149 +17451,6 @@
      
 }
 
-    namespace Laravel\Nova { 
-            /**
-     * 
-     *
-     */ 
-        class Nova {
-         
-    }
-     
-}
-
-    namespace Laravel\Socialite\Facades { 
-            /**
-     * 
-     *
-     * @see \Laravel\Socialite\SocialiteManager
-     */ 
-        class Socialite {
-                    /**
-         * Get a driver instance.
-         *
-         * @param string $driver
-         * @return mixed 
-         * @static 
-         */ 
-        public static function with($driver)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->with($driver);
-        }
-                    /**
-         * Build an OAuth 2 provider instance.
-         *
-         * @param string $provider
-         * @param array $config
-         * @return \Laravel\Socialite\Two\AbstractProvider 
-         * @static 
-         */ 
-        public static function buildProvider($provider, $config)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->buildProvider($provider, $config);
-        }
-                    /**
-         * Format the server configuration.
-         *
-         * @param array $config
-         * @return array 
-         * @static 
-         */ 
-        public static function formatConfig($config)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->formatConfig($config);
-        }
-                    /**
-         * Forget all of the resolved driver instances.
-         *
-         * @return \Laravel\Socialite\SocialiteManager 
-         * @static 
-         */ 
-        public static function forgetDrivers()
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->forgetDrivers();
-        }
-                    /**
-         * Set the container instance used by the manager.
-         *
-         * @param \Illuminate\Contracts\Container\Container $container
-         * @return \Laravel\Socialite\SocialiteManager 
-         * @static 
-         */ 
-        public static function setContainer($container)
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->setContainer($container);
-        }
-                    /**
-         * Get the default driver name.
-         *
-         * @return string 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function getDefaultDriver()
-        {
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->getDefaultDriver();
-        }
-                    /**
-         * Get a driver instance.
-         *
-         * @param string|null $driver
-         * @return mixed 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function driver($driver = null)
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->driver($driver);
-        }
-                    /**
-         * Register a custom driver creator Closure.
-         *
-         * @param string $driver
-         * @param \Closure $callback
-         * @return \Laravel\Socialite\SocialiteManager 
-         * @static 
-         */ 
-        public static function extend($driver, $callback)
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->extend($driver, $callback);
-        }
-                    /**
-         * Get all of the created "drivers".
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getDrivers()
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->getDrivers();
-        }
-                    /**
-         * Get the container instance used by the manager.
-         *
-         * @return \Illuminate\Contracts\Container\Container 
-         * @static 
-         */ 
-        public static function getContainer()
-        {            //Method inherited from \Illuminate\Support\Manager         
-                        /** @var \Laravel\Socialite\SocialiteManager $instance */
-                        return $instance->getContainer();
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Http { 
             /**
      * 
@@ -17157,47 +17550,6 @@
         {
                         return \Illuminate\Routing\Router::inertia($uri, $component, $props);
         }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
-         * @static 
-         */ 
-        public static function auth($options = [])
-        {
-                        return \Illuminate\Routing\Router::auth($options);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
-         * @static 
-         */ 
-        public static function resetPassword()
-        {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
-        }
          
     }
      
@@ -17231,98 +17583,6 @@
         {
                         return \Illuminate\Testing\TestResponse::inertiaPage();
         }
-         
-    }
-     
-}
-
-    namespace Illuminate\Database\Eloquent\Relations { 
-            /**
-     * 
-     *
-     */ 
-        class BelongsToMany {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class Relation {
-                    /**
-         * 
-         *
-         * @see \Laravel\Nova\Query\Mixin\BelongsToMany::getDefaultPivotAttributes()
-         * @static 
-         */ 
-        public static function getDefaultPivotAttributes()
-        {
-                        return \Illuminate\Database\Eloquent\Relations\Relation::getDefaultPivotAttributes();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Nova\Query\Mixin\BelongsToMany::applyDefaultPivotQuery()
-         * @param mixed $query
-         * @static 
-         */ 
-        public static function applyDefaultPivotQuery($query)
-        {
-                        return \Illuminate\Database\Eloquent\Relations\Relation::applyDefaultPivotQuery($query);
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class BelongsTo {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class HasMany {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class HasOneOrMany {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class MorphToMany {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class MorphMany {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class MorphOneOrMany {
-         
-    }
-     
-}
-
-    namespace Illuminate\Notifications { 
-            /**
-     * 
-     *
-     */ 
-        class DatabaseNotificationCollection {
          
     }
      
@@ -17570,7 +17830,7 @@ namespace  {
              * Find a model by its primary key.
              *
              * @param mixed $id
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null 
              * @static 
              */ 
@@ -17584,7 +17844,7 @@ namespace  {
              * Find multiple models by their primary keys.
              *
              * @param \Illuminate\Contracts\Support\Arrayable|array $ids
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Collection 
              * @static 
              */ 
@@ -17598,7 +17858,7 @@ namespace  {
              * Find a model by its primary key or throw an exception.
              *
              * @param mixed $id
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static|static[] 
              * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
              * @static 
@@ -17613,7 +17873,7 @@ namespace  {
              * Find a model by its primary key or return fresh model instance.
              *
              * @param mixed $id
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|static 
              * @static 
              */ 
@@ -17627,7 +17887,7 @@ namespace  {
              * Find a model by its primary key or call a callback.
              *
              * @param mixed $id
-             * @param \Closure|array $columns
+             * @param \Closure|array|string $columns
              * @param \Closure|null $callback
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|mixed 
              * @static 
@@ -17683,7 +17943,7 @@ namespace  {
                 /**
              * Execute the query and get the first result or throw an exception.
              *
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|static 
              * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
              * @static 
@@ -17697,7 +17957,7 @@ namespace  {
                 /**
              * Execute the query and get the first result or call a callback.
              *
-             * @param \Closure|array $columns
+             * @param \Closure|array|string $columns
              * @param \Closure|null $callback
              * @return \Illuminate\Database\Eloquent\Model|static|mixed 
              * @static 
@@ -17833,8 +18093,8 @@ namespace  {
                 /**
              * Paginate the given query.
              *
-             * @param int|null $perPage
-             * @param array $columns
+             * @param int|null|\Closure $perPage
+             * @param array|string $columns
              * @param string $pageName
              * @param int|null $page
              * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
@@ -17851,7 +18111,7 @@ namespace  {
              * Paginate the given query into a simple paginator.
              *
              * @param int|null $perPage
-             * @param array $columns
+             * @param array|string $columns
              * @param string $pageName
              * @param int|null $page
              * @return \Illuminate\Contracts\Pagination\Paginator 
@@ -17867,7 +18127,7 @@ namespace  {
              * Paginate the given query into a cursor paginator.
              *
              * @param int|null $perPage
-             * @param array $columns
+             * @param array|string $columns
              * @param string $cursorName
              * @param \Illuminate\Pagination\Cursor|string|null $cursor
              * @return \Illuminate\Contracts\Pagination\CursorPaginator 
@@ -18070,6 +18330,19 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->setEagerLoads($eagerLoad);
+            }
+             
+                /**
+             * Indicate that the given relationships should not be eagerly loaded.
+             *
+             * @param array $relations
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function withoutEagerLoad($relations)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->withoutEagerLoad($relations);
             }
              
                 /**
@@ -18338,13 +18611,13 @@ namespace  {
              *
              * @template TWhenParameter
              * @template TWhenReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter  $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TWhenReturnType 
              * @static 
              */ 
-            public static function when($value, $callback = null, $default = null)
+            public static function when($value = null, $callback = null, $default = null)
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->when($value, $callback, $default);
@@ -18355,13 +18628,13 @@ namespace  {
              *
              * @template TUnlessParameter
              * @template TUnlessReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TUnlessParameter)|TUnlessParameter  $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TUnlessReturnType 
              * @static 
              */ 
-            public static function unless($value, $callback = null, $default = null)
+            public static function unless($value = null, $callback = null, $default = null)
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->unless($value, $callback, $default);
@@ -18442,6 +18715,24 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->whereHas($relation, $callback, $operator, $count);
+            }
+             
+                /**
+             * Add a relationship count / exists condition to the query with where clauses.
+             * 
+             * Also load the relationship with same condition.
+             *
+             * @param string $relation
+             * @param \Closure|null $callback
+             * @param string $operator
+             * @param int $count
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function withWhereHas($relation, $callback = null, $operator = '>=', $count = 1)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->withWhereHas($relation, $callback, $operator, $count);
             }
              
                 /**
@@ -18924,7 +19215,7 @@ namespace  {
                 /**
              * Makes "from" fetch from a subquery.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -19161,7 +19452,7 @@ namespace  {
                 /**
              * Add a subquery cross join to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -19177,13 +19468,13 @@ namespace  {
              *
              * @param array $wheres
              * @param array $bindings
-             * @return void 
+             * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
             public static function mergeWheres($wheres, $bindings)
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                $instance->mergeWheres($wheres, $bindings);
+                                return $instance->mergeWheres($wheres, $bindings);
             }
              
                 /**
@@ -19620,7 +19911,7 @@ namespace  {
              *
              * @param string $column
              * @param string $operator
-             * @param \DateTimeInterface|string|null $value
+             * @param \DateTimeInterface|string|int|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -19636,7 +19927,7 @@ namespace  {
              *
              * @param string $column
              * @param string $operator
-             * @param \DateTimeInterface|string|null $value
+             * @param \DateTimeInterface|string|int|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -19651,7 +19942,7 @@ namespace  {
              *
              * @param string $column
              * @param string $operator
-             * @param \DateTimeInterface|string|null $value
+             * @param \DateTimeInterface|string|int|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -19667,7 +19958,7 @@ namespace  {
              *
              * @param string $column
              * @param string $operator
-             * @param \DateTimeInterface|string|null $value
+             * @param \DateTimeInterface|string|int|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -20070,8 +20361,8 @@ namespace  {
              * Add a "having" clause to the query.
              *
              * @param \Closure|string $column
-             * @param string|null $operator
-             * @param string|null $value
+             * @param string|int|float|null $operator
+             * @param string|int|float|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -20086,8 +20377,8 @@ namespace  {
              * Add an "or having" clause to the query.
              *
              * @param \Closure|string $column
-             * @param string|null $operator
-             * @param string|null $value
+             * @param string|int|float|null $operator
+             * @param string|int|float|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -20228,7 +20519,7 @@ namespace  {
                 /**
              * Add an "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Expression|string $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -20243,7 +20534,7 @@ namespace  {
                 /**
              * Add a descending "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Expression|string $column
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -20393,7 +20684,7 @@ namespace  {
                 /**
              * Add a union statement to the query.
              *
-             * @param \Illuminate\Database\Query\Builder|\Closure $query
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $query
              * @param bool $all
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -20407,7 +20698,7 @@ namespace  {
                 /**
              * Add a union all statement to the query.
              *
-             * @param \Illuminate\Database\Query\Builder|\Closure $query
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder $query
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -20718,7 +21009,7 @@ namespace  {
              * Insert new records into the table using a subquery.
              *
              * @param array $columns
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|string $query
              * @return int 
              * @static 
              */ 
@@ -21048,9 +21339,8 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
+            class Vite extends \Illuminate\Support\Facades\Vite {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
-            class Nova extends \Laravel\Nova\Nova {}
-            class Socialite extends \Laravel\Socialite\Facades\Socialite {}
      
 }
 

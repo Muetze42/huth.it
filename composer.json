@@ -1,45 +1,36 @@
 {
-    "name": "laravel/laravel",
+    "name": "norman-huth/huth-it",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "description": "https://huth.it",
     "authors": [
         {
             "name": "Norman Huth",
-            "homepage": "https://huth.it"
+            "homepage": "https://huth.it",
+            "role": "developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        }
+    "keywords": [
+        "framework",
+        "laravel"
     ],
+    "license": "MIT",
     "require": {
-        "php": "^8.0.2",
-        "f360dev/laravel-ignition": "dev-main",
-        "guzzlehttp/guzzle": "^7.2",
-        "inertiajs/inertia-laravel": "^0.5.4",
-        "laravel-notification-channels/telegram": "^2.0",
-        "laravel/framework": "^9.2",
-        "laravel/nova": "^4.2",
-        "laravel/sanctum": "^2.14.1",
-        "laravel/socialite": "^5.5",
-        "laravel/tinker": "^2.7",
-        "norman-huth/nova-assets-changer": "^1.0",
-        "norman-huth/nova-secret-field": "^1.0",
-        "norman-huth/nova-values-field": "^1.0",
-        "socialiteproviders/github": "^4.1",
-        "ext-curl": "*"
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.5",
+        "inertiajs/inertia-laravel": "^0.6",
+        "laravel/framework": "^9.30",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.12.3",
+        "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0",
         "tutorigo/laravel-ide-macros": "^1.6"
     },
     "autoload": {
@@ -49,7 +40,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/functions.php"
+            "bootstrap/functions/app.php",
+            "bootstrap/functions/helpers.php"
         ]
     },
     "autoload-dev": {
@@ -63,9 +55,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan helper",
-            "@php artisan nova:custom-assets"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -82,7 +72,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

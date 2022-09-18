@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -15,7 +14,7 @@ class HandleInertiaRequests extends Middleware
      * @see https://inertiajs.com/server-side-setup#root-template
      * @var string
      */
-    protected $rootView = 'app';
+    protected $rootView = 'app.layout';
 
     /**
      * Determines the current asset version.
@@ -38,20 +37,20 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        $route = Route::currentRouteName();
-        $routePart = explode('.', $route)[0];
         $pageTitle = config('app.name');
-        if ($routePart && $routePart != 'home') {
-            $routePart = str_replace('-', ' ', $routePart);
-            $pageTitle = ucwords($routePart).' « '.$pageTitle;
+        $routeName = Route::currentRouteName();
+        if ($routeName) {
+            $routeName = explode('.', $routeName)[1];
+            $routeName = str_replace('-', ' ', $routeName);
+            $pageTitle = ucwords($routeName);
         }
 
         view()->share('pageTitle', $pageTitle);
 
         return array_merge(parent::share($request), [
-            'csrf_token'    => csrf_token(),
-            'pageTitle'     => $pageTitle,
-            'authed'        => auth()->check(),
+            'pageTitle' => $pageTitle,
+            'faIcon'    => config('this.fontawesome.set', 'fas'),
+            'faClass'   => config('this.fontawesome.class', 'fa-fw'),
         ]);
     }
 }

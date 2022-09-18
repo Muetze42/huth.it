@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands\Development;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Composer;
+use Illuminate\Support\Str;
 
 class PivotMigrateMakeCommand extends GeneratorCommand
 {

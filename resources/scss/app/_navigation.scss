@@ -1,0 +1,104 @@
+.left-nav {
+    @apply my-8 overflow-y-auto px-1 min-w-[13rem] border-r hidden content:block;
+    @apply border-secondary;
+    @apply dark:border-secondary-dark;
+}
+
+.nav {
+    @apply space-y-9;
+
+    .label {
+        @apply font-medium text-primary-900 dark:text-white mb-1;
+    }
+
+    ul.items {
+        @apply mt-2 border-l-2 border-primary-100 dark:border-primary-800 lg:mt-4 lg:space-y-2 lg:border-primary-300;
+        //@apply space-y-2 lg:space-y-2;
+        @apply space-y-2;
+
+        &:last-child {
+            @apply mt-0;
+        }
+
+        li {
+            @apply relative;
+
+            a {
+                @apply block w-full pl-3.5;
+                @apply before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full before:hidden hover:before:block;
+                @apply text-primary-600 before:bg-primary-300 hover:text-primary-700;
+                @apply dark:text-primary-400 dark:before:bg-primary-700 dark:hover:text-primary-300;
+
+                &:not(.active) {
+                    @apply hover:underline;
+                }
+
+                &.active {
+                    @apply text-sky-500;
+                }
+            }
+        }
+    }
+}
+.menu {
+    @apply relative inline-block;
+}
+.menu-items {
+    @apply absolute rounded-lg p-2 z-30 border mt-0.5 left-0;
+    @apply bg-white border-secondary;
+    @apply dark:border-secondary-dark dark:bg-secondary-dark;
+}
+.menu-item {
+    @apply select-none text-left p-2 rounded-lg flex w-full whitespace-nowrap items-center;
+    @apply hover:bg-primary-300;
+    @apply dark:hover:bg-primary-900;
+
+    svg {
+        @apply mr-1;
+    }
+
+    &.active {
+        @apply text-sky-500;
+    }
+}
+
+header {
+    @apply border-b;
+}
+
+footer {
+    @apply border-t;
+
+    .btn {
+        @apply py-1;
+    }
+
+    svg {
+        @apply mr-1;
+    }
+
+    a {
+        @apply mr-2;
+    }
+
+    .container {
+        @apply space-y-2;
+    }
+}
+
+header, footer {
+    @apply border-secondary;
+    @apply dark:border-secondary-dark;
+}
+.temp {
+    @apply overflow-hidden;
+    .label {
+        @apply ml-4;
+    }
+    ul {
+        @apply my-2 #{!important};
+        li {
+            @apply mt-2 #{!important};
+        }
+    }
+}

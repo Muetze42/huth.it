@@ -1,0 +1,46 @@
+[
+    {
+        "label": null,
+        "items": [
+            {
+                "url": "/",
+                "label": "Home"
+            }
+        ]
+    },
+    {
+        "label": "Stuff",
+        "items": [
+            {
+                "url": "/nova-packages",
+                "label": "Nova Packages"
+            }
+        ]
+    },
+    {
+        "label": "Tools",
+        "items": [
+            {
+                "url": "/password-generator",
+                "label": "Password Generator"
+            },
+            {
+                "url": "/string-formatter",
+                "label": "String Formatter"
+            }
+        ]
+    },
+    {
+        "label": "Legal pages",
+        "items": [
+            {
+                "url": "/imprint",
+                "label": "Imprint"
+            },
+            {
+                "url": "/privacy",
+                "label": "Privacy Policy"
+            }
+        ]
+    }
+]
