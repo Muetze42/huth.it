@@ -4,6 +4,9 @@
 
 p {
     @apply mb-2 text-justify;
+    a {
+        @apply break-words md:break-normal;
+    }
 }
 
 hr {
