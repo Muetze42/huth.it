@@ -1,5 +1,3 @@
-/** @type {import('tailwindcss').Config} */
-// const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors');
 
 module.exports = {
@@ -17,8 +15,11 @@ module.exports = {
                 'secondary-dark': colors.slate[800],
             },
             screens: {
-                'content': '976px'
-            }
+                'desktop': '976px',
+            },
+            maxWidth: {
+                'content': '60rem',
+            },
         },
     },
     plugins: [

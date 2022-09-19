@@ -20,7 +20,7 @@
         <div class="container">
             <div>
                 <Menu as="div" class="menu">
-                    <button type="button" class="btn mr-2 content:hidden" @click="menuOpen = !menuOpen">
+                    <button type="button" class="btn mr-2 desktop:hidden" @click="menuOpen = !menuOpen">
                         <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-bars']" :class="$page.props.faClass" />
                     </button>
                     <MenuButton class="btn">
