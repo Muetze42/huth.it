@@ -1,6 +1,6 @@
 <template>
     <a v-for="link in links" target="_blank" class="btn" :href="link.url">
-        <FontAwesomeIcon :icon="['fab', link.icon]" :class="$page.props.faClass"/>
+        <font-awesome-icon :icon="'fa-brands fa-'+ link.icon" :class="$page.props.faClass" />
         {{ link.label }}
     </a>
 </template>

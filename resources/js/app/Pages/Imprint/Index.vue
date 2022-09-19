@@ -8,7 +8,7 @@
         <div>VAT ID: {{ address.vat }}</div>
     </address>
     <h2>Contact</h2>
-    {{ address.mAddress }}<FontAwesomeIcon :icon="['far', 'fa-at']"/>{{ address.mProvider }}
+    {{ address.mAddress }}<font-awesome-icon icon="fa-regular fa-at" />{{ address.mProvider }}
 </template>
 
 <script>
@@ -19,7 +19,6 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faAt,
 } from '@fortawesome/pro-regular-svg-icons'
-// } from '@fortawesome/pro-light-svg-icons'
 library.add(
     faAt,
 );
