@@ -1,7 +1,9 @@
 <template>
     <h1>Password Generator</h1>
-    <div class="form-row">
+    <div class="form-row-2">
         <input id="password" type="text" v-model="password" class="form-input" aria-label="Password">
+    </div>
+    <div class="form-row">
         <button @click="generatePassword()" aria-label="Refresh" class="btn">
             <font-awesome-icon icon="fa-sharp fa-solid fa-arrows-rotate" :class="$page.props.faClass" />
             Regenerate Passwort
