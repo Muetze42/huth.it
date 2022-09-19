@@ -33,7 +33,7 @@ class IdeHelperCommand extends Command
             ]);
             $this->call('ide-helper:generate');
             $this->call('ide-helper:meta');
-            $this->call('ide-helper:macros');
+//            $this->call('ide-helper:macros');
 
             return 0;
         }
