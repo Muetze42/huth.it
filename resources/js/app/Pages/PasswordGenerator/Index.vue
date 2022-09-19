@@ -1,9 +1,11 @@
 <template>
     <h1>Password Generator</h1>
-    <div class="form-row">
+    <div class="form-row-2">
         <input id="password" type="text" v-model="password" class="form-input" aria-label="Password">
+    </div>
+    <div class="form-row">
         <button @click="generatePassword()" aria-label="Refresh" class="btn">
-            <FontAwesomeIcon :icon="[$page.props.faIcon, 'arrows-rotate']" :class="$page.props.faClass" />
+            <font-awesome-icon icon="fa-sharp fa-solid fa-arrows-rotate" :class="$page.props.faClass" />
             Regenerate Passwort
         </button>
     </div>
@@ -45,7 +47,7 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faArrowsRotate,
-} from '@fortawesome/pro-solid-svg-icons'
+} from '@fortawesome/sharp-solid-svg-icons'
 library.add(
     faArrowsRotate,
 );

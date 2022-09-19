@@ -42,7 +42,8 @@ class HandleInertiaRequests extends Middleware
         if (!empty($routeName)) {
             $parts = explode('.', $routeName);
             if (!empty($parts[1])) {
-
+                $routeName = str_replace('-', ' ', $parts[1]);
+                $pageTitle = ucwords($routeName);
             }
         }
 
@@ -50,7 +51,6 @@ class HandleInertiaRequests extends Middleware
 
         return array_merge(parent::share($request), [
             'pageTitle' => $pageTitle,
-            'faIcon'    => config('this.fontawesome.set', 'fas'),
             'faClass'   => config('this.fontawesome.class', 'fa-fw'),
         ]);
     }

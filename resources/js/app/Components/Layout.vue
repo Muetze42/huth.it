@@ -9,7 +9,7 @@
                              leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0" leave-to="-translate-x-full">
                 <div class="text-right">
                     <button type="button" class="btn" @click="menuOpen = false">
-                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-xmark']" :class="$page.props.faClass" />
+                        <font-awesome-icon icon="fa-sharp fa-solid fa-xmark" :class="$page.props.faClass" />
                     </button>
                 </div>
                 <MainMenu />
@@ -20,14 +20,14 @@
         <div class="container">
             <div>
                 <Menu as="div" class="menu">
-                    <button type="button" class="btn mr-2 content:hidden" @click="menuOpen = !menuOpen">
-                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-bars']" :class="$page.props.faClass" />
+                    <button type="button" class="btn mr-2 desktop:hidden" @click="menuOpen = !menuOpen">
+                        <font-awesome-icon icon="fa-sharp fa-solid fa-bars" :class="$page.props.faClass" />
                     </button>
                     <MenuButton class="btn">
                         <span class="sr-only">Switch between Dark & Light Mode</span>
-                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-sun-bright']" :class="$page.props.faClass" v-if="this.theme == 'light'"/>
-                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-moon']" :class="$page.props.faClass" v-else-if="this.theme == 'dark'"/>
-                        <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-display']" :class="$page.props.faClass" v-else/>
+                        <font-awesome-icon icon="fa-sharp fa-solid fa-sun-bright" :class="$page.props.faClass" v-if="this.theme == 'light'"/>
+                        <font-awesome-icon icon="fa-sharp fa-solid fa-moon" :class="$page.props.faClass" v-else-if="this.theme == 'dark'"/>
+                        <font-awesome-icon icon="fa-sharp fa-solid fa-display" :class="$page.props.faClass" v-else/>
                     </MenuButton>
                     <transition
                         enter-active-class="transition duration-100 ease-out"
@@ -39,19 +39,19 @@
                         <MenuItems class="menu-items">
                             <MenuItem class="menu-item" :class="{ 'active': this.theme == 'light' }">
                                 <button @click="toggleTheme('light')" type="button">
-                                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-sun-bright']" :class="$page.props.faClass"/>
+                                    <font-awesome-icon icon="fa-sharp fa-solid fa-sun-bright" :class="$page.props.faClass" />
                                     Light Mode
                                 </button>
                             </MenuItem>
                             <MenuItem class="menu-item" :class="{ 'active': this.theme == 'dark' }">
                                 <button @click="toggleTheme('dark')" type="button">
-                                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-moon']" :class="$page.props.faClass"/>
+                                    <font-awesome-icon icon="fa-sharp fa-solid fa-moon" :class="$page.props.faClass" />
                                     Dark Mode
                                 </button>
                             </MenuItem>
                             <MenuItem class="menu-item" :class="{ 'active': !this.theme }">
                                 <button @click="toggleTheme()" type="button">
-                                    <FontAwesomeIcon :icon="[$page.props.faIcon, 'fa-display']" :class="$page.props.faClass"/>
+                                    <font-awesome-icon icon="fa-sharp fa-solid fa-display" :class="$page.props.faClass" />
                                     System
                                 </button>
                             </MenuItem>
@@ -94,7 +94,7 @@ import {
     faMoon,
     faBars,
     faXmark,
-} from '@fortawesome/pro-solid-svg-icons'
+} from '@fortawesome/sharp-solid-svg-icons'
 library.add(
     faDisplay,
     faSunBright,
@@ -141,16 +141,6 @@ export default {
         return {
             menuOpen: false,
             theme: null,
-            stuffLinks: [
-                {
-                    url: '/nova-packages',
-                    label: 'Nova Packages'
-                },
-                {
-                    url: '/sites',
-                    label: 'Websites'
-                }
-            ],
         }
     },
     props: {

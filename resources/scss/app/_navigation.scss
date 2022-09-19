@@ -1,16 +1,16 @@
 .left-nav {
-    @apply my-8 overflow-y-auto px-1 min-w-[14rem] border-r hidden content:block;
+    @apply my-8 overflow-y-auto px-1 min-w-[14rem] border-r hidden desktop:block;
     @apply border-secondary;
     @apply dark:border-secondary-dark;
 
     .nav {
-        @apply fixed overflow-y-auto w-[13rem] content:pl-0.5;
+        @apply fixed overflow-y-auto w-[13rem] desktop:pl-0.5;
         max-height: calc(100vh - 10rem);
     }
 }
 
 .nav {
-    @apply space-y-5 content:space-y-9 select-none;
+    @apply space-y-5 desktop:space-y-9 select-none;
 
     .label {
         @apply font-medium text-primary-900 dark:text-white mb-2;
@@ -28,8 +28,8 @@
             @apply relative;
 
             a {
-                @apply block w-full content:pl-3.5;
-                @apply content:before:pointer-events-none before:absolute content:before:-left-1 content:before:top-1/2 content:before:h-1.5 content:before:w-1.5 content:before:-translate-y-1/2 content:before:rounded-full content:before:hidden content:hover:before:block;
+                @apply block w-full desktop:pl-3.5;
+                @apply desktop:before:pointer-events-none before:absolute desktop:before:-left-1 desktop:before:top-1/2 desktop:before:h-1.5 desktop:before:w-1.5 desktop:before:-translate-y-1/2 desktop:before:rounded-full desktop:before:hidden desktop:hover:before:block;
                 @apply text-primary-600 before:bg-primary-300 hover:text-primary-700;
                 @apply dark:text-primary-400 dark:before:bg-primary-700 dark:hover:text-primary-300;
 
