@@ -52,6 +52,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'pageTitle' => $pageTitle,
             'faClass'   => config('this.fontawesome.class', 'fa-fw'),
+            'section'   => str_replace('Controller', '', class_basename(explode('@', Route::currentRouteAction())[0])),
         ]);
     }
 }

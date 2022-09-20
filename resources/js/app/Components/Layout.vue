@@ -72,6 +72,13 @@
         </nav>
         <div class="content">
             <slot/>
+            <div class="github-action">
+                <span>
+                    <font-awesome-icon :icon="'fa-brands fa-github'" class="fa-fw" />
+                </span>
+                <a class="btn" :href="'https://github.com/Muetze42/huth.it/blob/main/app/Http/Controllers/app/'+this.$page.props.section+'Controller.php'" target="_blank">Edit Controller</a>
+                <a class="btn" :href="'https://github.com/Muetze42/huth.it/blob/main/resources/js/app/Pages/'+this.$page.props.section+'/Index.vue'" target="_blank">Edit Vue Component</a>
+            </div>
         </div>
     </main>
     <footer>
@@ -86,7 +93,6 @@ import { Inertia } from '@inertiajs/inertia';
 import MainMenu from './../Components/MainMenu.vue';
 import Footer from './../Components/Footer.vue';
 /* FontAwesome START */
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faDisplay,
@@ -122,7 +128,6 @@ import {
 export default {
     name: "Layout",
     components: {
-        FontAwesomeIcon,
         MainMenu,
         Menu,
         MenuButton,
@@ -142,9 +147,6 @@ export default {
             menuOpen: false,
             theme: null,
         }
-    },
-    props: {
-        pageTitle: String,
     },
     methods: {
         toggleTheme(scheme) {

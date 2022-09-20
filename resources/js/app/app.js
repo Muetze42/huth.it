@@ -3,6 +3,14 @@ import {createInertiaApp, Link} from '@inertiajs/inertia-vue3';
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 import {InertiaProgress} from '@inertiajs/progress'
 import Layout from './Components/Layout.vue'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {
+    faGithub,
+} from '@fortawesome/free-brands-svg-icons'
+library.add(
+    faGithub,
+);
 
 createInertiaApp({
     resolve: (name) => {
@@ -21,6 +29,7 @@ createInertiaApp({
         VueApp
             .use(plugin)
             .component("Link", Link)
+            .component("font-awesome-icon", FontAwesomeIcon,)
             .mount(el)
     },
 });

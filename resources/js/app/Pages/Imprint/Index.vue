@@ -14,7 +14,6 @@
 <script>
 import addressData from './../../../../../settings/imprint.json'
 /* FontAwesome START */
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faAt,
@@ -24,9 +23,6 @@ library.add(
 );
 /* FontAwesome END */
 export default {
-    components: {
-        FontAwesomeIcon
-    },
     data() {
         return {
             address: addressData
