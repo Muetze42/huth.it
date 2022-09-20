@@ -40,3 +40,21 @@ main {
 @import "navigation";
 @import "forms";
 @import "content";
+
+.github-action {
+    @apply mt-20 text-right pt-2 max-w-xs ml-auto;
+    @apply border-t border-dashed border-primary-500;
+
+    span {
+        @apply bg-primary-400 dark:bg-primary-700;
+        @apply p-1 text-xs rounded-l;
+    }
+
+    a {
+        @apply py-1 text-xs rounded-none;
+
+        &:last-child {
+            @apply rounded-r;
+        }
+    }
+}
