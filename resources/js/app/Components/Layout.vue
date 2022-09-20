@@ -86,7 +86,6 @@ import { Inertia } from '@inertiajs/inertia';
 import MainMenu from './../Components/MainMenu.vue';
 import Footer from './../Components/Footer.vue';
 /* FontAwesome START */
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faDisplay,
@@ -122,7 +121,6 @@ import {
 export default {
     name: "Layout",
     components: {
-        FontAwesomeIcon,
         MainMenu,
         Menu,
         MenuButton,

@@ -43,7 +43,6 @@
 
 <script>
 /* FontAwesome START */
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
     faArrowsRotate,
@@ -54,9 +53,6 @@ library.add(
 /* FontAwesome END */
 
 export default {
-    components: {
-        FontAwesomeIcon,
-    },
     data() {
         return {
             charsSmall: true,

@@ -7,26 +7,18 @@
 
 <script>
 /* FontAwesome START */
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
-    faGithub,
     faLinkedin,
-    faLaravel,
     faInstagram,
 } from '@fortawesome/free-brands-svg-icons'
 library.add(
-    faGithub,
     faLinkedin,
-    faLaravel,
     faInstagram,
 );
 /* FontAwesome END */
 export default {
     name: "Footer",
-    components: {
-        FontAwesomeIcon,
-    },
     data() {
         return {
             links: [
