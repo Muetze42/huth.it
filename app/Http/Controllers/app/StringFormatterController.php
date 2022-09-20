@@ -25,8 +25,6 @@ class StringFormatterController extends Controller
                 'ASCII' => Str::ascii($string, $language),
                 default => Str::slug($string, '-', $language),
             };
-
-            Log::debug($output);
         }
 
         return [
