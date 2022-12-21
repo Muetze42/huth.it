@@ -30,7 +30,8 @@ body {
 }
 
 main {
-    @apply flex-1 w-full flex mt-12 z-30;
+    @apply flex-1 w-full flex z-30;
+    margin-top: 3rem;
 }
 
 .container {

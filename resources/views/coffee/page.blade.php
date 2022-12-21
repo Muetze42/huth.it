@@ -6,7 +6,8 @@
     <title>Support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow"/>
-    @vite(['resources/scss/coffee/page.scss'])
+{{--    @vite(['resources/scss/coffee/page.scss'])--}}
+    <link rel="stylesheet" href="{{ asset('coffeeAssets/assets/page.aa113f52.css') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/c/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('c/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('c/favicon/favicon-16x16.png') }}">

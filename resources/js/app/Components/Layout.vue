@@ -60,8 +60,12 @@
                 </Menu>
             </div>
             <div>
-                <a href="https://stand-with-ukraine.pp.ua/" target="_blank" id="StandWithUkraine">
+                <a href="https://stand-with-ukraine.pp.ua/" target="_blank">
                     <img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg" alt="StandWithUkraine">
+                </a>
+                <div class="h-1"></div>
+                <a href="https://linktr.ee/CurrentPetitionsFreeIran" target="_blank">
+                    <img src="/assets/iran-banner.svg" alt="Current petitions for Iran" class="top-banner">
                 </a>
             </div>
         </div>
