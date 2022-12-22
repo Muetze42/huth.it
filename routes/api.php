@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use NormanHuth\HelpersLaravel\App\Http\Middleware\SanctumOrGuest;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function () {
+    return [
+        'message' => 'It work’s!',
+        'authenticated' => auth()->check(),
+        'time' => now(),
+    ];
+});
+Route::middleware(SanctumOrGuest::class)->group(function () {
+    //
 });

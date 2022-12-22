@@ -1,28 +1,38 @@
 {
-    "name": "norman-huth/huth-it",
+    "name": "norman-huth/huth.it",
     "type": "project",
-    "description": "https://huth.it",
-    "authors": [
-        {
-            "name": "Norman Huth",
-            "homepage": "https://huth.it",
-            "role": "developer"
-        }
-    ],
+    "description": "Personal website of Norman Huth.",
+    "homepage": "https://huth.it",
+    "support": {
+        "source": "https://github.com/Muetze42/huth.it"
+    },
     "keywords": [
+        "developer-website",
         "framework",
-        "laravel"
+        "inertiajs",
+        "laravel",
+        "laravel-nova",
+        "laravel-nova-4",
+        "personal-website",
+        "php",
+        "php8",
+        "tailwindcss",
+        "vuejs",
+        "vuejs3",
+        "website"
     ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.5",
-        "inertiajs/inertia-laravel": "^0.6",
-        "laravel/framework": "^9.30",
+        "guzzlehttp/guzzle": "^7.2",
+        "inertiajs/inertia-laravel": "~0.0",
+        "laravel/framework": "^9.19",
+        "laravel/nova": "~4.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "ext-dom": "*",
-        "ext-libxml": "*"
+        "norman-huth/helpers-collection-laravel": "^1.0",
+        "ext-libxml": "*",
+        "ext-dom": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
@@ -41,8 +51,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "bootstrap/functions/app.php",
-            "bootstrap/functions/helpers.php"
+            "bootstrap/helpers/functions.php"
         ]
     },
     "autoload-dev": {
@@ -79,5 +88,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ]
 }

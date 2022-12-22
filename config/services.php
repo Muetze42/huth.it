@@ -37,10 +37,11 @@ return [
 
     'novapackages' => [
         'token'  => env('NOVA_PACKAGES_TOKEN'),
-        'author' => env('NOVA_PACKAGES_AUTHOR', 'Norman Huth')
+        'author' => env('NOVA_PACKAGES_AUTHOR', 'Norman Huth'),
     ],
 
     'packagist' => [
         'user' => env('PACKAGIST_USER', 'Muetze'),
     ],
+
 ];

@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\app;
 
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class StringFormatterController extends Controller
 {
     /**
+     * @param Request $request
      * @return array
      */
-    public function indexData(): array
+    public function indexData(Request $request): array
     {
-        $string = request()->input('string');
-        $language = request()->input('language');
-        $method = request()->input('method');
+        $string = $request->input('string');
+        $language = $request->input('language');
+        $method = $request->input('method');
 
         $language = in_array($language, ['en', 'de', 'bg']) ? $language : 'en';
         $output = '';

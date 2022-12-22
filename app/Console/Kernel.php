@@ -15,13 +15,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-         $schedule->command('repositories:update')
-             ->everyFifteenMinutes()
-             ->withoutOverlapping()
-             ->onSuccess(function () {
-                 $this->call('repositories:nova-packages:update');
-                 $this->call('repositories:packagist:update');
-             });
+         $schedule->command('github:update')
+             ->everyFifteenMinutes();
+         $schedule->command('packagist:update')
+             ->everyFifteenMinutes();
+         $schedule->command('novapackages:update')
+             ->everyFifteenMinutes();
     }
 
     /**
