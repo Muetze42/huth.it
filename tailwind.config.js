@@ -4,8 +4,8 @@ module.exports = {
     darkMode: 'class',
     content: [
         "./resources/views/app/**/*.blade.php",
-        "./resources/js/app/**/*.js",
-        "./resources/js/app/**/*.vue",
+        "./resources/js/**/*.js",
+        "./resources/js/**/*.vue",
     ],
     theme: {
         extend: {

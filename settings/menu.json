@@ -12,8 +12,8 @@
         "label": "Stuff",
         "items": [
             {
-                "url": "/nova-packages",
-                "label": "Nova Packages"
+                "url": "/open-source",
+                "label": "Open Source"
             }
         ]
     },

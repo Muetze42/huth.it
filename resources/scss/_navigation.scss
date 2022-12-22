@@ -1,0 +1,119 @@
+.left-nav {
+    @apply my-8 overflow-y-auto px-1 min-w-[14rem] border-r hidden desktop:block;
+    @apply border-secondary;
+    @apply dark:border-secondary-dark;
+
+    .nav {
+        @apply fixed overflow-y-auto w-[13rem] desktop:pl-0.5;
+        max-height: calc(100vh - 10rem);
+    }
+}
+
+.nav {
+    @apply space-y-5 desktop:space-y-9 select-none;
+
+    .label {
+        @apply font-medium text-primary-900 dark:text-white mb-2;
+    }
+
+    ul.items {
+        @apply lg:border-l-2 border-primary-100 dark:border-primary-800 lg:border-primary-300;
+        @apply space-y-3;
+
+        &:last-child {
+            @apply mt-0;
+        }
+
+        li {
+            @apply relative;
+
+            a {
+                @apply block w-full desktop:pl-3.5;
+                @apply desktop:before:pointer-events-none before:absolute desktop:before:-left-1 desktop:before:top-1/2 desktop:before:h-1.5 desktop:before:w-1.5 desktop:before:-translate-y-1/2 desktop:before:rounded-full desktop:before:hidden desktop:hover:before:block;
+                @apply text-primary-600 before:bg-primary-300 hover:text-primary-700;
+                @apply dark:text-primary-400 dark:before:bg-primary-700 dark:hover:text-primary-300;
+
+                &:not(.active) {
+                    @apply hover:underline;
+                }
+
+                &.active {
+                    @apply text-sky-500;
+                }
+            }
+        }
+    }
+}
+.menu {
+    @apply relative inline-block;
+}
+.menu-items {
+    @apply absolute rounded-lg p-2 border mt-0.5 left-0;
+    @apply bg-white border-secondary;
+    @apply dark:border-secondary-dark dark:bg-secondary-dark;
+}
+.menu-item {
+    @apply select-none text-left p-2 rounded-lg flex w-full whitespace-nowrap items-center;
+    @apply hover:bg-primary-300;
+    @apply dark:hover:bg-primary-900;
+
+    svg {
+        @apply mr-1;
+    }
+
+    &.active {
+        @apply text-sky-500;
+    }
+}
+
+footer {
+    @apply border-t;
+
+    .btn {
+        @apply py-1;
+    }
+
+    svg {
+        @apply mr-1;
+    }
+
+    a {
+        @apply mr-2;
+    }
+
+    .container {
+        @apply space-y-2;
+    }
+}
+
+.mobile-nav {
+    @apply fixed inset-0 flex z-40 lg:hidden;
+}
+.mobile-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-80 cursor-pointer;
+}
+.mobile-menu {
+    @apply relative p-4 flex flex-col bg-secondary dark:bg-secondary-dark min-w-[50%];
+}
+
+header {
+    @apply fixed w-full;
+    @apply z-40 border-b;
+    @apply bg-white dark:bg-primary-900;
+
+    .container {
+        @apply flex flex-wrap justify-between items-center;
+    }
+}
+
+header, footer {
+    @apply border-secondary;
+    @apply border-secondary dark:border-secondary-dark;
+}
+
+.pagination {
+    @apply mt-4 desktop:mt-8;
+    .btn {
+        @apply rounded-none min-w-[2rem];
+    }
+}

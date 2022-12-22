@@ -39,12 +39,11 @@ class HandleInertiaRequests extends Middleware
     {
         $pageTitle = config('app.name');
         $routeName = Route::currentRouteName();
+
         if (!empty($routeName)) {
             $parts = explode('.', $routeName);
-            if (!empty($parts[1])) {
-                $routeName = str_replace('-', ' ', $parts[1]);
-                $pageTitle = ucwords($routeName);
-            }
+            $routeName = !empty($parts[1]) ? str_replace('-', ' ', $parts[1]) : str_replace('-', ' ', $parts[0]);
+            $pageTitle = ucwords($routeName);
         }
 
         view()->share('pageTitle', $pageTitle);

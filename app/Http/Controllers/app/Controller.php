@@ -20,13 +20,14 @@ class Controller extends BaseController
      */
     public function index(Request $request): Response
     {
-        return Inertia::render(str_replace('Controller', '', class_basename($this)).'/Index', $this->indexData());
+        return Inertia::render(str_replace('Controller', '', class_basename($this)).'/Index', $this->indexData($request));
     }
 
     /**
+     * @param Request $request
      * @return array
      */
-    protected function indexData(): array
+    protected function indexData(Request $request): array
     {
         return [];
     }

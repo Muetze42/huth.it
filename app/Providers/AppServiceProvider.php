@@ -2,13 +2,15 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Validation\Rules\Password;
+use NormanHuth\Helpers\Macros\CarbonTrait;
 
 class AppServiceProvider extends ServiceProvider
 {
+    use CarbonTrait;
+
     /**
      * Register any application services.
      *
@@ -26,13 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->extend('url', function (\Illuminate\Routing\UrlGenerator $urlGenerator) {
-            return new \App\Helpers\UrlGenerator(
-                $this->app->make('router')->getRoutes(),
-                $urlGenerator->getRequest(),
-                $this->app->make('config')->get('app.asset_url')
-            );
-        });
+        $this->responseToDateTimeString();
 
         JsonResource::withoutWrapping();
 
@@ -43,13 +39,6 @@ class AppServiceProvider extends ServiceProvider
                 ->numbers()
                 ->symbols()
                 ->uncompromised();
-        });
-
-        Carbon::macro('responseToDateTimeString', function (string $datetime): string {
-            $carbon = Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $datetime, 'UTC')
-                ->setTimezone(config('app.timezone', 'Europe/Berlin'))
-                ->toDateTimeString();
-            return !$carbon ? $datetime : $carbon;
         });
     }
 }

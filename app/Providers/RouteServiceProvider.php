@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -31,17 +30,12 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::middleware('api')
-                ->name('api.')
                 ->prefix('api')
+                ->name('api.')
+                ->domain('api.'.basename(config('app.url')))
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
-                ->name('coffee.')
-                ->domain('coffee.'.basename(config('app.url')))
-                ->group(base_path('routes/coffee.php'));
-
-            Route::middleware('web')
-                ->middleware(HandleInertiaRequests::class)
                 ->group(base_path('routes/web.php'));
         });
     }
