@@ -65,7 +65,7 @@
                 </a>
                 <div class="h-1"></div>
                 <a href="https://linktr.ee/CurrentPetitionsFreeIran" target="_blank">
-                    <img src="/assets/iran-banner.svg" alt="Current petitions for Iran" class="top-banner">
+                    <img src="https://raw.githubusercontent.com/Muetze42/Muetze42/main/files/iran-banner.svg" alt="Current petitions for Iran" class="top-banner">
                 </a>
             </div>
         </div>
