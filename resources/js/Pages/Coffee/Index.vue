@@ -27,11 +27,11 @@
     </div>
     <h3 class="my-8">Advertising links</h3>
     <div class="coffee">
-        <div>
-            <a href="https://www.netcup.de/?ref=177959" target="_blank" class="no-hover">
-                <img src="https://www.netcup.de/static/assets/images/promotion/netcup-setC-234x60.png" alt="Netcup GmbH">
-            </a>
-        </div>
+<!--        <div>-->
+<!--            <a href="https://www.netcup.de/?ref=177959" target="_blank" class="no-hover">-->
+<!--                <img src="https://www.netcup.de/static/assets/images/promotion/netcup-setC-234x60.png" alt="Netcup GmbH">-->
+<!--            </a>-->
+<!--        </div>-->
         <div>
             <a href="https://all-inkl.com/PA77D721D085F2D" target="_blank" class="no-hover">
                 <img src="/assets/all-inkl.jpg" alt="ALL-INKL.COM - Webhosting Server Hosting Domain Provider">
