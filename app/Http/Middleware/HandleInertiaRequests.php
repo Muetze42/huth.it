@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
 
         if (!empty($routeName)) {
             $parts = explode('.', $routeName);
-            $routeName = !empty($parts[1]) ? str_replace('-', ' ', $parts[1]) : str_replace('-', ' ', $parts[0]);
+            $routeName = !empty($parts[1]) ? $this->replace($parts[1]) : $this->replace($parts[0]);
             $pageTitle = ucwords($routeName);
         }
 
@@ -53,5 +53,15 @@ class HandleInertiaRequests extends Middleware
             'faClass'   => config('this.fontawesome.class', 'fa-fw'),
             'section'   => str_replace('Controller', '', class_basename(explode('@', Route::currentRouteAction())[0])),
         ]);
+    }
+
+    protected function replace(string $string): string
+    {
+        $replace = [
+            '-' => ' ',
+            '_' => '. ',
+        ];
+
+        return str_replace(array_keys($replace), array_values($replace), $string);
     }
 }
