@@ -43,7 +43,7 @@ Route::domain(basename(config('app.url')))->group(function () {
         return redirect(route('open-source').'?tag=laravel-nova');
     });
 
-    Route::get('coffee', [CoffeeController::class, 'index'])->name('support me_ Thank You');
+    Route::get('coffee', [CoffeeController::class, 'index'])->name('coffee');
 
     Route::name('tools.')->group(function () {
         Route::get('password-generator', [PasswordGeneratorController::class, 'index'])

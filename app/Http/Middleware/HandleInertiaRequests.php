@@ -60,6 +60,7 @@ class HandleInertiaRequests extends Middleware
         $replace = [
             '-' => ' ',
             '_' => '. ',
+            'coffee' => 'Support me. Thank You'
         ];
 
         return str_replace(array_keys($replace), array_values($replace), $string);
