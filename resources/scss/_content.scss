@@ -40,7 +40,7 @@ address {
     @apply flex flex-col space-y-4;
 
     a {
-        @apply bg-primary-500 hover:bg-primary-600 block p-2 rounded text-sky-200 hover:text-blue-300 text-center;
+        @apply bg-primary-500 hover:bg-primary-600 block p-2 rounded text-sky-200 hover:text-sky-200 hover:no-underline text-center;
     }
 
     img {
