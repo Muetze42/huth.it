@@ -5,7 +5,7 @@
         <div>{{ address.street }}</div>
         <div>{{ address.city }}</div>
         <div>{{ address.country }}</div>
-        <div>VAT ID: {{ address.vat }}</div>
+        <div>Not subject to VAT according to § 19 UStG</div>
     </address>
     <h2>Contact</h2>
     {{ address.mAddress }}<font-awesome-icon icon="fa-regular fa-at" />{{ address.mProvider }}

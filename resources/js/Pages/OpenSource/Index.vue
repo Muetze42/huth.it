@@ -37,7 +37,8 @@
             </div>
         </template>
     </div>
-    <Pagination :links="packages.links" />
+    <Pagination :links="packages.links" class="mb-4" />
+    This is only a selection. You can browse all repositories on <a href="https://github.com/Muetze42?tab=repositories" target="_blank"><font-awesome-icon :icon="'fa-brands fa-github'" class="fa-fw" />Github</a>.
 </template>
 
 <script>
