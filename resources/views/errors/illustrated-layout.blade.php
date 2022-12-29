@@ -38,5 +38,17 @@
                 <div style="background-image: url({{ asset('assets/'.errorImage($__env->yieldContent('code'))) }});" class="absolute pin bg-cover bg-no-repeat md:bg-left lg:bg-center"></div>
             </div>
         </div>
+        @if($__env->yieldContent('code') == 503)
+            <script>
+                setInterval(function() {
+                    fetch('/api')
+                        .then((response) => {
+                            if (response.status != 503) {
+                                location.reload(true);
+                            }
+                        })
+                }, 1000);
+            </script>
+        @endif
     </body>
 </html>
