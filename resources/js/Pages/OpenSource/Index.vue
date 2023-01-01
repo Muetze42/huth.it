@@ -25,7 +25,9 @@
             <br>
             Watchers: {{ repository.watchers }}
             <br>
-            Downloads: {{ repository.downloads }}
+            <template v-if="repository.downloads > 0">
+                Downloads: {{ repository.downloads }}
+            </template>
         </div>
         <template v-if="repository.novaPackageUrl">
             <div v-if="repository.ratingCount > 0" class="mt-2 text-sm">
@@ -37,8 +39,10 @@
             </div>
         </template>
     </div>
-    <Pagination :links="packages.links" class="mb-4" />
-    This is only a selection. You can browse all repositories on <a href="https://github.com/Muetze42?tab=repositories" target="_blank"><font-awesome-icon :icon="'fa-brands fa-github'" class="fa-fw" />Github</a>.
+    <Pagination :links="packages.links" />
+    <div class="mt-4">
+        This is only a selection. You can browse all repositories on <a href="https://github.com/Muetze42?tab=repositories" target="_blank"><font-awesome-icon :icon="'fa-brands fa-github'" class="fa-fw" />Github</a>.
+    </div>
 </template>
 
 <script>
