@@ -40,12 +40,16 @@
         </div>
         @if($__env->yieldContent('code') == 503)
             <script>
-                setInterval(function () {
+                setInterval(function() {
                     fetch('/api')
                         .then((response) => {
                             if (response.status != 503) {
                                 let iframe = window.parent.document.getElementsByTagName('iframe')
-                                if (iframe) {
+                                let parent = null
+                                if (iframe[0]) {
+                                    parent = iframe[0].parentElement
+                                }
+                                if (iframe && parent) {
                                     let parent = iframe[0].parentElement
                                     let app = window.parent.document.getElementsByTagName('body')
                                     app[0].style.overflowY = 'visible';
