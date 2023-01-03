@@ -58,7 +58,6 @@
                                 } else {
                                     location.reload(true)
                                 }
-
                             }
                         })
                 }, 1000);
