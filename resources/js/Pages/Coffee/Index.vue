@@ -20,7 +20,7 @@
             </a>
         </div>
         <div>
-            <a href="https://www.amazon.de/hz/wishlist/ls/1QKQCWT4C5DHU?ref_=wl_share" target="_blank">
+            <a href="https://www.amazon.de/hz/wishlist/ls/1QKQCWT4C5DHU?ref_=wl_share" target="_blank" lang="de">
                 <img src="/assets/wishlist.png" alt="Amazon wishlist" width="200">
             </a>
         </div>
@@ -39,24 +39,24 @@
 <!--            </a>-->
 <!--        </div>-->
         <div>
-            <a href="https://all-inkl.com/PA77D721D085F2D" target="_blank" class="no-hover">
+            <a href="https://all-inkl.com/PA77D721D085F2D" target="_blank" class="no-hover" lang="de">
                 <span class="sr-only">ALL-INKL.COM - Webhosting Server Hosting Domain Provider</span>
                 <img src="/assets/all-inkl.jpg" alt="ALL-INKL.COM - Webhosting Server Hosting Domain Provider">
             </a>
         </div>
         <div>
-            <a href="https://www.shoop.de/invite/lqur4UDSln/" target="_blank" class="no-hover">
+            <a href="https://www.shoop.de/invite/lqur4UDSln/" target="_blank" class="no-hover" lang="de">
                 Shoop Cashback
             </a>
         </div>
         <div>
-            <a href="https://de.igraal.com/einladung?werber=AG_5a1ab979a2ff2" target="_blank" class="no-hover">
+            <a href="https://de.igraal.com/einladung?werber=AG_5a1ab979a2ff2" target="_blank" class="no-hover" lang="de">
                 <span class="sr-only">iGraal Cashback</span>
                 <img src="https://st-de-filebanking.igstatic.com/front/banner/28.gif" alt="iGraal Cashback">
             </a>
         </div>
         <div>
-            <a href="https://www.digistore24.com/redir/174033/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover">
+            <a href="https://www.digistore24.com/redir/174033/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover" lang="de">
                 <span class="flex justify-between space-x-2 items-center max-w-md mx-auto">
                     <span>
                         <img src="/assets/erecht24/erecht24-logo-premium-horizontal-white.png" alt="eRecht24 Logo" class="h-8">
@@ -68,7 +68,7 @@
             </a>
         </div>
         <div>
-            <a href="https://www.digistore24.com/redir/174029/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover">
+            <a href="https://www.digistore24.com/redir/174029/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover" lang="de">
                 <span class="flex justify-between space-x-2 items-center max-w-md mx-auto">
                     <span>
                         <img src="/assets/erecht24/erecht24-logo-premium-horizontal-white.png" alt="eRecht24 Logo" class="h-8">
@@ -80,7 +80,7 @@
             </a>
         </div>
         <div>
-            <a href="https://www.digistore24.com/redir/174027/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover">
+            <a href="https://www.digistore24.com/redir/174027/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover" lang="de">
                 <span class="flex justify-between space-x-2 items-center max-w-md mx-auto">
                     <span>
                         <img src="/assets/erecht24/erecht24-logo-premium-horizontal-white.png" alt="eRecht24 Logo" class="h-8">
@@ -92,7 +92,7 @@
             </a>
         </div>
         <div>
-            <a href="https://www.digistore24.com/redir/287335/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover">
+            <a href="https://www.digistore24.com/redir/287335/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover" lang="de">
                 <span class="flex justify-between space-x-2 items-center max-w-md mx-auto">
                     <span>
                         <img src="/assets/erecht24/erecht24-logo-premium-horizontal-white.png" alt="eRecht24 Logo" class="h-8">
@@ -104,7 +104,7 @@
             </a>
         </div>
         <div>
-            <a href="https://www.digistore24.com/redir/287336/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover">
+            <a href="https://www.digistore24.com/redir/287336/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover" lang="de">
                 <span class="flex justify-between space-x-2 items-center max-w-md mx-auto">
                     <span>
                         <img src="/assets/erecht24/erecht24-logo-premium-horizontal-white.png" alt="eRecht24 Logo" class="h-8">
@@ -116,7 +116,7 @@
             </a>
         </div>
         <div>
-            <a href="https://www.digistore24.com/redir/287338/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover">
+            <a href="https://www.digistore24.com/redir/287338/NormanHuth/CAMPAIGNKEY" target="_blank" class="no-hover" lang="de">
                 <span class="flex justify-between space-x-2 items-center max-w-md mx-auto">
                     <span>
                         <img src="/assets/erecht24/erecht24-logo-premium-horizontal-white.png" alt="eRecht24 Logo" class="h-8">
