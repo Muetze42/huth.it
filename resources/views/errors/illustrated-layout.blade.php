@@ -53,11 +53,11 @@
                                     let parent = iframe[0].parentElement
                                     let app = window.parent.document.getElementsByTagName('body')
                                     app[0].style.overflowY = 'visible';
+                                    window.parent.location.href = '{{ url()->full() }}';
                                     parent.parentNode.removeChild(parent)
                                 } else {
                                     location.reload(true)
                                 }
-
                             }
                         })
                 }, 1000);
