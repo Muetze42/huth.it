@@ -6,7 +6,6 @@ use App\Models\Package;
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class PackagistUpdate extends Command
 {
@@ -26,14 +25,10 @@ class PackagistUpdate extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle(): void
     {
         $this->handleRequest();
-
-        return SymfonyCommand::SUCCESS;
     }
 
     /**
