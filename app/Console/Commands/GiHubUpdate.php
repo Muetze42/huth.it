@@ -6,7 +6,6 @@ use App\Models\Package;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
-use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class GiHubUpdate extends Command
 {
@@ -26,14 +25,10 @@ class GiHubUpdate extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle(): void
     {
         $this->handleRequest();
-
-        return SymfonyCommand::SUCCESS;
     }
 
     /**

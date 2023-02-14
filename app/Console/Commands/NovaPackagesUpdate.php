@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Package;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class NovaPackagesUpdate extends Command
 {
@@ -25,14 +24,10 @@ class NovaPackagesUpdate extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle(): int
+    public function handle(): void
     {
         $this->handleRequest();
-
-        return SymfonyCommand::SUCCESS;
     }
 
     /**
