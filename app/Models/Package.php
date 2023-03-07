@@ -74,7 +74,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Package extends Model
 {
-    use HasFactory, SoftDeletes, HasTags;
+    use HasFactory;
+    use SoftDeletes;
+    use HasTags;
 
     /**
      * The attributes that are mass assignable.

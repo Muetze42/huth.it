@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     /**
      * @param Request $request
@@ -20,7 +22,10 @@ class Controller extends BaseController
      */
     public function index(Request $request): Response
     {
-        return Inertia::render(str_replace('Controller', '', class_basename($this)).'/Index', $this->indexData($request));
+        return Inertia::render(
+            str_replace('Controller', '', class_basename($this)).'/Index',
+            $this->indexData($request)
+        );
     }
 
     /**

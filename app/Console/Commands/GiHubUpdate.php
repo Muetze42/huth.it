@@ -38,7 +38,12 @@ class GiHubUpdate extends Command
      */
     protected function handleRequest(int $page = 1, int $perPage = 100): void
     {
-        $url = sprintf('https://api.github.com/users/%s/repos?per_page=%d&page=%d&sort=pushed', config('services.github.user_name', 'Muetze42'), $perPage, $page);
+        $url = sprintf(
+            'https://api.github.com/users/%s/repos?per_page=%d&page=%d&sort=pushed',
+            config('services.github.user_name', 'Muetze42'),
+            $perPage,
+            $page
+        );
         $response = Http::accept('application/json')
             ->get($url);
         $items = $response->json();
