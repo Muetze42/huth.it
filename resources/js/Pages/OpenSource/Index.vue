@@ -40,7 +40,7 @@
         </template>
     </div>
     <Pagination :links="packages.links" />
-    <div class="mt-4">
+    <div class="mt-6 py-1 px-2 border border-dashed border-primary-500 inline-block">
         This is only a selection. You can browse all repositories on <a href="https://github.com/Muetze42?tab=repositories" target="_blank"><font-awesome-icon :icon="'fa-brands fa-github'" class="fa-fw" />Github</a>.
     </div>
 </template>
