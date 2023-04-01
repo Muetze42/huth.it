@@ -25,7 +25,7 @@
             <br>
             Watchers: {{ repository.watchers }}
             <br>
-            <template v-if="repository.downloads > 0">
+            <template v-if="repository.downloads != 0">
                 Downloads: {{ repository.downloads }}
             </template>
         </div>
