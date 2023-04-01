@@ -14,6 +14,6 @@ class BaseResourceCommand extends Command
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace.'\Nova\Resources';
+        return $rootNamespace . '\Nova\Resources';
     }
 }

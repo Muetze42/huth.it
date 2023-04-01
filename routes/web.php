@@ -54,4 +54,3 @@ Route::domain(basename(config('app.url')))->group(function () {
             ->name('string-formatter.format');
     });
 });
-

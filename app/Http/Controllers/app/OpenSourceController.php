@@ -44,7 +44,10 @@ class OpenSourceController extends Controller
 
         return [
             'packages'   => $packages,
-            'tags'       => array_merge([0 => 'No Filter'], Tag::has('packages')->orderBy('name')->pluck('name', 'name')->toArray()),
+            'tags'       => array_merge(
+                [0 => 'No Filter'],
+                Tag::has('packages')->orderBy('name')->pluck('name', 'name')->toArray()
+            ),
             'currentTag' => $this->tag,
         ];
     }

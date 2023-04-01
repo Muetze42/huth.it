@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\app;
 
-
 use Illuminate\Http\Request;
 
 class PrivacyController extends Controller
