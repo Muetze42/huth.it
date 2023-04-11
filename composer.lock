@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91076e97b7390d75eedcbe50be77bd1a",
+    "content-hash": "edacea9e61e14da4a8d68acf6b5ec9b2",
     "packages": [
         {
             "name": "brick/math",
@@ -2865,6 +2865,58 @@
                 }
             ],
             "time": "2023-02-12T01:52:47+00:00"
+        },
+        {
+            "name": "norman-huth/nova-resource-card",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muetze42/nova-resource-card.git",
+                "reference": "9446dc6026132c99bf1333e7a4792f9f5688c98b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muetze42/nova-resource-card/zipball/9446dc6026132c99bf1333e7a4792f9f5688c98b",
+                "reference": "9446dc6026132c99bf1333e7a4792f9f5688c98b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^4.0",
+                "php": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NormanHuth\\NovaResourceCard\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NormanHuth\\NovaResourceCard\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/Muetze42/nova-resource-card/issues",
+                "source": "https://github.com/Muetze42/nova-resource-card/tree/1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://huth.it/coffee",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-04-09T09:43:41+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -9376,8 +9428,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1",
-        "ext-libxml": "*",
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
