@@ -8,6 +8,7 @@
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
     @inertiaHead
     @include('app.favicon')
+    @include('app.og')
 </head>
 <body>
 @inertia
