@@ -11,6 +11,7 @@
     @include('app.og')
 </head>
 <body>
+<img src="{{ asset('assets/og.jpg') }}" class="hidden">
 @inertia
 </body>
 </html>
