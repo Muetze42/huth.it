@@ -1,6 +1,26 @@
 <template>
     <h1>Support Me</h1>
     <h2>Thank you for any form of support</h2>
+    <h3 class="my-8">Reach Support</h3>
+    <div class="coffee">
+        <div>
+            <a href="https://www.linkedin.com/in/normanhuth/" target="_blank" title="LinkedIn">
+                Follow or connect on LinkedIn
+                <span class="block text-lg">
+                    <font-awesome-icon icon="fa-brands fa-linkedin" fixed-width />
+                </span>
+            </a>
+        </div>
+        <div>
+            <a href="https://github.com/Muetze42" target="_blank" title="GitHub">
+                Follow me on GitHub
+                <span class="block text-lg">
+                    <font-awesome-icon icon="fa-brands fa-github" fixed-width />
+                </span>
+            </a>
+        </div>
+    </div>
+    <h3 class="my-8">Material support</h3>
     <div class="coffee">
         <div>
             <a href="https://www.paypal.com/donate/?hosted_button_id=PFS2DG3CQYSFC" target="_blank" title="PayPal Donation">

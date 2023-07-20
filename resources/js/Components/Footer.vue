@@ -9,12 +9,10 @@
 /* FontAwesome START */
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
-    faLinkedin,
     faInstagram,
     faLaravel,
 } from '@fortawesome/free-brands-svg-icons'
 library.add(
-    faLinkedin,
     faInstagram,
     faLaravel,
 );
