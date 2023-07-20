@@ -19,45 +19,15 @@
     <header>
         <div class="container">
             <div>
-                <Menu as="div" class="menu">
+                <div class="menu">
                     <button type="button" class="btn mr-2 desktop:hidden" @click="menuOpen = !menuOpen">
                         <font-awesome-icon icon="fa-sharp fa-solid fa-bars" :class="$page.props.faClass" />
                     </button>
-                    <MenuButton class="btn">
-                        <span class="sr-only">Switch between Dark & Light Mode</span>
-                        <font-awesome-icon icon="fa-sharp fa-solid fa-sun-bright" :class="$page.props.faClass" v-if="this.theme == 'light'"/>
-                        <font-awesome-icon icon="fa-sharp fa-solid fa-moon" :class="$page.props.faClass" v-else-if="this.theme == 'dark'"/>
-                        <font-awesome-icon icon="fa-sharp fa-solid fa-display" :class="$page.props.faClass" v-else/>
-                    </MenuButton>
-                    <transition
-                        enter-active-class="transition duration-100 ease-out"
-                        enter-from-class="transform scale-95 opacity-0"
-                        enter-to-class="transform scale-100 opacity-100"
-                        leave-active-class="transition duration-75 ease-in"
-                        leave-from-class="transform scale-100 opacity-100"
-                        leave-to-class="transform scale-95 opacity-0">
-                        <MenuItems class="menu-items">
-                            <MenuItem class="menu-item" :class="{ 'active': this.theme == 'light' }">
-                                <button @click="toggleTheme('light')" type="button">
-                                    <font-awesome-icon icon="fa-sharp fa-solid fa-sun-bright" :class="$page.props.faClass" />
-                                    Light Mode
-                                </button>
-                            </MenuItem>
-                            <MenuItem class="menu-item" :class="{ 'active': this.theme == 'dark' }">
-                                <button @click="toggleTheme('dark')" type="button">
-                                    <font-awesome-icon icon="fa-sharp fa-solid fa-moon" :class="$page.props.faClass" />
-                                    Dark Mode
-                                </button>
-                            </MenuItem>
-                            <MenuItem class="menu-item" :class="{ 'active': !this.theme }">
-                                <button @click="toggleTheme()" type="button">
-                                    <font-awesome-icon icon="fa-sharp fa-solid fa-display" :class="$page.props.faClass" />
-                                    System
-                                </button>
-                            </MenuItem>
-                        </MenuItems>
-                    </transition>
-                </Menu>
+                    <button type="button" class="btn">
+                        <font-awesome-icon v-if="lightTheme" icon="fa-sharp fa-solid fa-lightbulb-on" class="fa-fw" :class="$page.props.faClass" @click="toggleTheme()" />
+                        <font-awesome-icon v-else icon="fa-sharp fa-solid fa-lightbulb" class="fa-fw" :class="$page.props.faClass" @click="toggleTheme('light')" />
+                    </button>
+                </div>
             </div>
             <div>
                 <a href="https://stand-with-ukraine.pp.ua/" target="_blank">
@@ -99,16 +69,14 @@ import Footer from './../Components/Footer.vue';
 /* FontAwesome START */
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
-    faDisplay,
-    faSunBright,
-    faMoon,
+    faLightbulb,
+    faLightbulbOn,
     faBars,
     faXmark,
 } from '@fortawesome/sharp-solid-svg-icons'
 library.add(
-    faDisplay,
-    faSunBright,
-    faMoon,
+    faLightbulb,
+    faLightbulbOn,
     faBars,
     faXmark,
 );
@@ -149,28 +117,18 @@ export default {
     data() {
         return {
             menuOpen: false,
-            theme: null,
+            lightTheme: false,
         }
     },
     methods: {
         toggleTheme(scheme) {
-            scheme ? localStorage.theme = scheme : localStorage.removeItem('theme')
+            scheme === 'light'? localStorage.theme = 'light' : localStorage.removeItem('theme')
             this.applyColorTheme()
         },
         applyColorTheme() {
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark')
-            } else {
-                document.documentElement.classList.remove('dark')
-            }
+            localStorage.theme === 'light' ? document.documentElement.classList.remove('dark') : document.documentElement.classList.add('dark')
 
-            if (localStorage.theme === 'dark') {
-                this.theme = 'dark'
-            } else if (localStorage.theme === 'light') {
-                this.theme = 'light'
-            } else {
-                this.theme = null
-            }
+            this.lightTheme = localStorage.theme === 'light'
         },
     },
     mounted() {
