@@ -22,10 +22,15 @@
                 <div class="menu">
                     <button type="button" class="btn mr-2 desktop:hidden" @click="menuOpen = !menuOpen">
                         <font-awesome-icon icon="fa-sharp fa-solid fa-bars" :class="$page.props.faClass" />
+                        <span class="sr-only">Open Mobile Menu</span>
                     </button>
-                    <button type="button" class="btn">
-                        <font-awesome-icon v-if="lightTheme" icon="fa-sharp fa-solid fa-lightbulb-on" class="fa-fw" :class="$page.props.faClass" @click="toggleTheme()" />
-                        <font-awesome-icon v-else icon="fa-sharp fa-solid fa-lightbulb" class="fa-fw" :class="$page.props.faClass" @click="toggleTheme('light')" />
+                    <button type="button" class="btn" v-if="lightTheme" @click="toggleTheme(false)">
+                        <font-awesome-icon  icon="fa-sharp fa-solid fa-lightbulb-on" class="fa-fw" :class="$page.props.faClass" />
+                        <span class="sr-only">Deactivate Light Theme</span>
+                    </button>
+                    <button v-else type="button" class="btn" @click="toggleTheme()">
+                        <font-awesome-icon icon="fa-sharp fa-solid fa-lightbulb" class="fa-fw" :class="$page.props.faClass" />
+                        <span class="sr-only">Activate Light Theme</span>
                     </button>
                 </div>
             </div>
@@ -117,18 +122,17 @@ export default {
     data() {
         return {
             menuOpen: false,
-            lightTheme: false,
+            lightTheme: localStorage.getItem('lightTheme') === '1',
         }
     },
     methods: {
-        toggleTheme(scheme) {
-            scheme === 'light'? localStorage.theme = 'light' : localStorage.removeItem('theme')
+        toggleTheme(lightTheme = true) {
+            lightTheme ? localStorage.setItem('lightTheme', '1') : localStorage.removeItem('lightTheme')
+            this.lightTheme = lightTheme
             this.applyColorTheme()
         },
         applyColorTheme() {
-            localStorage.theme === 'light' ? document.documentElement.classList.remove('dark') : document.documentElement.classList.add('dark')
-
-            this.lightTheme = localStorage.theme === 'light'
+            this.lightTheme ? document.documentElement.classList.remove('dark') : document.documentElement.classList.add('dark')
         },
     },
     mounted() {
