@@ -40,10 +40,18 @@
             </a>
         </div>
         <div>
-            <a href="https://www.amazon.de/hz/wishlist/ls/1QKQCWT4C5DHU?ref_=wl_share" target="_blank" lang="de">
-                <img src="/assets/wishlist.png" alt="Amazon wishlist" width="200">
+            <a href="https://github.com/sponsors/Muetze42" target="_blank" title="Github Sponsor">
+                <span class="block text-lg">
+                    <font-awesome-icon icon="fa-brands fa-github" fixed-width />
+                </span>
+                Sponsor
             </a>
         </div>
+<!--        <div>-->
+<!--            <a href="https://www.amazon.de/hz/wishlist/ls/1QKQCWT4C5DHU?ref_=wl_share" target="_blank" lang="de">-->
+<!--                <img src="/assets/wishlist.png" alt="Amazon wishlist" width="200">-->
+<!--            </a>-->
+<!--        </div>-->
     </div>
     <h3 class="my-8">Advertising links</h3>
     <div class="coffee">
